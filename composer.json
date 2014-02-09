@@ -3,7 +3,7 @@
     "type": "joomla-package",
     "description": "Joomla Twitter Package",
     "keywords": ["joomla", "framework", "twitter"],
-    "homepage": "https://github.com/joomla/joomla-framework-twitter",
+    "homepage": "https://github.com/joomla-framework/twitter-api",
     "license": "GPL-2.0+",
     "require": {
         "php": ">=5.3.10",
@@ -12,15 +12,17 @@
         "joomla/http": "~1.0",
         "joomla/uri": "~1.0"
     },
+    "require-dev": {
+        "joomla/test": "~1.0"
+    },
     "suggest": {
         "joomla/registry": "Registry can be used as an alternative to using an array for the package options."
     },
-    "target-dir": "Joomla/Twitter",
     "autoload": {
-    	"psr-0": {
-    		"Joomla\\Twitter": ""
+    	"psr-4": {
+    		"Joomla\\Twitter\\": "src/",
+            "Joomla\\Twitter\\Tests\\": "Tests/"
     	}
-    },
-    "minimum-stability": "beta"
+    }
 }
 
