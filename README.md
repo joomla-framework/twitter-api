@@ -1,4 +1,4 @@
-## The Twitter Package
+## The Twitter Package [![Build Status](https://travis-ci.org/joomla-framework/twitter-api.png?branch=master)](https://travis-ci.org/joomla-framework/twitter-api)
 
 ### Using the Twitter Package
 
