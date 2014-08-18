@@ -20,9 +20,13 @@
     },
     "autoload": {
     	"psr-4": {
-    		"Joomla\\Twitter\\": "src/",
-            "Joomla\\Twitter\\Tests\\": "Tests/"
+    		"Joomla\\Twitter\\": "src/"
     	}
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Joomla\\Twitter\\Tests\\": "Tests/"
+        }
     }
 }
 
