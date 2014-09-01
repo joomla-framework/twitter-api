@@ -108,12 +108,12 @@ The following resources contain more information:
 
 ## Installation via Composer
 
-Add `"joomla/twitter": "~1.0"` to the require block in your composer.json and then run `composer install`.
+Add `"joomla/twitter": "2.0.*@dev"` to the require block in your composer.json and then run `composer install`.
 
 ```json
 {
 	"require": {
-		"joomla/twitter": "~1.0"
+		"joomla/twitter": "2.0.*@dev"
 	}
 }
 ```
@@ -121,5 +121,5 @@ Add `"joomla/twitter": "~1.0"` to the require block in your composer.json and th
 Alternatively, you can simply run the following from the command line:
 
 ```sh
-composer require joomla/twitter "~1.0"
+composer require joomla/twitter "2.0.*@dev"
 ```
