@@ -79,8 +79,10 @@ Below is an example demonstrating more of the Twitter package.
 use Joomla\Twitter\Twitter;
 use Joomla\Twitter\OAuth;
 
-$app_id = "app_id";
-$app_secret = "app_secret";
+$token = array(
+	'key' => "app_id",
+	'secret' => "app_secret",
+);
 $my_url = 'http://localhost/twitter_test.php';
 
 $options = array(
@@ -91,6 +93,7 @@ $options = array(
 );
 
 $oauth = new OAuth($options);
+$oauth->setToken($token);
 $oauth->authenticate();
 
 $twitter = new Twitter($oauth);
