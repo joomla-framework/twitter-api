@@ -8,14 +8,14 @@
     "require": {
         "php": ">=5.3.10",
         "joomla/oauth1": "2.0.*@dev",
-        "joomla/input": "~1.0",
-        "joomla/http": "~1.0",
-        "joomla/uri": "~1.0"
+        "joomla/input": "~1.0@stable",
+        "joomla/http": "~1.0@stable",
+        "joomla/uri": "~1.0@stable"
     },
     "require-dev": {
-        "joomla/test": "~1.0",
-        "phpunit/phpunit": "4.*",
-        "squizlabs/php_codesniffer": "1.*"
+        "joomla/test": "~1.0@stable",
+        "phpunit/phpunit": "4.*@stable",
+        "squizlabs/php_codesniffer": "1.*@stable"
     },
     "suggest": {
         "joomla/registry": "Registry can be used as an alternative to using an array for the package options."
@@ -30,6 +30,7 @@
         "branch-alias": {
 	        "dev-2.0-dev": "2.0-dev"
         }
-    }
+    },
+    "minimum-stability": "dev"
 }
 
