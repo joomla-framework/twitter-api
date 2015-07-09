@@ -894,7 +894,7 @@ class StatusesTest extends TwitterTestCase
 
 		// Set POST request parameters.
 		$data = array();
-		$data['media[]'] = "@{$media}";
+		$data['media[]'] = new CurlFile($media);
 		$data['status'] = utf8_encode($status);
 		$data['in_reply_to_status_id'] = $in_reply_to_status_id;
 		$data['lat'] = $lat;
@@ -941,7 +941,7 @@ class StatusesTest extends TwitterTestCase
 
 		// Set POST request parameters.
 		$data = array();
-		$data['media[]'] = "@{$media}";
+		$data['media[]'] = new CurlFile($media);
 		$data['status'] = utf8_encode($status);
 
 		$this->client->expects($this->once())
