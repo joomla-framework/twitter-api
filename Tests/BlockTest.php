@@ -31,6 +31,7 @@ class BlockTest extends TwitterTestCase
 	 * @since  1.0
 	 */
 	protected $rateLimit = '{"resources": {"blocks": {
+			"/blocks/list": {"remaining":15, "reset":"Mon Jun 25 17:20:53 +0000 2012"},
 			"/blocks/ids": {"remaining":15, "reset":"Mon Jun 25 17:20:53 +0000 2012"},
 			"/blocks/create": {"remaining":15, "reset":"Mon Jun 25 17:20:53 +0000 2012"},
 			"/blocks/destroy": {"remaining":15, "reset":"Mon Jun 25 17:20:53 +0000 2012"}
@@ -90,6 +91,49 @@ class BlockTest extends TwitterTestCase
 
 		$this->assertThat(
 			$this->object->getBlocking($stringify_ids, $cursor),
+			$this->equalTo(json_decode($this->sampleString))
+		);
+	}
+
+	/**
+	 * Test the getBlocking method with the $full option
+	 *
+	 * @return	void
+	 *
+	 * @since	1.0
+	 */
+	public function testGetBlockingFull()
+	{
+		$stringify_ids = true;
+		$cursor = 123;
+
+		$returnData = new stdClass;
+		$returnData->code = 200;
+		$returnData->body = $this->rateLimit;
+
+		$path = $this->object->fetchUrl('/application/rate_limit_status.json', array("resources" => "blocks"));
+
+		$this->client->expects($this->at(0))
+		->method('get')
+		->with($path)
+		->will($this->returnValue($returnData));
+
+		$returnData = new stdClass;
+		$returnData->code = 200;
+		$returnData->body = $this->sampleString;
+
+		$data['stringify_ids'] = $stringify_ids;
+		$data['cursor'] = $cursor;
+
+		$path = $this->object->fetchUrl('/blocks/list.json', $data);
+
+		$this->client->expects($this->at(1))
+		->method('get')
+		->with($path)
+		->will($this->returnValue($returnData));
+
+		$this->assertThat(
+			$this->object->getBlocking($stringify_ids, $cursor, true),
 			$this->equalTo(json_decode($this->sampleString))
 		);
 	}
