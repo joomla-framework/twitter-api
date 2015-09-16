@@ -27,6 +27,7 @@ class StatusesTest extends TwitterTestCase
 	protected $rateLimit = '{"resources": {"statuses": {
 			"/statuses/show/:id": {"remaining":150, "reset":"Mon Jun 25 17:20:53 +0000 2012"},
 			"/statuses/user_timeline": {"remaining":150, "reset":"Mon Jun 25 17:20:53 +0000 2012"},
+			"/statuses/home_timeline": {"remaining":150, "reset":"Mon Jun 25 17:20:53 +0000 2012"},
 			"/statuses/mentions_timeline": {"remaining":15, "reset":"Mon Jun 25 17:20:53 +0000 2012"},
 			"/statuses/retweets_of_me": {"remaining":15, "reset":"Mon Jun 25 17:20:53 +0000 2012"},
 			"/statuses/retweeters/ids": {"remaining":15, "reset":"Mon Jun 25 17:20:53 +0000 2012"},
@@ -285,6 +286,98 @@ class StatusesTest extends TwitterTestCase
 		->will($this->returnValue($returnData));
 
 		$this->object->getUserTimeline($user, $count);
+	}
+
+	/**
+	* Tests the getHomeTimeline method
+	*
+	* @return  void
+	*	*
+	* @since   1.0
+	*/
+	public function testGetHomeTimeline()
+	{
+		$count = 10;
+		$contributor = true;
+		$no_replies = true;
+		$since_id = 10;
+		$max_id = 10;
+		$trim_user = true;
+		$entities = true;
+
+		$returnData = new stdClass;
+		$returnData->code = 200;
+		$returnData->body = $this->rateLimit;
+
+		$path = $this->object->fetchUrl('/application/rate_limit_status.json', array("resources" => "statuses"));
+
+		$this->client->expects($this->at(0))
+		->method('get')
+		->with($path)
+		->will($this->returnValue($returnData));
+
+		$returnData = new stdClass;
+		$returnData->code = 200;
+		$returnData->body = $this->sampleString;
+
+		$data['count'] = $count;
+		$data['exclude_replies'] = $no_replies;
+		$data['since_id'] = $since_id;
+		$data['max_id'] = $max_id;
+		$data['trim_user'] = $trim_user;
+		$data['contributor_details'] = $contributor;
+		$data['include_entities'] = $entities;
+
+		$path = $this->object->fetchUrl('/statuses/home_timeline.json', $data);
+
+		$this->client->expects($this->at(1))
+		->method('get')
+		->with($path)
+		->will($this->returnValue($returnData));
+
+		$this->assertThat(
+			$this->object->getHomeTimeline($count, $no_replies, $since_id, $max_id, $trim_user, $contributor, $entities),
+			$this->equalTo(json_decode($this->sampleString))
+		);
+	}
+
+	/**
+	* Tests the getHomeTimeline method - failure
+	*
+	* @return  void
+	*
+	* @since   1.0
+	* @expectedException  DomainException
+	*/
+	public function testGetHomeTimelineFailure()
+	{
+		$count = 10;
+
+		$returnData = new stdClass;
+		$returnData->code = 200;
+		$returnData->body = $this->rateLimit;
+
+		$path = $this->object->fetchUrl('/application/rate_limit_status.json', array("resources" => "statuses"));
+
+		$this->client->expects($this->at(0))
+		->method('get')
+		->with($path)
+		->will($this->returnValue($returnData));
+
+		$returnData = new stdClass;
+		$returnData->code = 500;
+		$returnData->body = $this->errorString;
+
+		$data['count'] = $count;
+
+		$path = $this->object->fetchUrl('/statuses/home_timeline.json', $data);
+
+		$this->client->expects($this->at(1))
+		->method('get')
+		->with($path)
+		->will($this->returnValue($returnData));
+
+		$this->object->getHomeTimeline($count);
 	}
 
 	/**

@@ -153,6 +153,81 @@ class Statuses extends Object
 	}
 
 	/**
+	 * Method to retrieve collection of the most recent Tweets and retweets posted by the authenticating user and the users they follow.
+	 *   The home timeline is central to how most users interact with the Twitter service.
+	 *
+	 * @param   integer  $count        Specifies the number of tweets to try and retrieve, up to a maximum of 200.  Retweets are always included
+	 *                                 in the count, so it is always suggested to set $include_rts to true
+	 * @param   boolean  $no_replies   This parameter will prevent replies from appearing in the returned timeline. This parameter is only supported
+	 *                                 for JSON and XML responses.
+	 * @param   integer  $since_id     Returns results with an ID greater than (that is, more recent than) the specified ID.
+	 * @param   integer  $max_id       Returns results with an ID less than (that is, older than) the specified ID.
+	 * @param   boolean  $trim_user    When set to true, each tweet returned in a timeline will include a user object including only
+	 *                                 the status author's numerical ID.
+	 * @param   boolean  $contributor  This parameter enhances the contributors element of the status response to include the screen_name of the
+	 * 								   contributor. By default only the user_id of the contributor is included.
+	 * @param   boolean  $entities     If set to true, this will include an addition entities node in the response object.
+	 *
+	 * @return  array  The decoded JSON response
+	 *
+	 * @since   1.0
+	 * @throws  \RuntimeException
+	 */
+	public function getHomeTimeline($count = 20, $no_replies = null, $since_id = 0, $max_id = 0, $trim_user = null, $contributor = null,
+		$entities = null)
+	{
+		// Check the rate limit for remaining hits
+		$this->checkRateLimit('statuses', 'home_timeline');
+
+		$data = array();
+
+		// Set the API base
+		$path = '/statuses/home_timeline.json';
+
+		// Set the count string
+		$data['count'] = $count;
+
+		// Check if no_replies is specified
+		if (!is_null($no_replies))
+		{
+			$data['exclude_replies'] = $no_replies;
+		}
+
+		// Check if a since_id is specified
+		if ($since_id > 0)
+		{
+			$data['since_id'] = (int) $since_id;
+		}
+
+		// Check if a max_id is specified
+		if ($max_id > 0)
+		{
+			$data['max_id'] = (int) $max_id;
+		}
+
+		// Check if trim_user is specified
+		if (!is_null($trim_user))
+		{
+			$data['trim_user'] = $trim_user;
+		}
+
+		// Check if contributor details is specified
+		if (!is_null($contributor))
+		{
+			$data['contributor_details'] = $contributor;
+		}
+
+		// Check if entities is specified
+		if (!is_null($entities))
+		{
+			$data['include_entities'] = $entities;
+		}
+
+		// Send the request.
+		return $this->sendRequest($path, 'GET', $data);
+	}
+
+	/**
 	 * Method to post a tweet.
 	 *
 	 * @param   string   $status                 The text of the tweet.
