@@ -140,7 +140,10 @@ class Friends extends Object
 	 *
 	 * @return  array  The decoded JSON response
 	 *
+	 * @deprecated	Will be removed in version 2.0. Use \Twitter\Followers::getFollowerIds() instead.
+	 *
 	 * @since   1.0
+	 *
 	 * @throws  \RuntimeException
 	 */
 	public function getFollowerIds($user, $cursor = null, $string_ids = null, $count = 0)

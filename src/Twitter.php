@@ -42,6 +42,12 @@ class Twitter
 	protected $friends;
 
 	/**
+	 * @var 		Followers	Twitter API object for followers
+	 * @since		1.0
+	 */
+	protected $followers;
+
+	/**
 	 * @var    Users  Twitter API object for users.
 	 * @since  1.0
 	 */

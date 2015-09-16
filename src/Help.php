@@ -53,4 +53,42 @@ class Help extends Object
 		// Send the request.
 		return $this->sendRequest($path);
 	}
+
+	/**
+	 * Method to get Twitters Privacy Policy
+	 *
+	 * @return 	array 	The decoded JSON response
+	 *
+	 * @since		1.0
+	 */
+	public function getPrivacy()
+	{
+		// Check the rate limit for remaining hits
+		$this->checkRateLimit('help', 'privacy');
+
+		// Set the API path
+		$path = '/help/privacy.json';
+
+		// Send the request
+		return $this->sendRequest($path);
+	}
+
+	/**
+	 * Method to get Twitters Terms of Service
+	 *
+	* @return  array  The decoded JSON response
+	 *
+	 * @since   1.0
+	 */
+	public function getTos()
+	{
+		// Check the rate limit for remaining hits
+		$this->checkRateLimit('help', 'tos');
+
+		// Set the API path
+		$path = '/help/tos.json';
+
+		// Send the request
+		return $this->sendRequest($path);
+	}
 }
