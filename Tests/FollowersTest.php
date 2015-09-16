@@ -31,7 +31,7 @@ class FollowersTest extends TwitterTestCase
 	 * @since  1.0
 	 */
 	protected $followersRateLimit = '{"resources": {"followers": {
-      "/followers/list": {"remaining":15, "reset":"Mon Jun 25 17:20:53 +0000 2012"},
+			"/followers/list": {"remaining":15, "reset":"Mon Jun 25 17:20:53 +0000 2012"},
 			"/followers/ids": {"remaining":15, "reset":"Mon Jun 25 17:20:53 +0000 2012"}
 			}}}';
 
