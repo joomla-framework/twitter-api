@@ -114,6 +114,18 @@ class Twitter
 	protected $profile;
 
 	/**
+	 * @var   Media    Twitter API object for media.
+	 * @since 1.0
+	 */
+	protected $media;
+
+	/**
+	 * @var   Mutes    Twitter API object for Mutes
+	 * @since 1.0
+	 */
+	protected $mute;
+
+	/**
 	 * Constructor.
 	 *
 	 * @param   OAuth  $oauth    The oauth client.
