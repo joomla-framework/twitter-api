@@ -27,8 +27,6 @@ class Mute extends Object
 	 */
 	public function mute($user)
 	{
-		// Check the rate limit for remaining hits
-		$this->checkRateLimit('mutes', 'users/create');
 
     // Determine which type of data was passed for $user
 		if (is_numeric($user))
@@ -64,8 +62,6 @@ class Mute extends Object
 	 */
 	public function unmute($user)
 	{
-		// Check the rate limit for remaining hits
-		$this->checkRateLimit('mutes', 'users/destroy');
 
     // Determine which type of data was passed for $user
 		if (is_numeric($user))
@@ -100,8 +96,6 @@ class Mute extends Object
 	 */
 	public function getMutedUserIds($cursor = null)
 	{
-		// Check the rate limit for remaining hits
-		$this->checkRateLimit('mutes', 'users/ids');
 
     // Check if cursor is specified
 		if (!is_null($cursor))
@@ -130,8 +124,6 @@ class Mute extends Object
 	 */
 	public function getMutedUsers($cursor = null, $entities = null, $skip_status = null)
 	{
-		// Check the rate limit for remaining hits
-		$this->checkRateLimit('mutes', 'users/list');
 
     // Check if cursor is specified
 		if (!is_null($cursor))

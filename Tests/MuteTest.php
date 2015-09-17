@@ -27,17 +27,6 @@ class MuteTest extends TwitterTestCase
 	protected $errorString = '{"error":"Generic error"}';
 
 	/**
-	 * @var    string  Sample JSON string.
-	 * @since  1.0
-	 */
-	protected $rateLimit = '{"resources":{"mutes":{
-			"/mutes/users/create":{"limit":180,"remaining":180,"reset":1403602426},
-      "/mutes/users/destroy":{"limit":180,"remaining":180,"reset":1403602426},
-      "/mutes/users/ids":{"limit":180,"remaining":180,"reset":1403602426},
-      "/mutes/users/list":{"limit":180,"remaining":180,"reset":1403602426},
-			}}}';
-
-	/**
 	 * Sets up the fixture, for example, opens a network connection.
 	 * This method is called before a test is executed.
 	 *
@@ -85,17 +74,6 @@ class MuteTest extends TwitterTestCase
 
 		$returnData = new stdClass;
 		$returnData->code = 200;
-		$returnData->body = $this->rateLimit;
-
-		$path = $this->object->fetchUrl('/application/rate_limit_status.json', array("resources" => "mutes"));
-
-		$this->client->expects($this->at(0))
-		->method('get')
-		->with($path)
-		->will($this->returnValue($returnData));
-
-		$returnData = new stdClass;
-		$returnData->code = 200;
 		$returnData->body = $this->sampleString;
 
     // Determine which type of data was passed for $user
@@ -137,16 +115,6 @@ class MuteTest extends TwitterTestCase
 	 */
 	public function testMuteFailure($user)
 	{
-		$returnData = new stdClass;
-		$returnData->code = 200;
-		$returnData->body = $this->rateLimit;
-
-		$path = $this->object->fetchUrl('/application/rate_limit_status.json', array("resources" => "mutes"));
-
-		$this->client->expects($this->at(0))
-		->method('get')
-		->with($path)
-		->will($this->returnValue($returnData));
 
 		$returnData = new stdClass;
 		$returnData->code = 500;

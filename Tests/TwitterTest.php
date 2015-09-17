@@ -21,6 +21,7 @@ use Joomla\Twitter\Search;
 use Joomla\Twitter\Statuses;
 use Joomla\Twitter\Trends;
 use Joomla\Twitter\Users;
+use Joomla\Twitter\Mute;
 use \DomainException;
 
 require_once __DIR__ . '/case/TwitterTestCase.php';
@@ -236,6 +237,21 @@ class TwitterTest extends TwitterTestCase
 		$this->assertThat(
 			$this->object->profile,
 			$this->isInstanceOf('Joomla\\Twitter\\Profile')
+		);
+	}
+
+	/**
+	 * Test the magic __get method - mute
+	 *
+	 * @return	void
+	 *
+	 * @since 1.0
+	 */
+	public function test__getMute()
+	{
+		$this->assertThat(
+			$this->object->mute,
+			$this->isInstanceOf('Joomla\\Twitter\\Mute')
 		);
 	}
 

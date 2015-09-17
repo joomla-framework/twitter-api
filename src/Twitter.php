@@ -120,7 +120,7 @@ class Twitter
 	protected $media;
 
 	/**
-	 * @var   Mutes    Twitter API object for Mutes
+	 * @var   Mute     Twitter API object for Mute
 	 * @since 1.0
 	 */
 	protected $mute;
