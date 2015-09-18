@@ -76,7 +76,7 @@ class Help extends Object
 	/**
 	 * Method to get Twitters Terms of Service
 	 *
-	* @return  array  The decoded JSON response
+	 * @return  array  The decoded JSON response
 	 *
 	 * @since   1.0
 	 */

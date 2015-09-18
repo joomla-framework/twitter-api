@@ -228,9 +228,9 @@ class Lists extends Object
 	/**
 	 * Method to remove individual members from a list.
 	 *
-	 * @param   mixed    $list         Either an integer containing the list ID or a string containing the list slug.
-	 * @param   mixed    $user         Either an integer containing the user ID or a string containing the screen name.
-	 * @param   mixed    $owner        Either an integer containing the user ID or a string containing the screen name of the owner.
+	 * @param   mixed  $list   Either an integer containing the list ID or a string containing the list slug.
+	 * @param   mixed  $user   Either an integer containing the user ID or a string containing the screen name.
+	 * @param   mixed  $owner  Either an integer containing the user ID or a string containing the screen name of the owner.
 	 *
 	 * @return  array  The decoded JSON response
 	 *
@@ -361,9 +361,9 @@ class Lists extends Object
 	/**
 	 * Method to get the lists the specified user has been added to.
 	 *
-	 * @param    mixed    $user    Either an integer containing the user ID or a string containing the screen name of the user.
-	 * @param    integer  $count   The amount of results to return per page. Defaults to 20. Maximum of 1,000 when using cursors.
-	 * @param    integer  $cursor  Breaks the results into pages. Provide a value of -1 to begin paging.
+	 * @param   mixed    $user    Either an integer containing the user ID or a string containing the screen name of the user.
+	 * @param   integer  $count   The amount of results to return per page. Defaults to 20. Maximum of 1,000 when using cursors.
+	 * @param   integer  $cursor  Breaks the results into pages. Provide a value of -1 to begin paging.
 	 *
 	 * @return  array 		The decoded JSON response
 	 *

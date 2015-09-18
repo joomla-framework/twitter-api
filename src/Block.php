@@ -31,9 +31,12 @@ class Block extends Object
 	public function getBlocking($stringify_ids = null, $cursor = null, $full = null)
 	{
 		// Check the rate limit for remaining hits
-		if (!is_null($full)) {
+		if (!is_null($full))
+		{
 			$this->checkRateLimit('blocks', 'ids');
-		} else {
+		}
+		else
+		{
 			$this->checkRateLimit('blocks', 'list');
 		}
 

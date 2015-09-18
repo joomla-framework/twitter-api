@@ -15,20 +15,19 @@ namespace Joomla\Twitter;
  */
 class Mute extends Object
 {
-  /**
+	/**
 	 * Method to mute a user.
 	 *
-   * @param   mixed    $user     Either an integer containing the user ID or a string containing the screen name.
-   *
+	 * @param   mixed  $user  Either an integer containing the user ID or a string containing the screen name.
+	 *
 	 * @return  array  The decoded JSON response
 	 *
 	 * @since   1.0
-   * @throws  \RuntimeException
+	 * @throws  \RuntimeException
 	 */
 	public function mute($user)
 	{
-
-    // Determine which type of data was passed for $user
+		// Determine which type of data was passed for $user
 		if (is_numeric($user))
 		{
 			$data['user_id'] = $user;
@@ -50,20 +49,19 @@ class Mute extends Object
 		return $this->sendRequest($path, 'POST', $data);
 	}
 
-  /**
+	/**
 	 * Method to un-mute a user.
 	 *
-   * @param   mixed    $user     Either an integer containing the user ID or a string containing the screen name.
-   *
+	 * @param   mixed  $user  Either an integer containing the user ID or a string containing the screen name.
+	 *
 	 * @return  array  The decoded JSON response
 	 *
 	 * @since   1.0
-   * @throws  \RuntimeException
+	 * @throws  \RuntimeException
 	 */
 	public function unmute($user)
 	{
-
-    // Determine which type of data was passed for $user
+		// Determine which type of data was passed for $user
 		if (is_numeric($user))
 		{
 			$data['user_id'] = $user;
@@ -85,19 +83,18 @@ class Mute extends Object
 		return $this->sendRequest($path, 'POST', $data);
 	}
 
-  /**
+	/**
 	 * Method to get a list of muted user ID's
 	 *
-   * @param   integer  $cursor       Breaks the results into pages. A single page contains 20 lists. Provide a value of -1 to begin paging.
-   *
+	 * @param   integer  $cursor  Breaks the results into pages. A single page contains 20 lists. Provide a value of -1 to begin paging.
+	 *
 	 * @return  array  The decoded JSON response
 	 *
 	 * @since   1.0
 	 */
 	public function getMutedUserIds($cursor = null)
 	{
-
-    // Check if cursor is specified
+		// Check if cursor is specified
 		if (!is_null($cursor))
 		{
 			$data['cursor'] = $cursor;
@@ -110,34 +107,33 @@ class Mute extends Object
 		return $this->sendRequest($path, 'GET', $data);
 	}
 
-  /**
+	/**
 	 * Method to get a list of muted users
 	 *
-   * @param   integer  $cursor       Breaks the results into pages. A single page contains 20 lists. Provide a value of -1 to begin paging.
-   * @param   boolean  $entities     When set to either true, t or 1, each user will include a node called "entities". This node offers a variety
-   * 								                 of metadata about the user in a discreet structure.
-   * @param   boolean  $skip_status  When set to either true, t or 1 statuses will not be included in the returned user objects.
-   *
+	 * @param   integer  $cursor       Breaks the results into pages. A single page contains 20 lists. Provide a value of -1 to begin paging.
+	 * @param   boolean  $entities     When set to either true, t or 1, each user will include a node called "entities". This node offers a variety
+	 * 								                 of metadata about the user in a discreet structure.
+	 * @param   boolean  $skip_status  When set to either true, t or 1 statuses will not be included in the returned user objects.
+	 *
 	 * @return  array  The decoded JSON response
 	 *
 	 * @since   1.0
 	 */
 	public function getMutedUsers($cursor = null, $entities = null, $skip_status = null)
 	{
-
-    // Check if cursor is specified
+		// Check if cursor is specified
 		if (!is_null($cursor))
 		{
 			$data['cursor'] = $cursor;
 		}
 
-    // Check if entities is specified
+		// Check if entities is specified
 		if (!is_null($entities))
 		{
 			$data['include_entities'] = $entities;
 		}
 
-    // Check if skip_status is specified
+		// Check if skip_status is specified
 		if (!is_null($skip_status))
 		{
 			$data['skip_status'] = $skip_status;
