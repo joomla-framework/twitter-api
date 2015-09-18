@@ -142,4 +142,128 @@ class MuteTest extends TwitterTestCase
 
 		$this->object->mute($user);
 	}
+
+	/**
+	 * Tests the getMutedUserIds method
+	 *
+	 * @return  void
+	 *
+	 * @since 1.0
+	 */
+	public function testGetMutedUserIds()
+	{
+		$cursor = 5;
+
+		$returnData = new stdClass;
+		$returnData->code = 200;
+		$returnData->body = $this->sampleString;
+
+		$data['cursor'] = $cursor;
+
+		$path = $this->object->fetchUrl('/mutes/users/ids.json', $data);
+
+		$this->client->expects($this->at(0))
+		->method('get')
+		->with($path)
+		->will($this->returnValue($returnData));
+
+		$this->assertThat(
+			$this->object->getMutedUserIds($cursor),
+			$this->equalTo(json_decode($this->sampleString))
+		);
+	}
+
+	/**
+	 * Tests the getMutedUserIds method - failure
+	 *
+	 * @return  void
+	 *
+	 * @since 1.0
+	 * @expectedException  DomainException
+	 */
+	public function testGetMutedUserIdsFailure()
+	{
+		$cursor = 5;
+
+		$returnData = new stdClass;
+		$returnData->code = 500;
+		$returnData->body = $this->errorString;
+
+		$data['cursor'] = $cursor;
+
+		$path = $this->object->fetchUrl('/mutes/users/ids.json', $data);
+
+		$this->client->expects($this->at(0))
+		->method('get')
+		->with($path)
+		->will($this->returnValue($returnData));
+
+		$this->object->getMutedUserIds($cursor);
+	}
+
+	/**
+	 * Tests the getMutedUsers method
+	 *
+	 * @return  void
+	 *
+	 * @since 1.0
+	 */
+	public function testGetMutedUsers()
+	{
+		$cursor = 5;
+		$entities = true;
+		$skip_status = true;
+
+		$returnData = new stdClass;
+		$returnData->code = 200;
+		$returnData->body = $this->sampleString;
+
+		$data['cursor'] = $cursor;
+		$data['include_entities'] = $entities;
+		$data['skip_status'] = $skip_status;
+
+		$path = $this->object->fetchUrl('/mutes/users/list.json', $data);
+
+		$this->client->expects($this->at(0))
+		->method('get')
+		->with($path)
+		->will($this->returnValue($returnData));
+
+		$this->assertThat(
+			$this->object->getMutedUsers($cursor, $entities, $skip_status),
+			$this->equalTo(json_decode($this->sampleString))
+		);
+	}
+
+	/**
+	 * Tests the getMutedUsers method - failure
+	 *
+	 * @return  void
+	 *
+	 * @since 1.0
+	 * @expectedException  DomainException
+	 */
+	public function testGetMutedUsersFailure()
+	{
+		$cursor = 5;
+		$entities = true;
+		$skip_status = true;
+
+		$returnData = new stdClass;
+		$returnData->code = 500;
+		$returnData->body = $this->errorString;
+
+		$data['cursor'] = $cursor;
+		$data['include_entities'] = $entities;
+		$data['skip_status'] = $skip_status;
+
+		$path = $this->object->fetchUrl('/mutes/users/list.json', $data);
+
+		$this->client->expects($this->at(0))
+		->method('get')
+		->with($path)
+		->will($this->returnValue($returnData));
+
+		$this->object->getMutedUsers($cursor, $entities, $skip_status);
+	}
 }

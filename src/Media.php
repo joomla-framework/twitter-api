@@ -55,6 +55,11 @@ class Media extends Object
       throw new \RuntimeException('You may only specify one type of media.');
     }
 
+		if (!is_null($owners))
+		{
+			$data['additional_owners'] = $owners;
+		}
+
 		// Set the API path
 		$path = '/media/upload.json';
 
