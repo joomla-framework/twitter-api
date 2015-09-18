@@ -91,7 +91,7 @@ class MuteTest extends TwitterTestCase
 			$this->object->mute($user);
 		}
 
-		$this->client->expects($this->at(1))
+		$this->client->expects($this->at(0))
 		->method('post')
 		->with('/mutes/users/create.json', $data)
 		->will($this->returnValue($returnData));
@@ -135,7 +135,7 @@ class MuteTest extends TwitterTestCase
 			$this->object->mute($user);
 		}
 
-		$this->client->expects($this->at(1))
+		$this->client->expects($this->at(0))
 		->method('post')
 		->with('/mutes/users/create.json', $data)
 		->will($this->returnValue($returnData));
