@@ -563,9 +563,9 @@ class ListsTest extends TwitterTestCase
 	/**
 	 * Tests the deleteMember method
 	 *
-	 * @param   mixed   $list         Either an integer containing the list ID or a string containing the list slug.
-	 * @param   mixed   $user         Either an integer containing the user ID or a string containing the screen name.
-	 * @param   mixed   $owner        Either an integer containing the user ID or a string containing the screen name of the owner.
+	 * @param   mixed  $list   Either an integer containing the list ID or a string containing the list slug.
+	 * @param   mixed  $user   Either an integer containing the user ID or a string containing the screen name.
+	 * @param   mixed  $owner  Either an integer containing the user ID or a string containing the screen name of the owner.
 	 *
 	 * @return  void
 	 *
@@ -638,9 +638,9 @@ class ListsTest extends TwitterTestCase
 	/**
 	 * Tests the deleteMember method - failure
 	 *
-	* @param   mixed    $list         Either an integer containing the list ID or a string containing the list slug.
-	* @param   mixed    $user         Either an integer containing the user ID or a string containing the screen name.
-	* @param   mixed    $owner        Either an integer containing the user ID or a string containing the screen name of the owner.
+	 * @param   mixed  $list   Either an integer containing the list ID or a string containing the list slug.
+	 * @param   mixed  $user   Either an integer containing the user ID or a string containing the screen name.
+	 * @param   mixed  $owner  Either an integer containing the user ID or a string containing the screen name of the owner.
 	 *
 	 * @return  void
 	 *
@@ -1859,15 +1859,15 @@ class ListsTest extends TwitterTestCase
 	}
 
 	/**
-	* Tests the getMemberships method
-	*
-	* @param   mixed  $user  Either an integer containing the user ID or a string containing the screen name.
-	*
-	* @return  void
-	*
-	* @since 1.0
-	* @dataProvider seedUser
-	*/
+	 * Tests the getMemberships method
+	 *
+	 * @param   mixed  $user  Either an integer containing the user ID or a string containing the screen name.
+	 *
+	 * @return  void
+	 *
+	 * @since 1.0
+	 * @dataProvider seedUser
+	 */
 	public function testGetMemberships($user)
 	{
 		$count = 10;
@@ -1920,16 +1920,16 @@ class ListsTest extends TwitterTestCase
 	}
 
 	/**
-	* Tests the getMemberships method - failure
-	*
-	* @param   mixed  $user  Either an integer containing the user ID or a string containing the screen name.
-	*
-	* @return  void
-	*
-	* @since 1.0
-	* @dataProvider seedUser
-	* @expectedException DomainException
-	*/
+	 * Tests the getMemberships method - failure
+	 *
+	 * @param   mixed  $user  Either an integer containing the user ID or a string containing the screen name.
+	 *
+	 * @return  void
+	 *
+	 * @since 1.0
+	 * @dataProvider seedUser
+	 * @expectedException DomainException
+	 */
 	public function testGetMembershipsFailure($user)
 	{
 		$count = 10;

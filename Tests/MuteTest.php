@@ -48,20 +48,20 @@ class MuteTest extends TwitterTestCase
 	 *
 	 * @since 1.0
 	 */
-  public function seedUser()
- 	{
- 		// User ID or screen name
- 		return array(
- 				array(234654235457),
- 				array('testUser'),
- 				array(null)
- 		);
- 	}
+	public function seedUser()
+	{
+		// User ID or screen name
+		return array(
+				array(234654235457),
+				array('testUser'),
+				array(null)
+		);
+	}
 
 	/**
 	 * Tests the mute method
 	 *
-   * @param   mixed    $user     Either an integer containing the user ID or a string containing the screen name.
+	 * @param   mixed  $user  Either an integer containing the user ID or a string containing the screen name.
 	 *
 	 * @return  void
 	 *
@@ -76,7 +76,7 @@ class MuteTest extends TwitterTestCase
 		$returnData->code = 200;
 		$returnData->body = $this->sampleString;
 
-    // Determine which type of data was passed for $user
+		// Determine which type of data was passed for $user
 		if (is_numeric($user))
 		{
 			$data['user_id'] = $user;
@@ -87,7 +87,7 @@ class MuteTest extends TwitterTestCase
 		}
 		else
 		{
-      $this->setExpectedException('RuntimeException');
+			$this->setExpectedException('RuntimeException');
 			$this->object->mute($user);
 		}
 
@@ -105,22 +105,21 @@ class MuteTest extends TwitterTestCase
 	/**
 	 * Tests the mute method - failure
 	 *
-   * @param   mixed    $user     Either an integer containing the user ID or a string containing the screen name.
+	 * @param   mixed  $user  Either an integer containing the user ID or a string containing the screen name.
 	 *
 	 * @return  void
 	 *
 	 * @since 1.0
-   * @dataProvider seedUser
+	 * @dataProvider seedUser
 	 * @expectedException  DomainException
 	 */
 	public function testMuteFailure($user)
 	{
-
 		$returnData = new stdClass;
 		$returnData->code = 500;
 		$returnData->body = $this->errorString;
 
-    // Determine which type of data was passed for $user
+		// Determine which type of data was passed for $user
 		if (is_numeric($user))
 		{
 			$data['user_id'] = $user;
@@ -131,7 +130,7 @@ class MuteTest extends TwitterTestCase
 		}
 		else
 		{
-      $this->setExpectedException('RuntimeException');
+			$this->setExpectedException('RuntimeException');
 			$this->object->mute($user);
 		}
 

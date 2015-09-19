@@ -289,12 +289,12 @@ class StatusesTest extends TwitterTestCase
 	}
 
 	/**
-	* Tests the getHomeTimeline method
-	*
-	* @return  void
-	*	*
-	* @since   1.0
-	*/
+	 * Tests the getHomeTimeline method
+	 *
+	 * @return  void
+	 *
+	 * @since   1.0
+	 */
 	public function testGetHomeTimeline()
 	{
 		$count = 10;
@@ -342,13 +342,13 @@ class StatusesTest extends TwitterTestCase
 	}
 
 	/**
-	* Tests the getHomeTimeline method - failure
-	*
-	* @return  void
-	*
-	* @since   1.0
-	* @expectedException  DomainException
-	*/
+	 * Tests the getHomeTimeline method - failure
+	 *
+	 * @return  void
+	 *
+	 * @since   1.0
+	 * @expectedException  DomainException
+	 */
 	public function testGetHomeTimelineFailure()
 	{
 		$count = 10;

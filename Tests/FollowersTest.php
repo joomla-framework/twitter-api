@@ -67,134 +67,133 @@ class FollowersTest extends TwitterTestCase
 			);
 	}
 
+	/**
+	 * Tests the getFollowerIds method
+	 *
+	 * @param   mixed  $user  Either an integer containing the user ID or a string containing the screen name.
+	 *
+	 * @return  void
+	 *
+	 * @dataProvider  seedUser
+	 * @since   1.0
+	 */
+	public function testGetFollowers($user)
+	{
+		$cursor = 123;
+		$count = 5;
+		$skip_status = false;
+		$entities = false;
 
-  /**
-   * Tests the getFollowerIds method
-   *
-   * @param   mixed  $user  Either an integer containing the user ID or a string containing the screen name.
-   *
-   * @return  void
-   *
-   * @dataProvider  seedUser
-   * @since   1.0
-   */
-  public function testGetFollowers($user)
-  {
-    $cursor = 123;
-    $count = 5;
-    $skip_status = false;
-    $entities = false;
+		$returnData = new stdClass;
+		$returnData->code = 200;
+		$returnData->body = $this->followersRateLimit;
 
-    $returnData = new stdClass;
-    $returnData->code = 200;
-    $returnData->body = $this->followersRateLimit;
+		$path = $this->object->fetchUrl('/application/rate_limit_status.json', array("resources" => "followers"));
 
-    $path = $this->object->fetchUrl('/application/rate_limit_status.json', array("resources" => "followers"));
+		$this->client->expects($this->at(0))
+		->method('get')
+		->with($path)
+		->will($this->returnValue($returnData));
 
-    $this->client->expects($this->at(0))
-    ->method('get')
-    ->with($path)
-    ->will($this->returnValue($returnData));
+		$returnData = new stdClass;
+		$returnData->code = 200;
+		$returnData->body = $this->sampleString;
 
-    $returnData = new stdClass;
-    $returnData->code = 200;
-    $returnData->body = $this->sampleString;
+		// Set request parameters.
+		if (is_numeric($user))
+		{
+			$data['user_id'] = $user;
+		}
+		elseif (is_string($user))
+		{
+			$data['screen_name'] = $user;
+		}
+		else
+		{
+			$this->setExpectedException('RuntimeException');
+			$this->object->getFollowers($user, $cursor, $count, $skip_status, $entities);
+		}
 
-    // Set request parameters.
-    if (is_numeric($user))
-    {
-      $data['user_id'] = $user;
-    }
-    elseif (is_string($user))
-    {
-      $data['screen_name'] = $user;
-    }
-    else
-    {
-      $this->setExpectedException('RuntimeException');
-      $this->object->getFollowers($user, $cursor, $count, $skip_status, $entities);
-    }
+		$data['cursor'] = $cursor;
+		$data['count'] = $count;
+		$data['skip_status'] = $skip_status;
+		$data['entities'] = $entities;
 
-    $data['cursor'] = $cursor;
-    $data['count'] = $count;
-    $data['skip_status'] = $skip_status;
-    $data['entities'] = $entities;
+		$path = $this->object->fetchUrl('/followers/list.json', $data);
 
-    $path = $this->object->fetchUrl('/followers/list.json', $data);
+		$this->client->expects($this->at(1))
+		->method('get')
+		->with($path)
+		->will($this->returnValue($returnData));
 
-    $this->client->expects($this->at(1))
-    ->method('get')
-    ->with($path)
-    ->will($this->returnValue($returnData));
+		$this->assertThat(
+			$this->object->getFollowers($user, $cursor, $count, $skip_status, $entities),
+			$this->equalTo(json_decode($this->sampleString))
+		);
+	}
 
-    $this->assertThat(
-      $this->object->getFollowers($user, $cursor, $count, $skip_status, $entities),
-      $this->equalTo(json_decode($this->sampleString))
-    );
-  }
+	/**
+	 * Tests the getFollowers method - failure
+	 *
+	 * @param   mixed  $user  Either an integer containing the user ID or a string containing the screen name.
+	 *
+	 * @return  void
+	 *
+	 * @dataProvider  seedUser
+	 * @since   1.0
+	 * @expectedException  DomainException
+	 */
+	public function testGetFollowersFailure($user)
+	{
+		$cursor = 123;
+		$count = 5;
+		$skip_status = false;
+		$entities = false;
 
-  /**
-   * Tests the getFollowers method - failure
-   *
-   * @param   mixed  $user  Either an integer containing the user ID or a string containing the screen name.
-   *
-   * @return  void
-   *
-   * @dataProvider  seedUser
-   * @since   1.0
-   * @expectedException  DomainException
-   */
-  public function testGetFollowersFailure($user)
-  {
-    $cursor = 123;
-    $count = 5;
-    $skip_status = false;
-    $entities = false;
+		$returnData = new stdClass;
+		$returnData->code = 200;
+		$returnData->body = $this->followersRateLimit;
 
-    $returnData = new stdClass;
-    $returnData->code = 200;
-    $returnData->body = $this->followersRateLimit;
+		$path = $this->object->fetchUrl('/application/rate_limit_status.json', array("resources" => "followers"));
 
-    $path = $this->object->fetchUrl('/application/rate_limit_status.json', array("resources" => "followers"));
+		$this->client->expects($this->at(0))
+		->method('get')
+		->with($path)
+		->will($this->returnValue($returnData));
 
-    $this->client->expects($this->at(0))
-    ->method('get')
-    ->with($path)
-    ->will($this->returnValue($returnData));
+		$returnData = new stdClass;
+		$returnData->code = 500;
+		$returnData->body = $this->errorString;
 
-    $returnData = new stdClass;
-    $returnData->code = 500;
-    $returnData->body = $this->errorString;
+		// Set request parameters.
+		if (is_numeric($user))
+		{
+			$data['user_id'] = $user;
+		}
+		elseif (is_string($user))
+		{
+			$data['screen_name'] = $user;
+		}
+		else
+		{
+			$this->setExpectedException('RuntimeException');
+			$this->object->getFollowers($user, $cursor, $count, $skip_status, $entities);
+		}
 
-    // Set request parameters.
-    if (is_numeric($user))
-    {
-      $data['user_id'] = $user;
-    }
-    elseif (is_string($user))
-    {
-      $data['screen_name'] = $user;
-    }
-    else
-    {
-      $this->setExpectedException('RuntimeException');
-      $this->object->getFollowers($user, $cursor, $count, $skip_status, $entities);
-    }
+		$data['cursor'] = $cursor;
+		$data['count'] = $count;
+		$data['skip_status'] = $skip_status;
+		$data['entities'] = $entities;
 
-    $data['cursor'] = $cursor;
-    $data['count'] = $count;
-    $data['skip_status'] = $skip_status;
-    $data['entities'] = $entities;
+		$path = $this->object->fetchUrl('/followers/list.json', $data);
 
-    $path = $this->object->fetchUrl('/followers/list.json', $data);
+		$this->client->expects($this->at(1))
+		->method('get')
+		->with($path)
+		->will($this->returnValue($returnData));
 
-    $this->client->expects($this->at(1))
-    ->method('get')
-    ->with($path)
-    ->will($this->returnValue($returnData));
-
-    $this->object->getFollowers($user, $cursor, $count, $skip_status, $entities);
-  }
+		$this->object->getFollowers($user, $cursor, $count, $skip_status, $entities);
+	}
 
 	/**
 	 * Tests the getFollowerIds method

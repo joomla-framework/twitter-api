@@ -278,11 +278,12 @@ class TwitterTest extends TwitterTestCase
 	 * @return	void
 	 *
 	 * @since	1.0
+	 */
 	public function test__GetFollowers()
 	{
 		$this->assertThat(
-			$this->object->followers,
-			$this->isInstanceOf('Joomla\\Twitter\\Followers')
+					$this->object->followers,
+					$this->isInstanceOf('Joomla\\Twitter\\Followers')
 		);
 	}
 
