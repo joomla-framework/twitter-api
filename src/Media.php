@@ -11,7 +11,7 @@ namespace Joomla\Twitter;
 /**
  * Twitter API Media class for the Joomla Framework.
  *
- * @since  1.0
+ * @since  __DEPLOY_VERSION__
  */
 class Media extends Object
 {
@@ -27,7 +27,7 @@ class Media extends Object
 	 *
 	 * @return  array  The decoded JSON response
 	 *
-	 * @since   1.0
+	 * @since   __DEPLOY_VERSION__
 	 * @throws  \RuntimeException
 	 */
 	public function upload($media_raw = null, $media_base64 = null, $owners = null)

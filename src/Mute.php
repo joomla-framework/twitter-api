@@ -11,7 +11,7 @@ namespace Joomla\Twitter;
 /**
  * Twitter API Mute class for the Joomla Framework.
  *
- * @since  1.0
+ * @since  __DEPLOY_VERSION__
  */
 class Mute extends Object
 {
@@ -22,7 +22,7 @@ class Mute extends Object
 	 *
 	 * @return  array  The decoded JSON response
 	 *
-	 * @since   1.0
+	 * @since   __DEPLOY_VERSION__
 	 * @throws  \RuntimeException
 	 */
 	public function mute($user)
@@ -56,7 +56,7 @@ class Mute extends Object
 	 *
 	 * @return  array  The decoded JSON response
 	 *
-	 * @since   1.0
+	 * @since   __DEPLOY_VERSION__
 	 * @throws  \RuntimeException
 	 */
 	public function unmute($user)
@@ -90,7 +90,7 @@ class Mute extends Object
 	 *
 	 * @return  array  The decoded JSON response
 	 *
-	 * @since   1.0
+	 * @since   __DEPLOY_VERSION__
 	 */
 	public function getMutedUserIds($cursor = null)
 	{
@@ -112,12 +112,12 @@ class Mute extends Object
 	 *
 	 * @param   integer  $cursor       Breaks the results into pages. A single page contains 20 lists. Provide a value of -1 to begin paging.
 	 * @param   boolean  $entities     When set to either true, t or 1, each user will include a node called "entities". This node offers a variety
-	 * 								                 of metadata about the user in a discreet structure.
+	 *                                 of metadata about the user in a discreet structure.
 	 * @param   boolean  $skip_status  When set to either true, t or 1 statuses will not be included in the returned user objects.
 	 *
 	 * @return  array  The decoded JSON response
 	 *
-	 * @since   1.0
+	 * @since   __DEPLOY_VERSION__
 	 */
 	public function getMutedUsers($cursor = null, $entities = null, $skip_status = null)
 	{

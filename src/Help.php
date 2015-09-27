@@ -55,11 +55,11 @@ class Help extends Object
 	}
 
 	/**
-	 * Method to get Twitters Privacy Policy
+	 * Method to get Twitter's Privacy Policy
 	 *
-	 * @return 	array 	The decoded JSON response
+	 * @return  array  The decoded JSON response
 	 *
-	 * @since		1.0
+	 * @since   __DEPLOY_VERSION__
 	 */
 	public function getPrivacy()
 	{
@@ -74,11 +74,11 @@ class Help extends Object
 	}
 
 	/**
-	 * Method to get Twitters Terms of Service
+	 * Method to get Twitter's Terms of Service
 	 *
 	 * @return  array  The decoded JSON response
 	 *
-	 * @since   1.0
+	 * @since   __DEPLOY_VERSION__
 	 */
 	public function getTos()
 	{

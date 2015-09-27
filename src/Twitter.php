@@ -42,8 +42,8 @@ class Twitter
 	protected $friends;
 
 	/**
-	 * @var 		Followers	Twitter API object for followers
-	 * @since		1.0
+	 * @var    Followers  Twitter API object for followers
+	 * @since  1.0
 	 */
 	protected $followers;
 
@@ -114,14 +114,14 @@ class Twitter
 	protected $profile;
 
 	/**
-	 * @var   Media    Twitter API object for media.
-	 * @since 1.0
+	 * @var    Media  Twitter API object for media.
+	 * @since  1.0
 	 */
 	protected $media;
 
 	/**
-	 * @var   Mute     Twitter API object for Mute
-	 * @since 1.0
+	 * @var    Mute  Twitter API object for Mute
+	 * @since  1.0
 	 */
 	protected $mute;
 
