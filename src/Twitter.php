@@ -2,7 +2,7 @@
 /**
  * Part of the Joomla Framework Twitter Package
  *
- * @copyright  Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
+ * @copyright  Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license    GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -40,6 +40,12 @@ class Twitter
 	 * @since  1.0
 	 */
 	protected $friends;
+
+	/**
+	 * @var    Followers  Twitter API object for followers
+	 * @since  1.0
+	 */
+	protected $followers;
 
 	/**
 	 * @var    Users  Twitter API object for users.
@@ -106,6 +112,18 @@ class Twitter
 	 * @since  1.0
 	 */
 	protected $profile;
+
+	/**
+	 * @var    Media  Twitter API object for media.
+	 * @since  1.0
+	 */
+	protected $media;
+
+	/**
+	 * @var    Mute  Twitter API object for Mute
+	 * @since  1.0
+	 */
+	protected $mute;
 
 	/**
 	 * Constructor.

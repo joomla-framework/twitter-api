@@ -2,7 +2,7 @@
 /**
  * Part of the Joomla Framework Twitter Package
  *
- * @copyright  Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
+ * @copyright  Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license    GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -226,6 +226,71 @@ class Lists extends Object
 	}
 
 	/**
+	 * Method to remove individual members from a list.
+	 *
+	 * @param   mixed  $list   Either an integer containing the list ID or a string containing the list slug.
+	 * @param   mixed  $user   Either an integer containing the user ID or a string containing the screen name.
+	 * @param   mixed  $owner  Either an integer containing the user ID or a string containing the screen name of the owner.
+	 *
+	 * @return  array  The decoded JSON response
+	 *
+	 * @since   __DEPLOY_VERSION__
+	 * @throws  \RuntimeException
+	 */
+	public function deleteMember($list, $user, $owner = null)
+	{
+		// Determine which type of data was passed for $list
+		if (is_numeric($list))
+		{
+			$data['list_id'] = $list;
+		}
+		elseif (is_string($list))
+		{
+			$data['slug'] = $list;
+
+			// In this case the owner is required.
+			if (is_numeric($owner))
+			{
+				$data['owner_id'] = $owner;
+			}
+			elseif (is_string($owner))
+			{
+				$data['owner_screen_name'] = $owner;
+			}
+			else
+			{
+				// We don't have a valid entry
+				throw new \RuntimeException('The specified username for owner is not in the correct format; must use integer or string');
+			}
+		}
+		else
+		{
+			// We don't have a valid entry
+			throw new \RuntimeException('The specified list is not in the correct format; must use integer or string');
+		}
+
+		if (is_numeric($user))
+		{
+			$data['user_id'] = $user;
+		}
+		elseif (is_string($user))
+		{
+			$data['screen_name'] = $user;
+		}
+		else
+		{
+			// We don't have a valid entry
+			throw new \RuntimeException('The specified user is not in the correct format; must use integer or string');
+		}
+
+		// Set the API path
+		$path = '/lists/members/destroy.json';
+
+		// Send the request.
+		return $this->sendRequest($path, 'POST', $data);
+	}
+
+	/**
 	 * Method to remove multiple members from a list, by specifying a comma-separated list of member ids or screen names.
 	 *
 	 * @param   mixed   $list         Either an integer containing the list ID or a string containing the list slug.
@@ -294,6 +359,57 @@ class Lists extends Object
 	}
 
 	/**
+	 * Method to get the lists the specified user has been added to.
+	 *
+	 * @param   mixed    $user    Either an integer containing the user ID or a string containing the screen name of the user.
+	 * @param   integer  $count   The amount of results to return per page. Defaults to 20. Maximum of 1,000 when using cursors.
+	 * @param   integer  $cursor  Breaks the results into pages. Provide a value of -1 to begin paging.
+	 *
+	 * @return  array  The decoded JSON response
+	 *
+	 * @since   __DEPLOY_VERSION__
+	 * @throws  \RuntimeException
+	 */
+	public function getMemberships($user, $count = 0, $cursor = null)
+	{
+		// Check the rate limit for remaining hits
+		$this->checkRateLimit('lists', 'memberships');
+
+		// Determine which type was passed for $user
+		if (is_numeric($user))
+		{
+			$data['user_id'] = $user;
+		}
+		elseif (is_string($user))
+		{
+			$data['screen_name'] = $user;
+		}
+		else
+		{
+			// We don't have a valid entry
+			throw new \RuntimeException('The specified username is not in the correct format; must use integer or string');
+		}
+
+		// Check if count is specified.
+		if ($count > 0)
+		{
+			$data['count'] = $count;
+		}
+
+		// Check if cursor is specified.
+		if (!is_null($cursor))
+		{
+			$data['cursor'] = $cursor;
+		}
+
+		// Set the API path
+		$path = '/lists/memberships.json';
+
+		// Send the request.
+		return $this->sendRequest($path, 'GET', $data);
+	}
+
+	/**
 	 * Method to subscribe the authenticated user to the specified list.
 	 *
 	 * @param   mixed  $list   Either an integer containing the list ID or a string containing the list slug.
@@ -353,7 +469,7 @@ class Lists extends Object
 	 * @param   mixed    $user         Either an integer containing the user ID or a string containing the screen name of the user to remove.
 	 * @param   mixed    $owner        Either an integer containing the user ID or a string containing the screen name of the owner.
 	 * @param   boolean  $entities     When set to either true, t or 1, each tweet will include a node called "entities". This node offers a
-	 * 								   variety of metadata about the tweet in a discreet structure, including: user_mentions, urls, and hashtags.
+	 *                                 variety of metadata about the tweet in a discreet structure, including: user_mentions, urls, and hashtags.
 	 * @param   boolean  $skip_status  When set to either true, t or 1 statuses will not be included in the returned user objects.
 	 *
 	 * @return  array  The decoded JSON response
@@ -436,7 +552,7 @@ class Lists extends Object
 	 * @param   mixed    $user         Either an integer containing the user ID or a string containing the screen name of the user to remove.
 	 * @param   mixed    $owner        Either an integer containing the user ID or a string containing the screen name of the owner.
 	 * @param   boolean  $entities     When set to either true, t or 1, each tweet will include a node called "entities". This node offers a
-	 * 								   variety of metadata about the tweet in a discreet structure, including: user_mentions, urls, and hashtags.
+	 *                                 variety of metadata about the tweet in a discreet structure, including: user_mentions, urls, and hashtags.
 	 * @param   boolean  $skip_status  When set to either true, t or 1 statuses will not be included in the returned user objects.
 	 *
 	 * @return  array  The decoded JSON response
@@ -642,7 +758,7 @@ class Lists extends Object
 	 * @param   mixed    $list         Either an integer containing the list ID or a string containing the list slug.
 	 * @param   mixed    $owner        Either an integer containing the user ID or a string containing the screen name.
 	 * @param   boolean  $entities     When set to either true, t or 1, each tweet will include a node called "entities". This node offers a variety
-	 * 								   of metadata about the tweet in a discreet structure, including: user_mentions, urls, and hashtags.
+	 *                                 of metadata about the tweet in a discreet structure, including: user_mentions, urls, and hashtags.
 	 * @param   boolean  $skip_status  When set to either true, t or 1 statuses will not be included in the returned user objects.
 	 *
 	 * @return  array  The decoded JSON response
@@ -809,13 +925,64 @@ class Lists extends Object
 	}
 
 	/**
+	 * Method to get a collection of the lists the specified user owns. Private lists will only show if authenticated user is owner.
+	 *
+	 * @param   mixed    $user    Either an integer containing the user ID or a string containing the screen name.
+	 * @param   integer  $count   The amount of results to return per page. Defaults to 20. Maximum of 1,000 when using cursors.
+	 * @param   integer  $cursor  Breaks the results into pages. Provide a value of -1 to begin paging.
+	 *
+	 * @return  array  The decoded JSON response
+	 *
+	 * @since   __DEPLOY_VERSION__
+	 * @throws  \RuntimeException
+	 */
+	public function getOwnerships($user, $count = 0, $cursor = null)
+	{
+		// Check the rate limit for remaining hits
+		$this->checkRateLimit('lists', 'ownerships');
+
+		// Determine which type of data was passed for $user
+		if (is_numeric($user))
+		{
+			$data['user_id'] = $user;
+		}
+		elseif (is_string($user))
+		{
+			$data['screen_name'] = $user;
+		}
+		else
+		{
+			// We don't have a valid entry
+			throw new \RuntimeException('The specified username is not in the correct format; must use integer or string');
+		}
+
+		// Check if count is specified.
+		if ($count > 0)
+		{
+			$data['count'] = $count;
+		}
+
+		// Check if cursor is specified.
+		if (!is_null($cursor))
+		{
+			$data['cursor'] = $cursor;
+		}
+
+		// Set the API path
+		$path = '/lists/ownerships.json';
+
+		// Send the request.
+		return $this->sendRequest($path, 'GET', $data);
+	}
+
+	/**
 	 * Method to update the specified list
 	 *
 	 * @param   mixed   $list         Either an integer containing the list ID or a string containing the list slug.
 	 * @param   mixed   $owner        Either an integer containing the user ID or a string containing the screen name of the owner.
 	 * @param   string  $name         The name of the list.
 	 * @param   string  $mode         Whether your list is public or private. Values can be public or private. If no mode is
-	 * 								  specified the list will be public.
+	 *                                specified the list will be public.
 	 * @param   string  $description  The description to give the list.
 	 *
 	 * @return  array  The decoded JSON response
@@ -888,7 +1055,7 @@ class Lists extends Object
 	 *
 	 * @param   string  $name         The name of the list.
 	 * @param   string  $mode         Whether your list is public or private. Values can be public or private. If no mode is
-	 * 								  specified the list will be public.
+	 *                                specified the list will be public.
 	 * @param   string  $description  The description to give the list.
 	 *
 	 * @return  array  The decoded JSON response

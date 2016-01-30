@@ -2,7 +2,7 @@
 /**
  * Part of the Joomla Framework Twitter Package
  *
- * @copyright  Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
+ * @copyright  Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license    GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -19,9 +19,9 @@ class Friends extends Object
 	 * Method to get an array of user IDs the specified user follows.
 	 *
 	 * @param   mixed    $user        Either an integer containing the user ID or a string containing the screen name.
-	 * @param   integer  $cursor      Causes the list of connections to be broken into pages of no more than 5000 IDs at a time.
-	 * 								  The number of IDs returned is not guaranteed to be 5000 as suspended users are filtered out
-	 * 								  after connections are queried. If no cursor is provided, a value of -1 will be assumed, which is the first "page."
+	 * @param   integer  $cursor      Causes the list of IDs to be broken into pages of no more than 5000 IDs at a time. The number of IDs returned
+	 *                                is not guaranteed to be 5000 as suspended users are filtered out after connections are queried. If no cursor
+	 *                                is provided, a value of -1 will be assumed, which is the first "page."
 	 * @param   boolean  $string_ids  Set to true to return IDs as strings, false to return as integers.
 	 * @param   integer  $count       Specifies the number of IDs attempt retrieval of, up to a maximum of 5,000 per distinct request.
 	 *
@@ -133,8 +133,8 @@ class Friends extends Object
 	 *
 	 * @param   mixed    $user        Either an integer containing the user ID or a string containing the screen name.
 	 * @param   integer  $cursor      Causes the list of IDs to be broken into pages of no more than 5000 IDs at a time. The number of IDs returned
-	 * 								  is not guaranteed to be 5000 as suspended users are filtered out after connections are queried. If no cursor
-	 * 								  is provided, a value of -1 will be assumed, which is the first "page."
+	 *                                is not guaranteed to be 5000 as suspended users are filtered out after connections are queried. If no cursor
+	 *                                is provided, a value of -1 will be assumed, which is the first "page."
 	 * @param   boolean  $string_ids  Set to true to return IDs as strings, false to return as integers.
 	 * @param   integer  $count       Specifies the number of IDs attempt retrieval of, up to a maximum of 5,000 per distinct request.
 	 *
@@ -142,6 +142,7 @@ class Friends extends Object
 	 *
 	 * @since   1.0
 	 * @throws  \RuntimeException
+	 * @deprecated  2.0 Use \Joomla\Twitter\Followers::getFollowerIds() instead.
 	 */
 	public function getFollowerIds($user, $cursor = null, $string_ids = null, $count = 0)
 	{
@@ -192,8 +193,8 @@ class Friends extends Object
 	 * Method to determine pending requests to follow the authenticating user.
 	 *
 	 * @param   integer  $cursor      Causes the list of IDs to be broken into pages of no more than 5000 IDs at a time. The number of IDs returned
-	 * 								  is not guaranteed to be 5000 as suspended users are filtered out after connections are queried. If no cursor
-	 * 								  is provided, a value of -1 will be assumed, which is the first "page."
+	 *                                is not guaranteed to be 5000 as suspended users are filtered out after connections are queried. If no cursor
+	 *                                is provided, a value of -1 will be assumed, which is the first "page."
 	 * @param   boolean  $string_ids  Set to true to return IDs as strings, false to return as integers.
 	 *
 	 * @return  array  The decoded JSON response
@@ -230,8 +231,8 @@ class Friends extends Object
 	 * Method to determine every protected user for whom the authenticating user has a pending follow request.
 	 *
 	 * @param   integer  $cursor      Causes the list of IDs to be broken into pages of no more than 5000 IDs at a time. The number of IDs returned
-	 * 								  is not guaranteed to be 5000 as suspended users are filtered out after connections are queried. If no cursor
-	 * 								  is provided, a value of -1 will be assumed, which is the first "page."
+	 *                                is not guaranteed to be 5000 as suspended users are filtered out after connections are queried. If no cursor
+	 *                                is provided, a value of -1 will be assumed, which is the first "page."
 	 * @param   boolean  $string_ids  Set to true to return IDs as strings, false to return as integers.
 	 *
 	 * @return  array  The decoded JSON response

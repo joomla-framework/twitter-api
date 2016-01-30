@@ -1,6 +1,6 @@
 <?php
 /**
- * @copyright  Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
+ * @copyright  Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license    GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -40,6 +40,7 @@ class ListsTest extends TwitterTestCase
 			"/lists/subscribers/destroy": {"remaining":15, "reset":"Mon Jun 25 17:20:53 +0000 2012"},
 			"/lists/members/create_all": {"remaining":15, "reset":"Mon Jun 25 17:20:53 +0000 2012"},
 			"/lists/members": {"remaining":15, "reset":"Mon Jun 25 17:20:53 +0000 2012"},
+			"/lists/memberships": {"remaining":15, "reset":"Mon Jun 25 17:20:53 +0000 2012"},
 			"/lists/show": {"remaining":15, "reset":"Mon Jun 25 17:20:53 +0000 2012"},
 			"/lists/subscriptions": {"remaining":15, "reset":"Mon Jun 25 17:20:53 +0000 2012"},
 			"/lists/update": {"remaining":15, "reset":"Mon Jun 25 17:20:53 +0000 2012"},
@@ -537,6 +538,174 @@ class ListsTest extends TwitterTestCase
 			array('test-list', 'testUser', '234654235457', 'userTest'),
 			array(null, null, null, null)
 			);
+	}
+
+	/**
+	 * Provides test data for request format detection.
+	 *
+	 * @return array
+	 *
+	 * @since 1.0
+	 */
+	public function seedMember()
+	{
+		// List, User ID, screen name and owner.
+		return array(
+			array(234654235457, '234654235457', null),
+			array('test-list', 'userTest', 'testUser'),
+			array('test-list', '234654235457', '56165105642'),
+			array('test-list', 'testUser', null),
+			array('test-list', null, 'testUser'),
+			array(null, null, null)
+			);
+	}
+
+	/**
+	 * Tests the deleteMember method
+	 *
+	 * @param   mixed  $list   Either an integer containing the list ID or a string containing the list slug.
+	 * @param   mixed  $user   Either an integer containing the user ID or a string containing the screen name.
+	 * @param   mixed  $owner  Either an integer containing the user ID or a string containing the screen name of the owner.
+	 *
+	 * @return  void
+	 *
+	 * @since 1.0
+	 * @dataProvider seedMember
+	 */
+	public function testDeleteMember($list, $user, $owner)
+	{
+		$returnData = new stdClass;
+		$returnData->code = 200;
+		$returnData->body = $this->sampleString;
+
+		// Set request parameters.
+		if (is_numeric($list))
+		{
+			$data['list_id'] = $list;
+		}
+		elseif (is_string($list))
+		{
+			$data['slug'] = $list;
+
+			if (is_numeric($owner))
+			{
+				$data['owner_id'] = $owner;
+			}
+			elseif (is_string($owner))
+			{
+				$data['owner_screen_name'] = $owner;
+			}
+			else
+			{
+				// We don't have a valid entry
+				$this->setExpectedException('RuntimeException');
+				$this->object->deleteMember($list, $user, $owner);
+			}
+		}
+		else
+		{
+			$this->setExpectedException('RuntimeException');
+			$this->object->deleteMember($list, $user, $owner);
+		}
+
+		if (is_numeric($user))
+		{
+			$data['user_id'] = $user;
+		}
+		elseif (is_string($user))
+		{
+			$data['screen_name'] = $user;
+		}
+		else
+		{
+			$this->setExpectedException('RuntimeException');
+			$this->object->deleteMember($list, $user, $owner);
+		}
+
+		$path = $this->object->fetchUrl('/lists/members/destroy.json');
+
+		$this->client->expects($this->once())
+		->method('post')
+		->with($path, $data)
+		->will($this->returnValue($returnData));
+
+		$this->assertThat(
+			$this->object->deleteMember($list, $user, $owner),
+			$this->equalTo(json_decode($this->sampleString))
+		);
+	}
+
+	/**
+	 * Tests the deleteMember method - failure
+	 *
+	 * @param   mixed  $list   Either an integer containing the list ID or a string containing the list slug.
+	 * @param   mixed  $user   Either an integer containing the user ID or a string containing the screen name.
+	 * @param   mixed  $owner  Either an integer containing the user ID or a string containing the screen name of the owner.
+	 *
+	 * @return  void
+	 *
+	 * @since 1.0
+	 * @dataProvider seedMember
+	 * @expectedException DomainException
+	 */
+	public function testDeleteMemberFailure($list, $user, $owner)
+	{
+		$returnData = new stdClass;
+		$returnData->code = 500;
+		$returnData->body = $this->errorString;
+
+		// Set request parameters.
+		if (is_numeric($list))
+		{
+			$data['list_id'] = $list;
+		}
+		elseif (is_string($list))
+		{
+			$data['slug'] = $list;
+
+			if (is_numeric($owner))
+			{
+				$data['owner_id'] = $owner;
+			}
+			elseif (is_string($owner))
+			{
+				$data['owner_screen_name'] = $owner;
+			}
+			else
+			{
+				// We don't have a valid entry
+				$this->setExpectedException('RuntimeException');
+				$this->object->deleteMember($list, $user, $owner);
+			}
+		}
+		else
+		{
+			$this->setExpectedException('RuntimeException');
+			$this->object->deleteMember($list, $user, $owner);
+		}
+
+		if (is_numeric($user))
+		{
+			$data['user_id'] = $user;
+		}
+		elseif (is_string($user))
+		{
+			$data['screen_name'] = $user;
+		}
+		else
+		{
+			$this->setExpectedException('RuntimeException');
+			$this->object->deleteMember($list, $user, $owner);
+		}
+
+		$path = $this->object->fetchUrl('/lists/members/destroy.json');
+
+		$this->client->expects($this->once())
+		->method('post')
+		->with($path, $data)
+		->will($this->returnValue($returnData));
+
+		$this->object->deleteMember($list, $user, $owner);
 	}
 
 	/**
@@ -1687,6 +1856,126 @@ class ListsTest extends TwitterTestCase
 		->will($this->returnValue($returnData));
 
 		$this->object->getMembers($list, $owner, $entities, $skip_status);
+	}
+
+	/**
+	 * Tests the getMemberships method
+	 *
+	 * @param   mixed  $user  Either an integer containing the user ID or a string containing the screen name.
+	 *
+	 * @return  void
+	 *
+	 * @since 1.0
+	 * @dataProvider seedUser
+	 */
+	public function testGetMemberships($user)
+	{
+		$count = 10;
+		$cursor = 1234;
+
+		$returnData = new stdClass;
+		$returnData->code = 200;
+		$returnData->body = $this->rateLimit;
+
+		$path = $this->object->fetchUrl('/application/rate_limit_status.json', array("resources" => "lists"));
+
+		$this->client->expects($this->at(0))
+		->method('get')
+		->with($path)
+		->will($this->returnValue($returnData));
+
+		$returnData = new stdClass;
+		$returnData->code = 200;
+		$returnData->body = $this->sampleString;
+
+		// Set request parameters.
+		if (is_numeric($user))
+		{
+			$data['user_id'] = $user;
+		}
+		elseif (is_string($user))
+		{
+			$data['screen_name'] = $user;
+		}
+		else
+		{
+			$this->setExpectedException('RuntimeException');
+			$this->object->getMemberships($user);
+		}
+
+		$data['count'] = $count;
+		$data['cursor'] = $cursor;
+
+		$path = $this->object->fetchUrl('/lists/memberships.json', $data);
+
+		$this->client->expects($this->at(1))
+		->method('get')
+		->with($path)
+		->will($this->returnValue($returnData));
+
+		$this->assertThat(
+			$this->object->getMemberships($user, $count, $cursor),
+			$this->equalTo(json_decode($this->sampleString))
+		);
+	}
+
+	/**
+	 * Tests the getMemberships method - failure
+	 *
+	 * @param   mixed  $user  Either an integer containing the user ID or a string containing the screen name.
+	 *
+	 * @return  void
+	 *
+	 * @since 1.0
+	 * @dataProvider seedUser
+	 * @expectedException DomainException
+	 */
+	public function testGetMembershipsFailure($user)
+	{
+		$count = 10;
+		$cursor = 1234;
+
+		$returnData = new stdClass;
+		$returnData->code = 200;
+		$returnData->body = $this->rateLimit;
+
+		$path = $this->object->fetchUrl('/application/rate_limit_status.json', array("resources" => "lists"));
+
+		$this->client->expects($this->at(0))
+		->method('get')
+		->with($path)
+		->will($this->returnValue($returnData));
+
+		$returnData = new stdClass;
+		$returnData->code = 500;
+		$returnData->body = $this->errorString;
+
+		// Set request parameters.
+		if (is_numeric($user))
+		{
+			$data['user_id'] = $user;
+		}
+		elseif (is_string($user))
+		{
+			$data['screen_name'] = $user;
+		}
+		else
+		{
+			$this->setExpectedException('RuntimeException');
+			$this->object->getMemberships($user);
+		}
+
+		$data['count'] = $count;
+		$data['cursor'] = $cursor;
+
+		$path = $this->object->fetchUrl('/lists/memberships.json', $data);
+
+		$this->client->expects($this->at(1))
+		->method('get')
+		->with($path)
+		->will($this->returnValue($returnData));
+
+		$this->object->getMemberships($user, $count, $cursor);
 	}
 
 	/**

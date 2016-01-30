@@ -1,6 +1,6 @@
 <?php
 /**
- * @copyright  Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
+ * @copyright  Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license    GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -31,7 +31,9 @@ class HelpTest extends TwitterTestCase
 	 */
 	protected $rateLimit = '{"resources": {"help": {
 			"/help/languages": {"remaining":15, "reset":"Mon Jun 25 17:20:53 +0000 2012"},
-			"/help/configuration": {"remaining":15, "reset":"Mon Jun 25 17:20:53 +0000 2012"}
+			"/help/configuration": {"remaining":15, "reset":"Mon Jun 25 17:20:53 +0000 2012"},
+			"/help/privacy": {"remaining":15, "reset":"Mon Jun 25 17:20:53 +0000 2012"},
+			"/help/tos": {"remaining":15, "reset":"Mon Jun 25 17:20:53 +0000 2012"}
 			}}}';
 
 	/**
@@ -191,5 +193,149 @@ class HelpTest extends TwitterTestCase
 		->will($this->returnValue($returnData));
 
 		$this->object->getConfiguration();
+	}
+
+	/**
+	 * Tests the getPrivacy method
+	 *
+	 * @return  void
+	 *
+	 * @since   1.0
+	 */
+	public function testGetPrivacy()
+	{
+		$returnData = new stdClass;
+		$returnData->code = 200;
+		$returnData->body = $this->rateLimit;
+
+		$path = $this->object->fetchUrl('/application/rate_limit_status.json', array("resources" => "help"));
+
+		$this->client->expects($this->at(0))
+		->method('get')
+		->with($path)
+		->will($this->returnValue($returnData));
+
+		$returnData = new stdClass;
+		$returnData->code = 200;
+		$returnData->body = $this->sampleString;
+
+		$path = $this->object->fetchUrl('/help/privacy.json');
+
+		$this->client->expects($this->at(1))
+		->method('get')
+		->with($path)
+		->will($this->returnValue($returnData));
+
+		$this->assertThat(
+			$this->object->getPrivacy(),
+			$this->equalTo(json_decode($this->sampleString))
+		);
+	}
+
+	/**
+	 * Tests the getPrivacy method - failure
+	 *
+	 * @return  void
+	 *
+	 * @since   1.0
+	 * @expectedException DomainException
+	 */
+	public function testGetPrivacyFailure()
+	{
+		$returnData = new stdClass;
+		$returnData->code = 200;
+		$returnData->body = $this->rateLimit;
+
+		$path = $this->object->fetchUrl('/application/rate_limit_status.json', array("resources" => "help"));
+
+		$this->client->expects($this->at(0))
+		->method('get')
+		->with($path)
+		->will($this->returnValue($returnData));
+
+		$returnData = new stdClass;
+		$returnData->code = 500;
+		$returnData->body = $this->errorString;
+
+		$path = $this->object->fetchUrl('/help/privacy.json');
+
+		$this->client->expects($this->at(1))
+		->method('get')
+		->with($path)
+		->will($this->returnValue($returnData));
+
+		$this->object->getPrivacy();
+	}
+
+	/**
+	 * Tests the getTos method
+	 *
+	 * @return  void
+	 *
+	 * @since   1.0
+	 */
+	public function testTos()
+	{
+		$returnData = new stdClass;
+		$returnData->code = 200;
+		$returnData->body = $this->rateLimit;
+
+		$path = $this->object->fetchUrl('/application/rate_limit_status.json', array("resources" => "help"));
+
+		$this->client->expects($this->at(0))
+		->method('get')
+		->with($path)
+		->will($this->returnValue($returnData));
+
+		$returnData = new stdClass;
+		$returnData->code = 200;
+		$returnData->body = $this->sampleString;
+
+		$path = $this->object->fetchUrl('/help/tos.json');
+
+		$this->client->expects($this->at(1))
+		->method('get')
+		->with($path)
+		->will($this->returnValue($returnData));
+
+		$this->assertThat(
+			$this->object->getTos(),
+			$this->equalTo(json_decode($this->sampleString))
+		);
+	}
+
+	/**
+	 * Tests the getTos method - failure
+	 *
+	 * @return  void
+	 *
+	 * @since   1.0
+	 * @expectedException DomainException
+	 */
+	public function testGetTosFailure()
+	{
+		$returnData = new stdClass;
+		$returnData->code = 200;
+		$returnData->body = $this->rateLimit;
+
+		$path = $this->object->fetchUrl('/application/rate_limit_status.json', array("resources" => "help"));
+
+		$this->client->expects($this->at(0))
+		->method('get')
+		->with($path)
+		->will($this->returnValue($returnData));
+
+		$returnData = new stdClass;
+		$returnData->code = 500;
+		$returnData->body = $this->errorString;
+
+		$path = $this->object->fetchUrl('/help/tos.json');
+
+		$this->client->expects($this->at(1))
+		->method('get')
+		->with($path)
+		->will($this->returnValue($returnData));
+
+		$this->object->getTos();
 	}
 }

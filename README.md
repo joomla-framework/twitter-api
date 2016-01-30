@@ -21,6 +21,7 @@ Generating an access token can be done by instantiating OAuth.
 Create a Twitter application at [https://dev.twitter.com/apps](https://dev.twitter.com/apps) in order to request permissions. Instantiate OAuth, passing the options needed. By default you have to set and send headers manually in your application, but if you want this to be done automatically you can set option 'sendheaders' to true.
 
 ```php
+use Joomla\Http\Http;
 use Joomla\Twitter\Twitter;
 use Joomla\Twitter\OAuth;
 
@@ -31,7 +32,10 @@ $options = array(
     'sendheaders' => true
 );
 
-$oauth = new OAuth($options);
+$client = new Http;
+$application = $this->getApplication();
+
+$oauth = new OAuth($options, $client, $application->input, $application);
 
 $twitter = new Twitter($oauth);
 ```
@@ -53,9 +57,12 @@ The Twitter package covers almost all Resources of the REST API 1.1:
 * Block object interacts with Block resources.
 * DirectMessages object interacts with Direct Messages resources.
 * Favorites object interacts with Favorites resources.
-* Friends object interacts with Friends and Followers resources.
+* Followers object interacts with the Followers resources.
+* Friends object interacts with Friends resources.
 * Help object interacts with Help resources.
 * Lists object interacts with Lists resources.
+* Media object interacts with multimedia resources.
+* Mute object interacts with resources related to muting users.
 * Places object interacts with Places and Geo resources.
 * Profile object interacts with some resources from Accounts.
 * Search object interacts with Search and Saved Searches resources.
@@ -76,6 +83,7 @@ This will retrieve extended information of a given user, specified by ID or scre
 Below is an example demonstrating more of the Twitter package.
 
 ```php
+use Joomla\Http\Http;
 use Joomla\Twitter\Twitter;
 use Joomla\Twitter\OAuth;
 
@@ -92,7 +100,10 @@ $options = array(
     'sendheaders' => true
 );
 
-$oauth = new OAuth($options);
+$client = new Http;
+$application = $this->getApplication();
+
+$oauth = new OAuth($options, $client, $application->input, $application);
 $oauth->setToken($token);
 $oauth->authenticate();
 

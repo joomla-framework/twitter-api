@@ -2,7 +2,7 @@
 /**
  * Part of the Joomla Framework Twitter Package
  *
- * @copyright  Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
+ * @copyright  Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license    GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -51,6 +51,44 @@ class Help extends Object
 		$path = '/help/configuration.json';
 
 		// Send the request.
+		return $this->sendRequest($path);
+	}
+
+	/**
+	 * Method to get Twitter's Privacy Policy
+	 *
+	 * @return  array  The decoded JSON response
+	 *
+	 * @since   __DEPLOY_VERSION__
+	 */
+	public function getPrivacy()
+	{
+		// Check the rate limit for remaining hits
+		$this->checkRateLimit('help', 'privacy');
+
+		// Set the API path
+		$path = '/help/privacy.json';
+
+		// Send the request
+		return $this->sendRequest($path);
+	}
+
+	/**
+	 * Method to get Twitter's Terms of Service
+	 *
+	 * @return  array  The decoded JSON response
+	 *
+	 * @since   __DEPLOY_VERSION__
+	 */
+	public function getTos()
+	{
+		// Check the rate limit for remaining hits
+		$this->checkRateLimit('help', 'tos');
+
+		// Set the API path
+		$path = '/help/tos.json';
+
+		// Send the request
 		return $this->sendRequest($path);
 	}
 }

@@ -1,6 +1,6 @@
 <?php
 /**
- * @copyright  Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
+ * @copyright  Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license    GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -21,6 +21,9 @@ use Joomla\Twitter\Search;
 use Joomla\Twitter\Statuses;
 use Joomla\Twitter\Trends;
 use Joomla\Twitter\Users;
+use Joomla\Twitter\Mute;
+use Joomla\Twitter\Media;
+use Joomla\Twitter\Followers;
 use \DomainException;
 
 require_once __DIR__ . '/case/TwitterTestCase.php';
@@ -236,6 +239,51 @@ class TwitterTest extends TwitterTestCase
 		$this->assertThat(
 			$this->object->profile,
 			$this->isInstanceOf('Joomla\\Twitter\\Profile')
+		);
+	}
+
+	/**
+	 * Test the magic __get method - mute
+	 *
+	 * @return	void
+	 *
+	 * @since 1.0
+	 */
+	public function test__GetMute()
+	{
+		$this->assertThat(
+			$this->object->mute,
+			$this->isInstanceOf('Joomla\\Twitter\\Mute')
+		);
+	}
+
+	/**
+	 * Test the magic __get method - media
+	 *
+	 * @return	void
+	 *
+	 * @since	1.0
+	 */
+	public function test__GetMedia()
+	{
+		$this->assertThat(
+			$this->object->media,
+			$this->isInstanceOf('Joomla\\Twitter\\Media')
+		);
+	}
+
+	/**
+	 * Test the magic __get method - followers
+	 *
+	 * @return	void
+	 *
+	 * @since	1.0
+	 */
+	public function test__GetFollowers()
+	{
+		$this->assertThat(
+					$this->object->followers,
+					$this->isInstanceOf('Joomla\\Twitter\\Followers')
 		);
 	}
 

@@ -2,7 +2,7 @@
 /**
  * Part of the Joomla Framework Twitter Package
  *
- * @copyright  Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
+ * @copyright  Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license    GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -22,15 +22,23 @@ class Block extends Object
 	 * @param   integer  $cursor         Causes the list of IDs to be broken into pages of no more than 5000 IDs at a time. The number of IDs returned
 	 * 									 is not guaranteed to be 5000 as suspended users are filtered out after connections are queried. If no cursor
 	 * 									 is provided, a value of -1 will be assumed, which is the first "page."
+	 * @param   boolean  $full           Causes the list returned to contain full details of all blocks, instead of just the IDs.
 	 *
 	 * @return  array  The decoded JSON response
 	 *
 	 * @since   1.0
 	 */
-	public function getBlocking($stringify_ids = null, $cursor = null)
+	public function getBlocking($stringify_ids = null, $cursor = null, $full = null)
 	{
 		// Check the rate limit for remaining hits
-		$this->checkRateLimit('blocks', 'ids');
+		if (!is_null($full))
+		{
+			$this->checkRateLimit('blocks', 'ids');
+		}
+		else
+		{
+			$this->checkRateLimit('blocks', 'list');
+		}
 
 		$data = array();
 
@@ -47,7 +55,7 @@ class Block extends Object
 		}
 
 		// Set the API path
-		$path = '/blocks/ids.json';
+		$path = (is_null($full)) ? '/blocks/ids.json' : '/blocks/list.json';
 
 		// Send the request.
 		return $this->sendRequest($path, 'GET', $data);
