@@ -89,7 +89,7 @@ class TwitterTestCase extends \PHPUnit_Framework_TestCase
 		$this->options['sendheaders'] = true;
 
 		$this->input = new Input;
-		$this->client = $this->getMock('Joomla\\Http\\Http', array('get', 'post', 'delete', 'put'));
+		$this->client = $this->getMockBuilder('Joomla\\Http\\Http')->getMock();
 		$this->application = new WebInspector;
 		$this->oauth = new OAuth($this->options, $this->client, $this->input, $this->application);
 		$this->oauth->setToken($access_token);
