@@ -142,7 +142,7 @@ class Friends extends Object
 	 *
 	 * @since   1.0
 	 * @throws  \RuntimeException
-	 * @deprecated  2.0 Use \Joomla\Twitter\Followers::getFollowerIds() instead.
+	 * @deprecated  __DEPLOY_VERSION__  Use \Joomla\Twitter\Followers::getFollowerIds() instead.
 	 */
 	public function getFollowerIds($user, $cursor = null, $string_ids = null, $count = 0)
 	{
