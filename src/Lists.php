@@ -234,7 +234,7 @@ class Lists extends Object
 	 *
 	 * @return  array  The decoded JSON response
 	 *
-	 * @since   __DEPLOY_VERSION__
+	 * @since   1.2.0
 	 * @throws  \RuntimeException
 	 */
 	public function deleteMember($list, $user, $owner = null)
@@ -367,7 +367,7 @@ class Lists extends Object
 	 *
 	 * @return  array  The decoded JSON response
 	 *
-	 * @since   __DEPLOY_VERSION__
+	 * @since   1.2.0
 	 * @throws  \RuntimeException
 	 */
 	public function getMemberships($user, $count = 0, $cursor = null)
@@ -933,7 +933,7 @@ class Lists extends Object
 	 *
 	 * @return  array  The decoded JSON response
 	 *
-	 * @since   __DEPLOY_VERSION__
+	 * @since   1.2.0
 	 * @throws  \RuntimeException
 	 */
 	public function getOwnerships($user, $count = 0, $cursor = null)

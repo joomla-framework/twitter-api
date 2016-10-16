@@ -11,7 +11,7 @@ namespace Joomla\Twitter;
 /**
  * Twitter API Followers class for the Joomla Framework.
  *
- * @since  __DEPLOY_VERSION__
+ * @since  1.2.0
  */
 class Followers extends Object
 {
@@ -29,7 +29,7 @@ class Followers extends Object
 	 *
 	 * @return  array  The decoded JSON response
 	 *
-	 * @since   __DEPLOY_VERSION__
+	 * @since   1.2.0
 	 * @throws  \RuntimeException
 	 */
 	public function getFollowers($user, $cursor = null, $count = 0, $skip_status = null, $entities = null)
@@ -95,7 +95,7 @@ class Followers extends Object
 	 *
 	 * @return  array  The decoded JSON response
 	 *
-	 * @since   __DEPLOY_VERSION__
+	 * @since   1.2.0
 	 * @throws  \RuntimeException
 	 */
 	public function getFollowerIds($user, $cursor = null, $string_ids = null, $count = 0)

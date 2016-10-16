@@ -170,7 +170,7 @@ class Statuses extends Object
 	 *
 	 * @return  array  The decoded JSON response
 	 *
-	 * @since   __DEPLOY_VERSION__
+	 * @since   1.2.0
 	 * @throws  \RuntimeException
 	 */
 	public function getHomeTimeline($count = 20, $no_replies = null, $since_id = 0, $max_id = 0, $trim_user = null, $contributor = null,
