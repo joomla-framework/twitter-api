@@ -11,7 +11,7 @@ namespace Joomla\Twitter;
 /**
  * Twitter API Mute class for the Joomla Framework.
  *
- * @since  __DEPLOY_VERSION__
+ * @since  1.2.0
  */
 class Mute extends Object
 {
@@ -22,7 +22,7 @@ class Mute extends Object
 	 *
 	 * @return  array  The decoded JSON response
 	 *
-	 * @since   __DEPLOY_VERSION__
+	 * @since   1.2.0
 	 * @throws  \RuntimeException
 	 */
 	public function mute($user)
@@ -56,7 +56,7 @@ class Mute extends Object
 	 *
 	 * @return  array  The decoded JSON response
 	 *
-	 * @since   __DEPLOY_VERSION__
+	 * @since   1.2.0
 	 * @throws  \RuntimeException
 	 */
 	public function unmute($user)
@@ -90,7 +90,7 @@ class Mute extends Object
 	 *
 	 * @return  array  The decoded JSON response
 	 *
-	 * @since   __DEPLOY_VERSION__
+	 * @since   1.2.0
 	 */
 	public function getMutedUserIds($cursor = null)
 	{
@@ -117,7 +117,7 @@ class Mute extends Object
 	 *
 	 * @return  array  The decoded JSON response
 	 *
-	 * @since   __DEPLOY_VERSION__
+	 * @since   1.2.0
 	 */
 	public function getMutedUsers($cursor = null, $entities = null, $skip_status = null)
 	{
