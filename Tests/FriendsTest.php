@@ -129,7 +129,16 @@ class FriendsTest extends TwitterTestCase
 		}
 		else
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->getFriendIds($user, $cursor, $string_ids, $count);
 		}
 
@@ -193,7 +202,16 @@ class FriendsTest extends TwitterTestCase
 		}
 		else
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->getFriendIds($user, $cursor, $string_ids, $count);
 		}
 
@@ -270,7 +288,16 @@ class FriendsTest extends TwitterTestCase
 		}
 		else
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->getFriendshipDetails($user_a, $user_b);
 		}
 
@@ -284,7 +311,16 @@ class FriendsTest extends TwitterTestCase
 		}
 		else
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->getFriendshipDetails($user_a, $user_b);
 		}
 
@@ -341,7 +377,16 @@ class FriendsTest extends TwitterTestCase
 		}
 		else
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->getFriendshipDetails($user_a, $user_b);
 		}
 
@@ -355,7 +400,16 @@ class FriendsTest extends TwitterTestCase
 		}
 		else
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->getFriendshipDetails($user_a, $user_b);
 		}
 
@@ -411,7 +465,16 @@ class FriendsTest extends TwitterTestCase
 		}
 		else
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->getFollowerIds($user, $cursor, $string_ids, $count);
 		}
 
@@ -475,7 +538,16 @@ class FriendsTest extends TwitterTestCase
 		}
 		else
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->getFollowerIds($user, $cursor, $string_ids, $count);
 		}
 
@@ -708,7 +780,16 @@ class FriendsTest extends TwitterTestCase
 		}
 		else
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->follow($user, $follow);
 		}
 
@@ -754,7 +835,16 @@ class FriendsTest extends TwitterTestCase
 		}
 		else
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->follow($user);
 		}
 
@@ -794,7 +884,16 @@ class FriendsTest extends TwitterTestCase
 		}
 		else
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->unfollow($user);
 		}
 
@@ -838,7 +937,16 @@ class FriendsTest extends TwitterTestCase
 		}
 		else
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->unfollow($user);
 		}
 
@@ -909,7 +1017,16 @@ class FriendsTest extends TwitterTestCase
 
 		if ($id == null && $screen_name == null)
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->getFriendshipsLookup($screen_name, $id);
 		}
 
@@ -967,7 +1084,16 @@ class FriendsTest extends TwitterTestCase
 
 		if ($id == null && $screen_name == null)
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->getFriendshipsLookup($screen_name, $id);
 		}
 
@@ -1012,7 +1138,16 @@ class FriendsTest extends TwitterTestCase
 		}
 		else
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->updateFriendship($user, $device, $retweets);
 		}
 
@@ -1059,7 +1194,16 @@ class FriendsTest extends TwitterTestCase
 		}
 		else
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->updateFriendship($user);
 		}
 

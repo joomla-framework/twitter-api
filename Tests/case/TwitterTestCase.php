@@ -10,13 +10,14 @@ use Joomla\Http\Http;
 use Joomla\Input\Input;
 use Joomla\Twitter\OAuth;
 use Joomla\Test\WebInspector;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test case for Twitter.
  *
  * @since  1.0
  */
-class TwitterTestCase extends \PHPUnit_Framework_TestCase
+class TwitterTestCase extends TestCase
 {
 	/**
 	 * @var    array  Options for the object.

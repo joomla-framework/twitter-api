@@ -297,7 +297,16 @@ class DirectmessagesTest extends TwitterTestCase
 		}
 		else
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->sendDirectMessages($user, $text);
 		}
 
@@ -346,7 +355,16 @@ class DirectmessagesTest extends TwitterTestCase
 		}
 		else
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->sendDirectMessages($user, $text);
 		}
 
