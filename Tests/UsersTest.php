@@ -8,10 +8,7 @@ namespace Joomla\Twitter\Tests;
 
 use Joomla\Twitter\Users;
 use \DomainException;
-use \RuntimeException;
 use \stdClass;
-
-require_once __DIR__ . '/case/TwitterTestCase.php';
 
 /**
  * Test class for Twitter Users.
@@ -119,7 +116,16 @@ class UsersTest extends TwitterTestCase
 
 		if ($id == null && $screen_name == null)
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->getUsersLookup($screen_name, $id);
 		}
 
@@ -178,7 +184,16 @@ class UsersTest extends TwitterTestCase
 
 		if ($id == null && $screen_name == null)
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->getUsersLookup($screen_name, $id);
 		}
 
@@ -245,7 +260,16 @@ class UsersTest extends TwitterTestCase
 		}
 		else
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->getUserProfileBanner($user);
 		}
 
@@ -301,7 +325,16 @@ class UsersTest extends TwitterTestCase
 		}
 		else
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->getUserProfileBanner($user);
 		}
 
@@ -443,7 +476,16 @@ class UsersTest extends TwitterTestCase
 		}
 		else
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->getUser($user, $entities);
 		}
 
@@ -503,7 +545,16 @@ class UsersTest extends TwitterTestCase
 		}
 		else
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->getUser($user, $entities);
 		}
 
@@ -560,7 +611,16 @@ class UsersTest extends TwitterTestCase
 		}
 		else
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->getContributees($user, $entities, $skip_status);
 		}
 
@@ -622,7 +682,16 @@ class UsersTest extends TwitterTestCase
 		}
 		else
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->getContributees($user, $entities, $skip_status);
 		}
 
@@ -680,7 +749,16 @@ class UsersTest extends TwitterTestCase
 		}
 		else
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->getContributors($user, $entities, $skip_status);
 		}
 
@@ -742,7 +820,16 @@ class UsersTest extends TwitterTestCase
 		}
 		else
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->getContributors($user, $entities, $skip_status);
 		}
 

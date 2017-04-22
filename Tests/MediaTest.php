@@ -10,8 +10,6 @@ use Joomla\Twitter\Media;
 use \DomainException;
 use \stdClass;
 
-require_once __DIR__ . '/case/TwitterTestCase.php';
-
 /**
  * Test class for Twitter Help.
  *
@@ -111,13 +109,31 @@ class MediaTest extends TwitterTestCase
 		}
 		else
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->upload($media_raw, $media_base64, $owners);
 		}
 
 		if (!is_null($media_raw) && !is_null($media_base64))
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->upload($media_raw, $media_base64, $owners);
 		}
 
@@ -183,13 +199,31 @@ class MediaTest extends TwitterTestCase
 		}
 		else
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->upload($media_raw, $media_base64, $owners);
 		}
 
 		if (!is_null($media_raw) && !is_null($media_base64))
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->upload($media_raw, $media_base64, $owners);
 		}
 

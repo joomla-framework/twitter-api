@@ -6,11 +6,7 @@
 
 namespace Joomla\Twitter\Tests;
 
-use Joomla\Twitter\OAuth;
-use \DomainException;
 use \stdClass;
-
-require_once __DIR__ . '/case/TwitterTestCase.php';
 
 /**
  * Test class for Twitter OAuth.

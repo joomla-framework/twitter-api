@@ -8,10 +8,7 @@ namespace Joomla\Twitter\Tests;
 
 use Joomla\Twitter\Places;
 use \DomainException;
-use \RuntimeException;
 use \stdClass;
-
-require_once __DIR__ . '/case/TwitterTestCase.php';
 
 /**
  * Test class for Twitter Friends.
@@ -287,7 +284,16 @@ class PlacesTest extends TwitterTestCase
 		// Set request parameters.
 		if ($lat == null && $long == null && $ip == null && $query == null)
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->search();
 		}
 
@@ -356,7 +362,16 @@ class PlacesTest extends TwitterTestCase
 		// Set request parameters.
 		if ($lat == null && $long == null && $ip == null && $query == null)
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->search();
 		}
 

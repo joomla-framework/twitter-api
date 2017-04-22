@@ -8,10 +8,7 @@ namespace Joomla\Twitter\Tests;
 
 use Joomla\Twitter\Followers;
 use \DomainException;
-use \RuntimeException;
 use \stdClass;
-
-require_once __DIR__ . '/case/TwitterTestCase.php';
 
 /**
  * Test class for Twitter Followers.
@@ -110,7 +107,16 @@ class FollowersTest extends TwitterTestCase
 		}
 		else
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->getFollowers($user, $cursor, $count, $skip_status, $entities);
 		}
 
@@ -176,7 +182,16 @@ class FollowersTest extends TwitterTestCase
 		}
 		else
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->getFollowers($user, $cursor, $count, $skip_status, $entities);
 		}
 
@@ -237,7 +252,16 @@ class FollowersTest extends TwitterTestCase
 		}
 		else
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->getFollowerIds($user, $cursor, $string_ids, $count);
 		}
 
@@ -301,7 +325,16 @@ class FollowersTest extends TwitterTestCase
 		}
 		else
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->getFollowerIds($user, $cursor, $string_ids, $count);
 		}
 

@@ -8,10 +8,7 @@ namespace Joomla\Twitter\Tests;
 
 use Joomla\Twitter\Lists;
 use \DomainException;
-use \RuntimeException;
 use \stdClass;
-
-require_once __DIR__ . '/case/TwitterTestCase.php';
 
 /**
  * Test class for Twitter Lists.
@@ -120,7 +117,16 @@ class ListsTest extends TwitterTestCase
 		}
 		else
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->getLists($user);
 		}
 
@@ -178,7 +184,16 @@ class ListsTest extends TwitterTestCase
 		}
 		else
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->getLists($user);
 		}
 
@@ -264,14 +279,32 @@ class ListsTest extends TwitterTestCase
 			}
 			else
 			{
+				// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+				if (method_exists($this, 'expectException'))
+				{
+					$this->expectException('RuntimeException');
+				}
+				else
+				{
+					$this->setExpectedException('RuntimeException');
+				}
+
 				// We don't have a valid entry
-				$this->setExpectedException('RuntimeException');
 				$this->object->getStatuses($list, $owner);
 			}
 		}
 		else
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->getStatuses($list, $owner);
 		}
 
@@ -342,14 +375,32 @@ class ListsTest extends TwitterTestCase
 			}
 			else
 			{
+				// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+				if (method_exists($this, 'expectException'))
+				{
+					$this->expectException('RuntimeException');
+				}
+				else
+				{
+					$this->setExpectedException('RuntimeException');
+				}
+
 				// We don't have a valid entry
-				$this->setExpectedException('RuntimeException');
 				$this->object->getStatuses($list, $owner);
 			}
 		}
 		else
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->getStatuses($list, $owner);
 		}
 
@@ -414,14 +465,32 @@ class ListsTest extends TwitterTestCase
 			}
 			else
 			{
+				// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+				if (method_exists($this, 'expectException'))
+				{
+					$this->expectException('RuntimeException');
+				}
+				else
+				{
+					$this->setExpectedException('RuntimeException');
+				}
+
 				// We don't have a valid entry
-				$this->setExpectedException('RuntimeException');
 				$this->object->getSubscribers($list, $owner);
 			}
 		}
 		else
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->getSubscribers($list, $owner);
 		}
 
@@ -494,14 +563,32 @@ class ListsTest extends TwitterTestCase
 			}
 			else
 			{
+				// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+				if (method_exists($this, 'expectException'))
+				{
+					$this->expectException('RuntimeException');
+				}
+				else
+				{
+					$this->setExpectedException('RuntimeException');
+				}
+
 				// We don't have a valid entry
-				$this->setExpectedException('RuntimeException');
 				$this->object->getSubscribers($list, $owner);
 			}
 		}
 		else
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->getSubscribers($list, $owner);
 		}
 
@@ -597,14 +684,32 @@ class ListsTest extends TwitterTestCase
 			}
 			else
 			{
+				// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+				if (method_exists($this, 'expectException'))
+				{
+					$this->expectException('RuntimeException');
+				}
+				else
+				{
+					$this->setExpectedException('RuntimeException');
+				}
+
 				// We don't have a valid entry
-				$this->setExpectedException('RuntimeException');
 				$this->object->deleteMember($list, $user, $owner);
 			}
 		}
 		else
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->deleteMember($list, $user, $owner);
 		}
 
@@ -618,7 +723,16 @@ class ListsTest extends TwitterTestCase
 		}
 		else
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->deleteMember($list, $user, $owner);
 		}
 
@@ -673,14 +787,32 @@ class ListsTest extends TwitterTestCase
 			}
 			else
 			{
+				// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+				if (method_exists($this, 'expectException'))
+				{
+					$this->expectException('RuntimeException');
+				}
+				else
+				{
+					$this->setExpectedException('RuntimeException');
+				}
+
 				// We don't have a valid entry
-				$this->setExpectedException('RuntimeException');
 				$this->object->deleteMember($list, $user, $owner);
 			}
 		}
 		else
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->deleteMember($list, $user, $owner);
 		}
 
@@ -694,7 +826,16 @@ class ListsTest extends TwitterTestCase
 		}
 		else
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->deleteMember($list, $user, $owner);
 		}
 
@@ -746,14 +887,32 @@ class ListsTest extends TwitterTestCase
 			}
 			else
 			{
+				// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+				if (method_exists($this, 'expectException'))
+				{
+					$this->expectException('RuntimeException');
+				}
+				else
+				{
+					$this->setExpectedException('RuntimeException');
+				}
+
 				// We don't have a valid entry
-				$this->setExpectedException('RuntimeException');
 				$this->object->deleteMembers($list, $user_id, $screen_name, $owner);
 			}
 		}
 		else
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->deleteMembers($list, $user_id, $screen_name, $owner);
 		}
 
@@ -769,7 +928,16 @@ class ListsTest extends TwitterTestCase
 
 		if ($user_id == null && $screen_name == null)
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->deleteMembers($list, $user_id, $screen_name, $owner);
 		}
 
@@ -825,14 +993,32 @@ class ListsTest extends TwitterTestCase
 			}
 			else
 			{
+				// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+				if (method_exists($this, 'expectException'))
+				{
+					$this->expectException('RuntimeException');
+				}
+				else
+				{
+					$this->setExpectedException('RuntimeException');
+				}
+
 				// We don't have a valid entry
-				$this->setExpectedException('RuntimeException');
 				$this->object->deleteMembers($list, $user_id, $screen_name, $owner);
 			}
 		}
 		else
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->deleteMembers($list, $user_id, $screen_name, $owner);
 		}
 
@@ -848,7 +1034,16 @@ class ListsTest extends TwitterTestCase
 
 		if ($user_id == null && $screen_name == null)
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->deleteMembers($list, $user_id, $screen_name, $owner);
 		}
 
@@ -909,14 +1104,32 @@ class ListsTest extends TwitterTestCase
 			}
 			else
 			{
+				// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+				if (method_exists($this, 'expectException'))
+				{
+					$this->expectException('RuntimeException');
+				}
+				else
+				{
+					$this->setExpectedException('RuntimeException');
+				}
+
 				// We don't have a valid entry
-				$this->setExpectedException('RuntimeException');
 				$this->object->subscribe($list, $owner);
 			}
 		}
 		else
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->subscribe($list, $owner);
 		}
 
@@ -981,14 +1194,32 @@ class ListsTest extends TwitterTestCase
 			}
 			else
 			{
+				// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+				if (method_exists($this, 'expectException'))
+				{
+					$this->expectException('RuntimeException');
+				}
+				else
+				{
+					$this->setExpectedException('RuntimeException');
+				}
+
 				// We don't have a valid entry
-				$this->setExpectedException('RuntimeException');
 				$this->object->subscribe($list, $owner);
 			}
 		}
 		else
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->subscribe($list, $owner);
 		}
 
@@ -1073,14 +1304,32 @@ class ListsTest extends TwitterTestCase
 			}
 			else
 			{
+				// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+				if (method_exists($this, 'expectException'))
+				{
+					$this->expectException('RuntimeException');
+				}
+				else
+				{
+					$this->setExpectedException('RuntimeException');
+				}
+
 				// We don't have a valid entry
-				$this->setExpectedException('RuntimeException');
 				$this->object->isMember($list, $user, $owner);
 			}
 		}
 		else
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->isMember($list, $user, $owner);
 		}
 
@@ -1094,8 +1343,17 @@ class ListsTest extends TwitterTestCase
 		}
 		else
 		{
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			// We don't have a valid entry
-			$this->setExpectedException('RuntimeException');
 			$this->object->isMember($list, $user, $owner);
 		}
 
@@ -1167,14 +1425,32 @@ class ListsTest extends TwitterTestCase
 			}
 			else
 			{
+				// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+				if (method_exists($this, 'expectException'))
+				{
+					$this->expectException('RuntimeException');
+				}
+				else
+				{
+					$this->setExpectedException('RuntimeException');
+				}
+
 				// We don't have a valid entry
-				$this->setExpectedException('RuntimeException');
 				$this->object->isMember($list, $user, $owner);
 			}
 		}
 		else
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->isMember($list, $user, $owner);
 		}
 
@@ -1188,8 +1464,17 @@ class ListsTest extends TwitterTestCase
 		}
 		else
 		{
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			// We don't have a valid entry
-			$this->setExpectedException('RuntimeException');
 			$this->object->isMember($list, $user, $owner);
 		}
 
@@ -1257,14 +1542,32 @@ class ListsTest extends TwitterTestCase
 			}
 			else
 			{
+				// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+				if (method_exists($this, 'expectException'))
+				{
+					$this->expectException('RuntimeException');
+				}
+				else
+				{
+					$this->setExpectedException('RuntimeException');
+				}
+
 				// We don't have a valid entry
-				$this->setExpectedException('RuntimeException');
 				$this->object->isSubscriber($list, $user, $owner);
 			}
 		}
 		else
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->isSubscriber($list, $user, $owner);
 		}
 
@@ -1278,8 +1581,17 @@ class ListsTest extends TwitterTestCase
 		}
 		else
 		{
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			// We don't have a valid entry
-			$this->setExpectedException('RuntimeException');
 			$this->object->isSubscriber($list, $user, $owner);
 		}
 
@@ -1351,14 +1663,32 @@ class ListsTest extends TwitterTestCase
 			}
 			else
 			{
+				// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+				if (method_exists($this, 'expectException'))
+				{
+					$this->expectException('RuntimeException');
+				}
+				else
+				{
+					$this->setExpectedException('RuntimeException');
+				}
+
 				// We don't have a valid entry
-				$this->setExpectedException('RuntimeException');
 				$this->object->isSubscriber($list, $user, $owner);
 			}
 		}
 		else
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->isSubscriber($list, $user, $owner);
 		}
 
@@ -1372,8 +1702,17 @@ class ListsTest extends TwitterTestCase
 		}
 		else
 		{
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			// We don't have a valid entry
-			$this->setExpectedException('RuntimeException');
 			$this->object->isSubscriber($list, $user, $owner);
 		}
 
@@ -1437,14 +1776,32 @@ class ListsTest extends TwitterTestCase
 			}
 			else
 			{
+				// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+				if (method_exists($this, 'expectException'))
+				{
+					$this->expectException('RuntimeException');
+				}
+				else
+				{
+					$this->setExpectedException('RuntimeException');
+				}
+
 				// We don't have a valid entry
-				$this->setExpectedException('RuntimeException');
 				$this->object->unsubscribe($list, $owner);
 			}
 		}
 		else
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->unsubscribe($list, $owner);
 		}
 
@@ -1509,14 +1866,32 @@ class ListsTest extends TwitterTestCase
 			}
 			else
 			{
+				// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+				if (method_exists($this, 'expectException'))
+				{
+					$this->expectException('RuntimeException');
+				}
+				else
+				{
+					$this->setExpectedException('RuntimeException');
+				}
+
 				// We don't have a valid entry
-				$this->setExpectedException('RuntimeException');
 				$this->object->unsubscribe($list, $owner);
 			}
 		}
 		else
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->unsubscribe($list, $owner);
 		}
 
@@ -1579,14 +1954,32 @@ class ListsTest extends TwitterTestCase
 			}
 			else
 			{
+				// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+				if (method_exists($this, 'expectException'))
+				{
+					$this->expectException('RuntimeException');
+				}
+				else
+				{
+					$this->setExpectedException('RuntimeException');
+				}
+
 				// We don't have a valid entry
-				$this->setExpectedException('RuntimeException');
 				$this->object->addMembers($list, $user_id, $screen_name, $owner);
 			}
 		}
 		else
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->addMembers($list, $user_id, $screen_name, $owner);
 		}
 
@@ -1602,7 +1995,16 @@ class ListsTest extends TwitterTestCase
 
 		if ($user_id == null && $screen_name == null)
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->addMembers($list, $user_id, $screen_name, $owner);
 		}
 
@@ -1669,14 +2071,32 @@ class ListsTest extends TwitterTestCase
 			}
 			else
 			{
+				// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+				if (method_exists($this, 'expectException'))
+				{
+					$this->expectException('RuntimeException');
+				}
+				else
+				{
+					$this->setExpectedException('RuntimeException');
+				}
+
 				// We don't have a valid entry
-				$this->setExpectedException('RuntimeException');
 				$this->object->addMembers($list, $user_id, $screen_name, $owner);
 			}
 		}
 		else
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->addMembers($list, $user_id, $screen_name, $owner);
 		}
 
@@ -1692,7 +2112,16 @@ class ListsTest extends TwitterTestCase
 
 		if ($user_id == null && $screen_name == null)
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->addMembers($list, $user_id, $screen_name, $owner);
 		}
 
@@ -1756,14 +2185,32 @@ class ListsTest extends TwitterTestCase
 			}
 			else
 			{
+				// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+				if (method_exists($this, 'expectException'))
+				{
+					$this->expectException('RuntimeException');
+				}
+				else
+				{
+					$this->setExpectedException('RuntimeException');
+				}
+
 				// We don't have a valid entry
-				$this->setExpectedException('RuntimeException');
 				$this->object->getMembers($list, $owner);
 			}
 		}
 		else
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->getMembers($list, $owner);
 		}
 
@@ -1834,14 +2281,32 @@ class ListsTest extends TwitterTestCase
 			}
 			else
 			{
+				// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+				if (method_exists($this, 'expectException'))
+				{
+					$this->expectException('RuntimeException');
+				}
+				else
+				{
+					$this->setExpectedException('RuntimeException');
+				}
+
 				// We don't have a valid entry
-				$this->setExpectedException('RuntimeException');
 				$this->object->getMembers($list, $owner);
 			}
 		}
 		else
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->getMembers($list, $owner);
 		}
 
@@ -1899,7 +2364,16 @@ class ListsTest extends TwitterTestCase
 		}
 		else
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->getMemberships($user);
 		}
 
@@ -1961,7 +2435,16 @@ class ListsTest extends TwitterTestCase
 		}
 		else
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->getMemberships($user);
 		}
 
@@ -2025,14 +2508,32 @@ class ListsTest extends TwitterTestCase
 			}
 			else
 			{
+				// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+				if (method_exists($this, 'expectException'))
+				{
+					$this->expectException('RuntimeException');
+				}
+				else
+				{
+					$this->setExpectedException('RuntimeException');
+				}
+
 				// We don't have a valid entry
-				$this->setExpectedException('RuntimeException');
 				$this->object->getListById($list, $owner);
 			}
 		}
 		else
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->getListById($list, $owner);
 		}
 
@@ -2097,14 +2598,32 @@ class ListsTest extends TwitterTestCase
 			}
 			else
 			{
+				// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+				if (method_exists($this, 'expectException'))
+				{
+					$this->expectException('RuntimeException');
+				}
+				else
+				{
+					$this->setExpectedException('RuntimeException');
+				}
+
 				// We don't have a valid entry
-				$this->setExpectedException('RuntimeException');
 				$this->object->getListById($list, $owner);
 			}
 		}
 		else
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->getListById($list, $owner);
 		}
 
@@ -2159,7 +2678,16 @@ class ListsTest extends TwitterTestCase
 		}
 		else
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->getSubscriptions($user);
 		}
 
@@ -2221,7 +2749,16 @@ class ListsTest extends TwitterTestCase
 		}
 		else
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->getSubscriptions($user);
 		}
 
@@ -2289,14 +2826,32 @@ class ListsTest extends TwitterTestCase
 			}
 			else
 			{
+				// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+				if (method_exists($this, 'expectException'))
+				{
+					$this->expectException('RuntimeException');
+				}
+				else
+				{
+					$this->setExpectedException('RuntimeException');
+				}
+
 				// We don't have a valid entry
-				$this->setExpectedException('RuntimeException');
 				$this->object->update($list, $owner);
 			}
 		}
 		else
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->update($list, $owner);
 		}
 
@@ -2369,14 +2924,32 @@ class ListsTest extends TwitterTestCase
 			}
 			else
 			{
+				// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+				if (method_exists($this, 'expectException'))
+				{
+					$this->expectException('RuntimeException');
+				}
+				else
+				{
+					$this->setExpectedException('RuntimeException');
+				}
+
 				// We don't have a valid entry
-				$this->setExpectedException('RuntimeException');
 				$this->object->update($list, $owner);
 			}
 		}
 		else
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->update($list, $owner);
 		}
 
@@ -2529,14 +3102,32 @@ class ListsTest extends TwitterTestCase
 			}
 			else
 			{
+				// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+				if (method_exists($this, 'expectException'))
+				{
+					$this->expectException('RuntimeException');
+				}
+				else
+				{
+					$this->setExpectedException('RuntimeException');
+				}
+
 				// We don't have a valid entry
-				$this->setExpectedException('RuntimeException');
 				$this->object->delete($list, $owner);
 			}
 		}
 		else
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->delete($list, $owner);
 		}
 
@@ -2601,14 +3192,32 @@ class ListsTest extends TwitterTestCase
 			}
 			else
 			{
+				// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+				if (method_exists($this, 'expectException'))
+				{
+					$this->expectException('RuntimeException');
+				}
+				else
+				{
+					$this->setExpectedException('RuntimeException');
+				}
+
 				// We don't have a valid entry
-				$this->setExpectedException('RuntimeException');
 				$this->object->delete($list, $owner);
 			}
 		}
 		else
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->delete($list, $owner);
 		}
 

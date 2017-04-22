@@ -8,10 +8,7 @@ namespace Joomla\Twitter\Tests;
 
 use Joomla\Twitter\Statuses;
 use \DomainException;
-use \RuntimeException;
 use \stdClass;
-
-require_once __DIR__ . '/case/TwitterTestCase.php';
 
 /**
  * Test class for Twitter Statuses.
@@ -206,7 +203,16 @@ class StatusesTest extends TwitterTestCase
 		}
 		else
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->getUserTimeline($user, $count, $include_rts, $no_replies, $since_id, $max_id, $trim_user, $contributor);
 		}
 
@@ -272,7 +278,16 @@ class StatusesTest extends TwitterTestCase
 		}
 		else
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
+
 			$this->object->getUserTimeline($user, $count);
 		}
 
@@ -1005,7 +1020,15 @@ class StatusesTest extends TwitterTestCase
 
 		if ($headers_array['x-mediaratelimit-remaining'] == 0)
 		{
-			$this->setExpectedException('RuntimeException');
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
 		}
 
 		$this->assertThat(
@@ -1148,7 +1171,16 @@ class StatusesTest extends TwitterTestCase
 		{
 			// Set request parameters.
 			$data['url'] = rawurlencode($url);
-			$this->setExpectedException('DomainException');
+
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('DomainException');
+			}
+			else
+			{
+				$this->setExpectedException('DomainException');
+			}
 
 			$path = $this->object->fetchUrl('/statuses/oembed.json', $data);
 
@@ -1162,7 +1194,16 @@ class StatusesTest extends TwitterTestCase
 		else
 		{
 			$data = array();
-			$this->setExpectedException('RuntimeException');
+
+			// expectException was added in PHPUnit 5.2 and setExpectedException removed in 6.0
+			if (method_exists($this, 'expectException'))
+			{
+				$this->expectException('RuntimeException');
+			}
+			else
+			{
+				$this->setExpectedException('RuntimeException');
+			}
 
 			$this->object->getOembed(null, null);
 		}

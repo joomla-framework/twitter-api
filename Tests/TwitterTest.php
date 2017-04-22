@@ -8,25 +8,6 @@ namespace Joomla\Twitter\Tests;
 
 use Joomla\Test\TestHelper;
 use Joomla\Twitter\Twitter;
-use Joomla\Twitter\Block;
-use Joomla\Twitter\Directmessages;
-use Joomla\Twitter\Favorites;
-use Joomla\Twitter\Friends;
-use Joomla\Twitter\Help;
-use Joomla\Twitter\Lists;
-use Joomla\Twitter\OAuth;
-use Joomla\Twitter\Places;
-use Joomla\Twitter\Profile;
-use Joomla\Twitter\Search;
-use Joomla\Twitter\Statuses;
-use Joomla\Twitter\Trends;
-use Joomla\Twitter\Users;
-use Joomla\Twitter\Mute;
-use Joomla\Twitter\Media;
-use Joomla\Twitter\Followers;
-use \DomainException;
-
-require_once __DIR__ . '/case/TwitterTestCase.php';
 
 /**
  * Test class for Twitter.

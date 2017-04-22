@@ -7,11 +7,7 @@
 namespace Joomla\Twitter\Tests;
 
 use Joomla\Test\TestHelper;
-use Joomla\Twitter\Object;
 use \stdClass;
-
-require_once __DIR__ . '/case/TwitterTestCase.php';
-require_once __DIR__ . '/stubs/ObjectMock.php';
 
 /**
  * Test class for Twitter Object.
@@ -38,7 +34,7 @@ class ObjectTest extends TwitterTestCase
 	{
 		parent::setUp();
 
-		$this->object = new ObjectMock($this->options, $this->client, $this->oauth);
+		$this->object = $this->getMockForAbstractClass('\\Joomla\\Twitter\\Object', array(&$this->options, $this->client, $this->oauth));
 	}
 
 	/**
