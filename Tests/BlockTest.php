@@ -8,10 +8,7 @@ namespace Joomla\Twitter\Tests;
 
 use Joomla\Twitter\Block;
 use \DomainException;
-use \RuntimeException;
 use \stdClass;
-
-require_once __DIR__ . '/case/TwitterTestCase.php';
 
 /**
  * Test class for Twitter Block.

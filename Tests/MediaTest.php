@@ -10,8 +10,6 @@ use Joomla\Twitter\Media;
 use \DomainException;
 use \stdClass;
 
-require_once __DIR__ . '/case/TwitterTestCase.php';
-
 /**
  * Test class for Twitter Help.
  *

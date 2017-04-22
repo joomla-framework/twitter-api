@@ -9,7 +9,6 @@ namespace Joomla\Twitter\Tests;
 use Joomla\Http\Http;
 use Joomla\Input\Input;
 use Joomla\Twitter\OAuth;
-use Joomla\Test\WebInspector;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -38,7 +37,9 @@ class TwitterTestCase extends TestCase
 	protected $input;
 
 	/**
-	 * @var    WebInspector The application object to send HTTP headers for redirects.
+	 * The application object to send HTTP headers for redirects.
+	 *
+	 * @var    \Joomla\Application\AbstractWebApplication|\PHPUnit_Framework_MockObject_MockObject
 	 * @since  1.0
 	 */
 	protected $application;
@@ -91,7 +92,7 @@ class TwitterTestCase extends TestCase
 
 		$this->input = new Input;
 		$this->client = $this->getMockBuilder('Joomla\\Http\\Http')->getMock();
-		$this->application = new WebInspector;
+		$this->application = $this->getMockForAbstractClass('Joomla\\Application\\AbstractWebApplication');
 		$this->oauth = new OAuth($this->options, $this->client, $this->input, $this->application);
 		$this->oauth->setToken($access_token);
 	}
