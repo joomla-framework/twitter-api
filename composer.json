@@ -35,5 +35,5 @@
         "branch-alias": {
 	        "dev-2.0-dev": "2.0-dev"
         }
-    },
+    }
 }
