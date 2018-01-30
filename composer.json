@@ -4,7 +4,7 @@
     "description": "Joomla Twitter Package",
     "keywords": ["joomla", "framework", "twitter"],
     "homepage": "https://github.com/joomla-framework/twitter-api",
-    "license": "GPL-2.0+",
+    "license": "GPL-2.0-or-later",
     "require": {
         "php": "~7.0",
         "joomla/oauth1": "~2.0",
