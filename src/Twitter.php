@@ -152,7 +152,7 @@ class Twitter
 	 *
 	 * @param   string  $name  Name of property to retrieve
 	 *
-	 * @return  Object  Twitter API object (statuses, users, favorites, etc.).
+	 * @return  AbstractTwitterObject  Twitter API object (statuses, users, favorites, etc.).
 	 *
 	 * @since   1.0
 	 * @throws  \InvalidArgumentException

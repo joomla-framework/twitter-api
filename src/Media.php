@@ -18,31 +18,30 @@ class Media extends Object
 	/**
 	 * Method to upload media.
 	 *
-	 * @param   string  $media_raw     Raw binary data to be uploaded.
-	 * @param   string  $media_base64  A base64 encoded string containing the data to be uploaded.
-	 *                                 This cannot be used in conjunction with $media_raw
-	 * @param   string  $owners        A comma-separated string of user IDs to set as additional owners
-	 *                                 who are allowed to use the returned media_id in Tweets or Cards. A maximum of
-	 *                                 100 additional owners may be specified.
+	 * @param   string  $rawMedia     Raw binary data to be uploaded.
+	 * @param   string  $base64Media  A base64 encoded string containing the data to be uploaded.
+	 *                                This cannot be used in conjunction with $rawMedia
+	 * @param   string  $owners       A comma-separated string of user IDs to set as additional owners who are allowed to use the returned media_id
+	 *                                in Tweets or Cards. A maximum of 100 additional owners may be specified.
 	 *
 	 * @return  array  The decoded JSON response
 	 *
 	 * @since   1.2.0
 	 * @throws  \RuntimeException
 	 */
-	public function upload($media_raw = null, $media_base64 = null, $owners = null)
+	public function upload($rawMedia = null, $base64Media = null, $owners = null)
 	{
 		// Check the rate limit for remaining hits
 		$this->checkRateLimit('media', 'upload');
 
 		// Determine which type of data was passed for $media
-		if (!is_null($media_raw))
+		if (!is_null($rawMedia))
 		{
-			$data['media'] = $media_raw;
+			$data['media'] = $rawMedia;
 		}
-		elseif (!is_null($media_base64))
+		elseif (!is_null($base64Media))
 		{
-			$data['media_data'] = $media_base64;
+			$data['media_data'] = $base64Media;
 		}
 		else
 		{
@@ -50,7 +49,7 @@ class Media extends Object
 			throw new \RuntimeException('You must specify at least one valid media type.');
 		}
 
-		if (!is_null($media_raw) && !is_null($media_base64))
+		if (!is_null($rawMedia) && !is_null($base64Media))
 		{
 			throw new \RuntimeException('You may only specify one type of media.');
 		}

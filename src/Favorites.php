@@ -21,8 +21,8 @@ class Favorites extends Object
 	 * @param   mixed    $user      Either an integer containing the user ID or a string containing the screen name.
 	 * @param   integer  $count     Specifies the number of tweets to try and retrieve, up to a maximum of 200.  Retweets are always included
 	 *                              in the count, so it is always suggested to set $include_rts to true
-	 * @param   integer  $since_id  Returns results with an ID greater than (that is, more recent than) the specified ID.
-	 * @param   integer  $max_id    Returns results with an ID less than (that is, older than) the specified ID.
+	 * @param   integer  $sinceId   Returns results with an ID greater than (that is, more recent than) the specified ID.
+	 * @param   integer  $maxId     Returns results with an ID less than (that is, older than) the specified ID.
 	 * @param   boolean  $entities  When set to true,  each tweet will include a node called "entities,". This node offers a variety
 	 * 								of metadata about the tweet in a discreet structure, including: user_mentions, urls, and hashtags.
 	 *
@@ -30,7 +30,7 @@ class Favorites extends Object
 	 *
 	 * @since   1.0
 	 */
-	public function getFavorites($user = null, $count = 20, $since_id = 0, $max_id = 0, $entities = null)
+	public function getFavorites($user = null, $count = 20, $sinceId = 0, $maxId = 0, $entities = null)
 	{
 		// Check the rate limit for remaining hits
 		$this->checkRateLimit('favorites', 'list');
@@ -52,15 +52,15 @@ class Favorites extends Object
 		$data['count'] = $count;
 
 		// Check if since_id is specified.
-		if ($since_id > 0)
+		if ($sinceId > 0)
 		{
-			$data['since_id'] = $since_id;
+			$data['since_id'] = $sinceId;
 		}
 
 		// Check if max_id is specified.
-		if ($max_id > 0)
+		if ($maxId > 0)
 		{
-			$data['max_id'] = $max_id;
+			$data['max_id'] = $maxId;
 		}
 
 		// Check if entities is specified.

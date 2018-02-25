@@ -24,11 +24,6 @@ matrix:
       # This empty flag removes the prefer-stable switch to cause dev dependencies to be installed
       env: COMPOSER_FLAGS=""
     - php: 7.1
-    - php: 7.2
-    - php: nightly
-  allow_failures:
-    - php: 7.2
-    - php: nightly
 
 before_script:
   - composer self-update
@@ -36,4 +31,4 @@ before_script:
 
 script:
   - vendor/bin/phpunit
-  - if [ "$RUN_PHPCS" == "yes" ]; then vendor/bin/phpcs -p --report=full --extensions=php --standard=.travis/phpcs/Joomla/ruleset.xml src/; fi;
+  - if [ "$RUN_PHPCS" == "yes" ]; then vendor/bin/phpcs --config-set installed_paths vendor/joomla/coding-standards && vendor/bin/phpcs -p --report=full --extensions=php --standard=Joomla src/; fi;
