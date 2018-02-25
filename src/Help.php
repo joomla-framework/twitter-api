@@ -13,7 +13,7 @@ namespace Joomla\Twitter;
  *
  * @since  1.0
  */
-class Help extends Object
+class Help extends AbstractTwitterObject
 {
 	/**
 	 * Method to get the supported languages from the API.

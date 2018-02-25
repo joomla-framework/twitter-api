@@ -13,7 +13,7 @@ namespace Joomla\Twitter;
  *
  * @since  1.2.0
  */
-class Mute extends Object
+class Mute extends AbstractTwitterObject
 {
 	/**
 	 * Method to mute a user.

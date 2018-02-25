@@ -13,7 +13,7 @@ namespace Joomla\Twitter;
  *
  * @since  1.0
  */
-class Friends extends Object
+class Friends extends AbstractTwitterObject
 {
 	/**
 	 * Method to get an array of user IDs the specified user follows.

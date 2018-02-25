@@ -13,7 +13,7 @@ namespace Joomla\Twitter;
  *
  * @since  1.0
  */
-class Users extends Object
+class Users extends AbstractTwitterObject
 {
 	/**
 	 * Method to get up to 100 users worth of extended information, specified by either ID, screen name, or combination of the two.

@@ -13,7 +13,7 @@ namespace Joomla\Twitter;
  *
  * @since  1.0
  */
-class Favorites extends Object
+class Favorites extends AbstractTwitterObject
 {
 	/**
 	 * Method to get the most recent favorite statuses for the authenticating or specified user.

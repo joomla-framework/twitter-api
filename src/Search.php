@@ -13,7 +13,7 @@ namespace Joomla\Twitter;
  *
  * @since  1.0
  */
-class Search extends Object
+class Search extends AbstractTwitterObject
 {
 	/**
 	 * Method to get tweets that match a specified query.

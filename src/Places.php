@@ -13,7 +13,7 @@ namespace Joomla\Twitter;
  *
  * @since  1.0
  */
-class Places extends Object
+class Places extends AbstractTwitterObject
 {
 	/**
 	 * Method to get all the information about a known place.

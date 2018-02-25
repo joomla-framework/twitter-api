@@ -13,7 +13,7 @@ namespace Joomla\Twitter;
  *
  * @since  1.0
  */
-class Profile extends Object
+class Profile extends AbstractTwitterObject
 {
 	/**
 	 * Method to et values that users are able to set under the "Account" tab of their settings page.

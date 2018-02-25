@@ -13,7 +13,7 @@ namespace Joomla\Twitter;
  *
  * @since  1.2.0
  */
-class Followers extends Object
+class Followers extends AbstractTwitterObject
 {
 	/**
 	 * Method to get an array of users the specified user is followed by.

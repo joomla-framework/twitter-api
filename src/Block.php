@@ -13,7 +13,7 @@ namespace Joomla\Twitter;
  *
  * @since  1.0
  */
-class Block extends Object
+class Block extends AbstractTwitterObject
 {
 	/**
 	 * Method to get the user ids the authenticating user is blocking.

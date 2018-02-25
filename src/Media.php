@@ -13,7 +13,7 @@ namespace Joomla\Twitter;
  *
  * @since  1.2.0
  */
-class Media extends Object
+class Media extends AbstractTwitterObject
 {
 	/**
 	 * Method to upload media.

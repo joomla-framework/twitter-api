@@ -13,7 +13,7 @@ namespace Joomla\Twitter;
  *
  * @since  1.0
  */
-class Directmessages extends Object
+class Directmessages extends AbstractTwitterObject
 {
 	/**
 	 * Method to get the most recent direct messages sent to the authenticating user.

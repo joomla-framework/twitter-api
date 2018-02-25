@@ -13,7 +13,7 @@ namespace Joomla\Twitter;
  *
  * @since  1.0
  */
-class Trends extends Object
+class Trends extends AbstractTwitterObject
 {
 	/**
 	 * Method to get the top 10 trending topics for a specific WOEID, if trending information is available for it.

@@ -34,7 +34,7 @@ class ObjectTest extends TwitterTestCase
 	{
 		parent::setUp();
 
-		$this->object = $this->getMockForAbstractClass('\\Joomla\\Twitter\\Object', array(&$this->options, $this->client, $this->oauth));
+		$this->object = $this->getMockForAbstractClass('\\Joomla\\Twitter\\AbstractTwitterObject', array(&$this->options, $this->client, $this->oauth));
 	}
 
 	/**

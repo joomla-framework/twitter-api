@@ -13,7 +13,7 @@ namespace Joomla\Twitter;
  *
  * @since  1.0
  */
-class Statuses extends Object
+class Statuses extends AbstractTwitterObject
 {
 	/**
 	 * Method to get a single tweet with the given ID.

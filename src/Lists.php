@@ -13,7 +13,7 @@ namespace Joomla\Twitter;
  *
  * @since  1.0
  */
-class Lists extends Object
+class Lists extends AbstractTwitterObject
 {
 	/**
 	 * Method to get all lists the authenticating or specified user subscribes to, including their own.
