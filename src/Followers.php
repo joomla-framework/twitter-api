@@ -18,21 +18,21 @@ class Followers extends Object
 	/**
 	 * Method to get an array of users the specified user is followed by.
 	 *
-	 * @param   mixed    $user         Either an integer containing the user ID or a string containing the screen name.
-	 * @param   integer  $cursor       Causes the list of IDs to be broken into pages of no more than 5000 IDs at a time. The number of IDs returned
-	 *                                 is not guaranteed to be 5000 as suspended users are filtered out after connections are queried. If no cursor
-	 *                                 is provided, a value of -1 will be assumed, which is the first "page."
-	 * @param   integer  $count        Specifies the number of IDs attempt retrieval of, up to a maximum of 5,000 per distinct request.
-	 * @param   boolean  $skip_status  When set to either true, t or 1, statuses will not be included in returned user objects.
-	 * @param   boolean  $entities     When set to either true, t or 1, each user will include a node called "entities,". This node offers a
-	 *                                 variety of metadata about the user in a discrete structure.
+	 * @param   mixed    $user        Either an integer containing the user ID or a string containing the screen name.
+	 * @param   integer  $cursor      Causes the list of IDs to be broken into pages of no more than 5000 IDs at a time. The number of IDs returned
+	 *                                is not guaranteed to be 5000 as suspended users are filtered out after connections are queried. If no cursor
+	 *                                is provided, a value of -1 will be assumed, which is the first "page."
+	 * @param   integer  $count       Specifies the number of IDs attempt retrieval of, up to a maximum of 5,000 per distinct request.
+	 * @param   boolean  $skipStatus  When set to either true, t or 1, statuses will not be included in returned user objects.
+	 * @param   boolean  $entities    When set to either true, t or 1, each user will include a node called "entities,". This node offers a
+	 *                                variety of metadata about the user in a discrete structure.
 	 *
 	 * @return  array  The decoded JSON response
 	 *
 	 * @since   1.2.0
 	 * @throws  \RuntimeException
 	 */
-	public function getFollowers($user, $cursor = null, $count = 0, $skip_status = null, $entities = null)
+	public function getFollowers($user, $cursor = null, $count = 0, $skipStatus = null, $entities = null)
 	{
 		// Check the rate limit for remaining hits
 		$this->checkRateLimit('followers', 'ids');
@@ -68,9 +68,9 @@ class Followers extends Object
 		}
 
 		// Check if skip_status is specified
-		if (!is_null($skip_status))
+		if (!is_null($skipStatus))
 		{
-			$data['skip_status'] = $skip_status;
+			$data['skip_status'] = $skipStatus;
 		}
 
 		// Check if entities is specified
@@ -86,19 +86,19 @@ class Followers extends Object
 	/**
 	 * Method to get an array of user IDs the specified user is followed by.
 	 *
-	 * @param   mixed    $user        Either an integer containing the user ID or a string containing the screen name.
-	 * @param   integer  $cursor      Causes the list of IDs to be broken into pages of no more than 5000 IDs at a time. The number of IDs returned
-	 *                                is not guaranteed to be 5000 as suspended users are filtered out after connections are queried. If no cursor
-	 *                                is provided, a value of -1 will be assumed, which is the first "page."
-	 * @param   boolean  $string_ids  Set to true to return IDs as strings, false to return as integers.
-	 * @param   integer  $count       Specifies the number of IDs attempt retrieval of, up to a maximum of 5,000 per distinct request.
+	 * @param   mixed    $user       Either an integer containing the user ID or a string containing the screen name.
+	 * @param   integer  $cursor     Causes the list of IDs to be broken into pages of no more than 5000 IDs at a time. The number of IDs returned
+	 *                               is not guaranteed to be 5000 as suspended users are filtered out after connections are queried. If no cursor
+	 *                               is provided, a value of -1 will be assumed, which is the first "page."
+	 * @param   boolean  $stringIds  Set to true to return IDs as strings, false to return as integers.
+	 * @param   integer  $count      Specifies the number of IDs attempt retrieval of, up to a maximum of 5,000 per distinct request.
 	 *
 	 * @return  array  The decoded JSON response
 	 *
 	 * @since   1.2.0
 	 * @throws  \RuntimeException
 	 */
-	public function getFollowerIds($user, $cursor = null, $string_ids = null, $count = 0)
+	public function getFollowerIds($user, $cursor = null, $stringIds = null, $count = 0)
 	{
 		// Check the rate limit for remaining hits
 		$this->checkRateLimit('followers', 'ids');
@@ -128,9 +128,9 @@ class Followers extends Object
 		}
 
 		// Check if string_ids is specified
-		if (!is_null($string_ids))
+		if (!is_null($stringIds))
 		{
-			$data['stringify_ids'] = $string_ids;
+			$data['stringify_ids'] = $stringIds;
 		}
 
 		// Check if count is specified

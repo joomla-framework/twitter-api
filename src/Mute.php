@@ -110,16 +110,16 @@ class Mute extends Object
 	/**
 	 * Method to get a list of muted users
 	 *
-	 * @param   integer  $cursor       Breaks the results into pages. A single page contains 20 lists. Provide a value of -1 to begin paging.
-	 * @param   boolean  $entities     When set to either true, t or 1, each user will include a node called "entities". This node offers a variety
-	 *                                 of metadata about the user in a discreet structure.
-	 * @param   boolean  $skip_status  When set to either true, t or 1 statuses will not be included in the returned user objects.
+	 * @param   integer  $cursor      Breaks the results into pages. A single page contains 20 lists. Provide a value of -1 to begin paging.
+	 * @param   boolean  $entities    When set to either true, t or 1, each user will include a node called "entities". This node offers a variety
+	 *                                of metadata about the user in a discreet structure.
+	 * @param   boolean  $skipStatus  When set to either true, t or 1 statuses will not be included in the returned user objects.
 	 *
 	 * @return  array  The decoded JSON response
 	 *
 	 * @since   1.2.0
 	 */
-	public function getMutedUsers($cursor = null, $entities = null, $skip_status = null)
+	public function getMutedUsers($cursor = null, $entities = null, $skipStatus = null)
 	{
 		// Check if cursor is specified
 		if (!is_null($cursor))
@@ -134,9 +134,9 @@ class Mute extends Object
 		}
 
 		// Check if skip_status is specified
-		if (!is_null($skip_status))
+		if (!is_null($skipStatus))
 		{
-			$data['skip_status'] = $skip_status;
+			$data['skip_status'] = $skipStatus;
 		}
 
 		// Set the API path

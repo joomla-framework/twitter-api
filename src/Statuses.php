@@ -18,19 +18,19 @@ class Statuses extends Object
 	/**
 	 * Method to get a single tweet with the given ID.
 	 *
-	 * @param   integer  $id          The ID of the tweet to retrieve.
-	 * @param   boolean  $trim_user   When set to true, each tweet returned in a timeline will include a user object including only
-	 *                                the status author's numerical ID.
-	 * @param   boolean  $entities    When set to true,  each tweet will include a node called "entities,". This node offers a variety of metadata
-	 *                                about the tweet in a discreet structure, including: user_mentions, urls, and hashtags.
-	 * @param   boolean  $my_retweet  When set to either true, t or 1, any statuses returned that have been retweeted by the authenticating user will
-	 *                                include an additional current_user_retweet node, containing the ID of the source status for the retweet.
+	 * @param   integer  $id         The ID of the tweet to retrieve.
+	 * @param   boolean  $trimUser   When set to true, each tweet returned in a timeline will include a user object including only
+	 *                               the status author's numerical ID.
+	 * @param   boolean  $entities   When set to true,  each tweet will include a node called "entities,". This node offers a variety of metadata
+	 *                               about the tweet in a discreet structure, including: user_mentions, urls, and hashtags.
+	 * @param   boolean  $myRetweet  When set to either true, t or 1, any statuses returned that have been retweeted by the authenticating user will
+	 *                               include an additional current_user_retweet node, containing the ID of the source status for the retweet.
 	 *
 	 * @return  array  The decoded JSON response
 	 *
 	 * @since   1.0
 	 */
-	public function getTweetById($id, $trim_user = null, $entities = null, $my_retweet = null)
+	public function getTweetById($id, $trimUser = null, $entities = null, $myRetweet = null)
 	{
 		// Check the rate limit for remaining hits
 		$this->checkRateLimit("statuses", "show/:id");
@@ -41,9 +41,9 @@ class Statuses extends Object
 		$data = array();
 
 		// Check if trim_user is specified
-		if (!is_null($trim_user))
+		if (!is_null($trimUser))
 		{
-			$data['trim_user'] = $trim_user;
+			$data['trim_user'] = $trimUser;
 		}
 
 		// Check if entities is specified
@@ -53,9 +53,9 @@ class Statuses extends Object
 		}
 
 		// Check if my_retweet is specified
-		if (!is_null($my_retweet))
+		if (!is_null($myRetweet))
 		{
-			$data['include_my_retweet'] = $my_retweet;
+			$data['include_my_retweet'] = $myRetweet;
 		}
 
 		// Send the request.
@@ -67,13 +67,13 @@ class Statuses extends Object
 	 *
 	 * @param   mixed    $user         Either an integer containing the user ID or a string containing the screen name.
 	 * @param   integer  $count        Specifies the number of tweets to try and retrieve, up to a maximum of 200.  Retweets are always included
-	 *                                 in the count, so it is always suggested to set $include_rts to true
-	 * @param   boolean  $include_rts  When set to true, the timeline will contain native retweets in addition to the standard stream of tweets.
-	 * @param   boolean  $no_replies   This parameter will prevent replies from appearing in the returned timeline. This parameter is only supported
+	 *                                 in the count, so it is always suggested to set $includeRts to true
+	 * @param   boolean  $includeRts   When set to true, the timeline will contain native retweets in addition to the standard stream of tweets.
+	 * @param   boolean  $noReplies    This parameter will prevent replies from appearing in the returned timeline. This parameter is only supported
 	 *                                 for JSON and XML responses.
-	 * @param   integer  $since_id     Returns results with an ID greater than (that is, more recent than) the specified ID.
-	 * @param   integer  $max_id       Returns results with an ID less than (that is, older than) the specified ID.
-	 * @param   boolean  $trim_user    When set to true, each tweet returned in a timeline will include a user object including only
+	 * @param   integer  $sinceId      Returns results with an ID greater than (that is, more recent than) the specified ID.
+	 * @param   integer  $maxId        Returns results with an ID less than (that is, older than) the specified ID.
+	 * @param   boolean  $trimUser     When set to true, each tweet returned in a timeline will include a user object including only
 	 *                                 the status author's numerical ID.
 	 * @param   boolean  $contributor  This parameter enhances the contributors element of the status response to include the screen_name of the
 	 *                                 contributor. By default only the user_id of the contributor is included.
@@ -83,8 +83,9 @@ class Statuses extends Object
 	 * @since   1.0
 	 * @throws  \RuntimeException
 	 */
-	public function getUserTimeline($user, $count = 20, $include_rts = null, $no_replies = null, $since_id = 0, $max_id = 0, $trim_user = null,
-		$contributor = null)
+	public function getUserTimeline($user, $count = 20, $includeRts = null, $noReplies = null, $sinceId = 0, $maxId = 0, $trimUser = null,
+		$contributor = null
+	)
 	{
 		// Check the rate limit for remaining hits
 		$this->checkRateLimit('statuses', 'user_timeline');
@@ -113,33 +114,33 @@ class Statuses extends Object
 		$data['count'] = $count;
 
 		// Check if include_rts is specified
-		if (!is_null($include_rts))
+		if (!is_null($includeRts))
 		{
-			$data['include_rts'] = $include_rts;
+			$data['include_rts'] = $includeRts;
 		}
 
 		// Check if no_replies is specified
-		if (!is_null($no_replies))
+		if (!is_null($noReplies))
 		{
-			$data['exclude_replies'] = $no_replies;
+			$data['exclude_replies'] = $noReplies;
 		}
 
 		// Check if a since_id is specified
-		if ($since_id > 0)
+		if ($sinceId > 0)
 		{
-			$data['since_id'] = (int) $since_id;
+			$data['since_id'] = (int) $sinceId;
 		}
 
 		// Check if a max_id is specified
-		if ($max_id > 0)
+		if ($maxId > 0)
 		{
-			$data['max_id'] = (int) $max_id;
+			$data['max_id'] = (int) $maxId;
 		}
 
 		// Check if trim_user is specified
-		if (!is_null($trim_user))
+		if (!is_null($trimUser))
 		{
-			$data['trim_user'] = $trim_user;
+			$data['trim_user'] = $trimUser;
 		}
 
 		// Check if contributor details is specified
@@ -157,12 +158,12 @@ class Statuses extends Object
 	 *   The home timeline is central to how most users interact with the Twitter service.
 	 *
 	 * @param   integer  $count        Specifies the number of tweets to try and retrieve, up to a maximum of 200.  Retweets are always included
-	 *                                 in the count, so it is always suggested to set $include_rts to true
-	 * @param   boolean  $no_replies   This parameter will prevent replies from appearing in the returned timeline. This parameter is only supported
+	 *                                 in the count, so it is always suggested to set $includeRts to true
+	 * @param   boolean  $noReplies    This parameter will prevent replies from appearing in the returned timeline. This parameter is only supported
 	 *                                 for JSON and XML responses.
-	 * @param   integer  $since_id     Returns results with an ID greater than (that is, more recent than) the specified ID.
-	 * @param   integer  $max_id       Returns results with an ID less than (that is, older than) the specified ID.
-	 * @param   boolean  $trim_user    When set to true, each tweet returned in a timeline will include a user object including only
+	 * @param   integer  $sinceId      Returns results with an ID greater than (that is, more recent than) the specified ID.
+	 * @param   integer  $maxId        Returns results with an ID less than (that is, older than) the specified ID.
+	 * @param   boolean  $trimUser     When set to true, each tweet returned in a timeline will include a user object including only
 	 *                                 the status author's numerical ID.
 	 * @param   boolean  $contributor  This parameter enhances the contributors element of the status response to include the screen_name of the
 	 *                                 contributor. By default only the user_id of the contributor is included.
@@ -173,8 +174,7 @@ class Statuses extends Object
 	 * @since   1.2.0
 	 * @throws  \RuntimeException
 	 */
-	public function getHomeTimeline($count = 20, $no_replies = null, $since_id = 0, $max_id = 0, $trim_user = null, $contributor = null,
-		$entities = null)
+	public function getHomeTimeline($count = 20, $noReplies = null, $sinceId = 0, $maxId = 0, $trimUser = null, $contributor = null, $entities = null)
 	{
 		// Check the rate limit for remaining hits
 		$this->checkRateLimit('statuses', 'home_timeline');
@@ -188,27 +188,27 @@ class Statuses extends Object
 		$data['count'] = $count;
 
 		// Check if no_replies is specified
-		if (!is_null($no_replies))
+		if (!is_null($noReplies))
 		{
-			$data['exclude_replies'] = $no_replies;
+			$data['exclude_replies'] = $noReplies;
 		}
 
 		// Check if a since_id is specified
-		if ($since_id > 0)
+		if ($sinceId > 0)
 		{
-			$data['since_id'] = (int) $since_id;
+			$data['since_id'] = (int) $sinceId;
 		}
 
 		// Check if a max_id is specified
-		if ($max_id > 0)
+		if ($maxId > 0)
 		{
-			$data['max_id'] = (int) $max_id;
+			$data['max_id'] = (int) $maxId;
 		}
 
 		// Check if trim_user is specified
-		if (!is_null($trim_user))
+		if (!is_null($trimUser))
 		{
-			$data['trim_user'] = $trim_user;
+			$data['trim_user'] = $trimUser;
 		}
 
 		// Check if contributor details is specified
@@ -230,21 +230,22 @@ class Statuses extends Object
 	/**
 	 * Method to post a tweet.
 	 *
-	 * @param   string   $status                 The text of the tweet.
-	 * @param   integer  $in_reply_to_status_id  The ID of an existing status that the update is in reply to.
-	 * @param   float    $lat                    The latitude of the location this tweet refers to.
-	 * @param   float    $long                   The longitude of the location this tweet refers to.
-	 * @param   string   $place_id               A place in the world.
-	 * @param   boolean  $display_coordinates    Whether or not to put a pin on the exact coordinates a tweet has been sent from.
-	 * @param   boolean  $trim_user              When set to true, each tweet returned in a timeline will include a user object including only
-	 *                                           the status author's numerical ID.
+	 * @param   string   $status              The text of the tweet.
+	 * @param   integer  $inReplyToStatusId   The ID of an existing status that the update is in reply to.
+	 * @param   float    $lat                 The latitude of the location this tweet refers to.
+	 * @param   float    $long                The longitude of the location this tweet refers to.
+	 * @param   string   $placeId             A place in the world.
+	 * @param   boolean  $displayCoordinates  Whether or not to put a pin on the exact coordinates a tweet has been sent from.
+	 * @param   boolean  $trimUser            When set to true, each tweet returned in a timeline will include a user object including only the status
+	 *                                        author's numerical ID.
 	 *
 	 * @return  array  The decoded JSON response
 	 *
 	 * @since   1.0
 	 */
-	public function tweet($status, $in_reply_to_status_id = null, $lat = null, $long = null, $place_id = null, $display_coordinates = null,
-		$trim_user = null)
+	public function tweet($status, $inReplyToStatusId = null, $lat = null, $long = null, $placeId = null, $displayCoordinates = null,
+		$trimUser = null
+	)
 	{
 		// Set the API base.
 		$path = '/statuses/update.json';
@@ -253,9 +254,9 @@ class Statuses extends Object
 		$data = array('status' => utf8_encode($status));
 
 		// Check if in_reply_to_status_id is specified.
-		if ($in_reply_to_status_id)
+		if ($inReplyToStatusId)
 		{
-			$data['in_reply_to_status_id'] = $in_reply_to_status_id;
+			$data['in_reply_to_status_id'] = $inReplyToStatusId;
 		}
 
 		// Check if lat is specified.
@@ -271,21 +272,21 @@ class Statuses extends Object
 		}
 
 		// Check if place_id is specified.
-		if ($place_id)
+		if ($placeId)
 		{
-			$data['place_id'] = $place_id;
+			$data['place_id'] = $placeId;
 		}
 
 		// Check if display_coordinates is specified.
-		if (!is_null($display_coordinates))
+		if (!is_null($displayCoordinates))
 		{
-			$data['display_coordinates'] = $display_coordinates;
+			$data['display_coordinates'] = $displayCoordinates;
 		}
 
 		// Check if trim_user is specified.
-		if (!is_null($trim_user))
+		if (!is_null($trimUser))
 		{
-			$data['trim_user'] = $trim_user;
+			$data['trim_user'] = $trimUser;
 		}
 
 		// Send the request.
@@ -296,24 +297,23 @@ class Statuses extends Object
 	 * Method to retrieve the most recent mentions for the authenticating user.
 	 *
 	 * @param   integer  $count        Specifies the number of tweets to try and retrieve, up to a maximum of 200.  Retweets are always included
-	 *                                 in the count, so it is always suggested to set $include_rts to true
-	 * @param   boolean  $include_rts  When set to true, the timeline will contain native retweets in addition to the standard stream of tweets.
+	 *                                 in the count, so it is always suggested to set $includeRts to true
+	 * @param   boolean  $includeRts   When set to true, the timeline will contain native retweets in addition to the standard stream of tweets.
 	 * @param   boolean  $entities     When set to true,  each tweet will include a node called "entities,". This node offers a variety of metadata
 	 *                                 about the tweet in a discreet structure, including: user_mentions, urls, and hashtags.
-	 * @param   integer  $since_id     Returns results with an ID greater than (that is, more recent than) the specified ID.
-	 * @param   integer  $max_id       Returns results with an ID less than (that is, older than) the specified ID.
-	 * @param   boolean  $trim_user    When set to true, each tweet returned in a timeline will include a user object including only
+	 * @param   integer  $sinceId      Returns results with an ID greater than (that is, more recent than) the specified ID.
+	 * @param   integer  $maxId        Returns results with an ID less than (that is, older than) the specified ID.
+	 * @param   boolean  $trimUser     When set to true, each tweet returned in a timeline will include a user object including only
 	 *                                 the status author's numerical ID.
-	 * @param   string   $contributor  This parameter enhances the contributors element of the status response to include the screen_name
-	 *                                  of the contributor.
+	 * @param   string   $contributor  This parameter enhances the contributors element of the status response to include the screen_name of the
+	 *                                 contributor.
 	 *
 	 * @return  array  The decoded JSON response
 	 *
 	 * @since   1.0
 	 * @throws  \RuntimeException
 	 */
-	public function getMentions($count = 20, $include_rts = null, $entities = null, $since_id = 0, $max_id = 0,
-		$trim_user = null, $contributor = null)
+	public function getMentions($count = 20, $includeRts = null, $entities = null, $sinceId = 0, $maxId = 0, $trimUser = null, $contributor = null)
 	{
 		// Check the rate limit for remaining hits
 		$this->checkRateLimit('statuses', 'mentions_timeline');
@@ -325,9 +325,9 @@ class Statuses extends Object
 		$data['count'] = $count;
 
 		// Check if include_rts is specified
-		if (!is_null($include_rts))
+		if (!is_null($includeRts))
 		{
-			$data['include_rts'] = $include_rts;
+			$data['include_rts'] = $includeRts;
 		}
 
 		// Check if entities is specified
@@ -337,21 +337,21 @@ class Statuses extends Object
 		}
 
 		// Check if a since_id is specified
-		if ($since_id > 0)
+		if ($sinceId > 0)
 		{
-			$data['since_id'] = (int) $since_id;
+			$data['since_id'] = (int) $sinceId;
 		}
 
 		// Check if a max_id is specified
-		if ($max_id > 0)
+		if ($maxId > 0)
 		{
-			$data['max_id'] = (int) $max_id;
+			$data['max_id'] = (int) $maxId;
 		}
 
 		// Check if trim_user is specified
-		if (!is_null($trim_user))
+		if (!is_null($trimUser))
 		{
-			$data['trim_user'] = $trim_user;
+			$data['trim_user'] = $trimUser;
 		}
 
 		// Check if contributor is specified
@@ -367,21 +367,21 @@ class Statuses extends Object
 	/**
 	 * Method to get the most recent tweets of the authenticated user that have been retweeted by others.
 	 *
-	 * @param   integer  $count          Specifies the number of tweets to try and retrieve, up to a maximum of 200.  Retweets are always included
-	 *                                   in the count, so it is always suggested to set $include_rts to true
-	 * @param   integer  $since_id       Returns results with an ID greater than (that is, more recent than) the specified ID.
-	 * @param   boolean  $entities       When set to true,  each tweet will include a node called "entities,". This node offers a variety of metadata
-	 *                                   about the tweet in a discreet structure, including: user_mentions, urls, and hashtags.
-	 * @param   boolean  $user_entities  The user entities node will be disincluded when set to false.
-	 * @param   integer  $max_id         Returns results with an ID less than (that is, older than) the specified ID.
-	 * @param   boolean  $trim_user      When set to true, each tweet returned in a timeline will include a user object including only
-	 *                                   the status author's numerical ID.
+	 * @param   integer  $count         Specifies the number of tweets to try and retrieve, up to a maximum of 200.  Retweets are always included
+	 *                                  in the count, so it is always suggested to set $includeRts to true
+	 * @param   integer  $sinceId       Returns results with an ID greater than (that is, more recent than) the specified ID.
+	 * @param   boolean  $entities      When set to true,  each tweet will include a node called "entities,". This node offers a variety of metadata
+	 *                                  about the tweet in a discreet structure, including: user_mentions, urls, and hashtags.
+	 * @param   boolean  $userEntities  The user entities node will be disincluded when set to false.
+	 * @param   integer  $maxId         Returns results with an ID less than (that is, older than) the specified ID.
+	 * @param   boolean  $trimUser      When set to true, each tweet returned in a timeline will include a user object including only the status
+	 *                                  author's numerical ID.
 	 *
 	 * @return  array  The decoded JSON response
 	 *
 	 * @since   1.0
 	 */
-	public function getRetweetsOfMe($count = 20, $since_id = 0, $entities = null, $user_entities = null, $max_id = 0, $trim_user = null)
+	public function getRetweetsOfMe($count = 20, $sinceId = 0, $entities = null, $userEntities = null, $maxId = 0, $trimUser = null)
 	{
 		// Check the rate limit for remaining hits
 		$this->checkRateLimit('statuses', 'retweets_of_me');
@@ -393,21 +393,21 @@ class Statuses extends Object
 		$data['count'] = $count;
 
 		// Check if a since_id is specified
-		if ($since_id > 0)
+		if ($sinceId > 0)
 		{
-			$data['since_id'] = (int) $since_id;
+			$data['since_id'] = (int) $sinceId;
 		}
 
 		// Check if a max_id is specified
-		if ($max_id > 0)
+		if ($maxId > 0)
 		{
-			$data['max_id'] = (int) $max_id;
+			$data['max_id'] = (int) $maxId;
 		}
 
 		// Check if trim_user is specified
-		if (!is_null($trim_user))
+		if (!is_null($trimUser))
 		{
-			$data['trim_user'] = $trim_user;
+			$data['trim_user'] = $trimUser;
 		}
 
 		// Check if entities is specified
@@ -417,9 +417,9 @@ class Statuses extends Object
 		}
 
 		// Check if entities is specified
-		if (!is_null($user_entities))
+		if (!is_null($userEntities))
 		{
-			$data['include_user_entities'] = $user_entities;
+			$data['include_user_entities'] = $userEntities;
 		}
 
 		// Send the request.
@@ -429,19 +429,18 @@ class Statuses extends Object
 	/**
 	 * Method to show user objects of up to 100 members who retweeted the status.
 	 *
-	 * @param   integer  $id             The numerical ID of the desired status.
-	 * @param   integer  $count          Specifies the number of retweets to try and retrieve, up to a maximum of 100.
-	 * @param   integer  $cursor         Causes the list of IDs to be broken into pages of no more than 100 IDs at a time.
-	 *                                   The number of IDs returned is not guaranteed to be 100 as suspended users are
-	 *                                   filtered out after connections are queried. If no cursor is provided, a value of
-	 *                                   -1 will be assumed, which is the first "page."
-	 * @param   boolean  $stringify_ids  Set to true to return IDs as strings, false to return as integers.
+	 * @param   integer  $id            The numerical ID of the desired status.
+	 * @param   integer  $count         Specifies the number of retweets to try and retrieve, up to a maximum of 100.
+	 * @param   integer  $cursor        Causes the list of IDs to be broken into pages of no more than 100 IDs at a time.
+	 *                                  The number of IDs returned is not guaranteed to be 100 as suspended users are filtered out after connections
+	 *                                  are queried. If no cursor is provided, a value of -1 will be assumed, which is the first "page."
+	 * @param   boolean  $stringifyIds  Set to true to return IDs as strings, false to return as integers.
 	 *
 	 * @return  array  The decoded JSON response
 	 *
 	 * @since   1.0
 	 */
-	public function getRetweeters($id, $count = 20, $cursor = null, $stringify_ids = null)
+	public function getRetweeters($id, $count = 20, $cursor = null, $stringifyIds = null)
 	{
 		// Check the rate limit for remaining hits
 		$this->checkRateLimit('statuses', 'retweeters/ids');
@@ -462,9 +461,9 @@ class Statuses extends Object
 		}
 
 		// Check if entities is specified
-		if (!is_null($stringify_ids))
+		if (!is_null($stringifyIds))
 		{
-			$data['stringify_ids'] = $stringify_ids;
+			$data['stringify_ids'] = $stringifyIds;
 		}
 
 		// Send the request.
@@ -474,17 +473,17 @@ class Statuses extends Object
 	/**
 	 * Method to get up to 100 of the first retweets of a given tweet.
 	 *
-	 * @param   integer  $id         The numerical ID of the desired status.
-	 * @param   integer  $count      Specifies the number of tweets to try and retrieve, up to a maximum of 200.  Retweets are always included
-	 *                               in the count, so it is always suggested to set $include_rts to true
-	 * @param   boolean  $trim_user  When set to true, each tweet returned in a timeline will include a user object including only
-	 *                               the status author's numerical ID.
+	 * @param   integer  $id        The numerical ID of the desired status.
+	 * @param   integer  $count     Specifies the number of tweets to try and retrieve, up to a maximum of 200.  Retweets are always included in the
+	 *                              count, so it is always suggested to set $includeRts to true
+	 * @param   boolean  $trimUser  When set to true, each tweet returned in a timeline will include a user object including only the status author's
+	 *                              numerical ID.
 	 *
 	 * @return  array  The decoded JSON response
 	 *
 	 * @since   1.0
 	 */
-	public function getRetweetsById($id, $count = 20, $trim_user = null)
+	public function getRetweetsById($id, $count = 20, $trimUser = null)
 	{
 		// Check the rate limit for remaining hits
 		$this->checkRateLimit('statuses', 'retweets/:id');
@@ -496,9 +495,9 @@ class Statuses extends Object
 		$data['count'] = $count;
 
 		// Check if trim_user is specified
-		if (!is_null($trim_user))
+		if (!is_null($trimUser))
 		{
-			$data['trim_user'] = $trim_user;
+			$data['trim_user'] = $trimUser;
 		}
 
 		// Send the request.
@@ -508,15 +507,15 @@ class Statuses extends Object
 	/**
 	 * Method to delete the status specified by the required ID parameter.
 	 *
-	 * @param   integer  $id         The numerical ID of the desired status.
-	 * @param   boolean  $trim_user  When set to true, each tweet returned in a timeline will include a user object including only
-	 *                               the status author's numerical ID.
+	 * @param   integer  $id        The numerical ID of the desired status.
+	 * @param   boolean  $trimUser  When set to true, each tweet returned in a timeline will include a user object including only the status author's
+	 *                              numerical ID.
 	 *
 	 * @return  array  The decoded JSON response
 	 *
 	 * @since   1.0
 	 */
-	public function deleteTweet($id, $trim_user = null)
+	public function deleteTweet($id, $trimUser = null)
 	{
 		// Set the API path
 		$path = '/statuses/destroy/' . $id . '.json';
@@ -524,9 +523,9 @@ class Statuses extends Object
 		$data = array();
 
 		// Check if trim_user is specified
-		if (!is_null($trim_user))
+		if (!is_null($trimUser))
 		{
-			$data['trim_user'] = $trim_user;
+			$data['trim_user'] = $trimUser;
 		}
 
 		// Send the request.
@@ -536,15 +535,15 @@ class Statuses extends Object
 	/**
 	 * Method to retweet a tweet.
 	 *
-	 * @param   integer  $id         The numerical ID of the desired status.
-	 * @param   boolean  $trim_user  When set to true, each tweet returned in a timeline will include a user object including only
-	 *                               the status author's numerical ID.
+	 * @param   integer  $id        The numerical ID of the desired status.
+	 * @param   boolean  $trimUser  When set to true, each tweet returned in a timeline will include a user object including only the status author's
+	 *                              numerical ID.
 	 *
 	 * @return  array  The decoded JSON response
 	 *
 	 * @since   1.0
 	 */
-	public function retweet($id, $trim_user = null)
+	public function retweet($id, $trimUser = null)
 	{
 		// Set the API path
 		$path = '/statuses/retweet/' . $id . '.json';
@@ -552,9 +551,9 @@ class Statuses extends Object
 		$data = array();
 
 		// Check if trim_user is specified
-		if (!is_null($trim_user))
+		if (!is_null($trimUser))
 		{
-			$data['trim_user'] = $trim_user;
+			$data['trim_user'] = $trimUser;
 		}
 
 		// Send the request.
@@ -564,22 +563,23 @@ class Statuses extends Object
 	/**
 	 * Method to post a tweet with media.
 	 *
-	 * @param   string   $status                 The text of the tweet.
-	 * @param   string   $media                  File to upload
-	 * @param   integer  $in_reply_to_status_id  The ID of an existing status that the update is in reply to.
-	 * @param   float    $lat                    The latitude of the location this tweet refers to.
-	 * @param   float    $long                   The longitude of the location this tweet refers to.
-	 * @param   string   $place_id               A place in the world.
-	 * @param   boolean  $display_coordinates    Whether or not to put a pin on the exact coordinates a tweet has been sent from.
-	 * @param   boolean  $sensitive              Set to true for content which may not be suitable for every audience.
+	 * @param   string   $status              The text of the tweet.
+	 * @param   string   $media               File to upload
+	 * @param   integer  $inReplyToStatusId   The ID of an existing status that the update is in reply to.
+	 * @param   float    $lat                 The latitude of the location this tweet refers to.
+	 * @param   float    $long                The longitude of the location this tweet refers to.
+	 * @param   string   $placeId             A place in the world.
+	 * @param   boolean  $displayCoordinates  Whether or not to put a pin on the exact coordinates a tweet has been sent from.
+	 * @param   boolean  $sensitive           Set to true for content which may not be suitable for every audience.
 	 *
 	 * @return  array  The decoded JSON response
 	 *
 	 * @since   1.0
 	 * @throws  \RuntimeException
 	 */
-	public function tweetWithMedia($status, $media, $in_reply_to_status_id = null, $lat = null, $long = null, $place_id = null,
-		$display_coordinates = null, $sensitive = null)
+	public function tweetWithMedia($status, $media, $inReplyToStatusId = null, $lat = null, $long = null, $placeId = null,
+		$displayCoordinates = null, $sensitive = null
+	)
 	{
 		// Set the API request path.
 		$path = '/statuses/update_with_media.json';
@@ -593,9 +593,9 @@ class Statuses extends Object
 		$header = array('Content-Type' => 'multipart/form-data');
 
 		// Check if in_reply_to_status_id is specified.
-		if (!is_null($in_reply_to_status_id))
+		if (!is_null($inReplyToStatusId))
 		{
-			$data['in_reply_to_status_id'] = $in_reply_to_status_id;
+			$data['in_reply_to_status_id'] = $inReplyToStatusId;
 		}
 
 		// Check if lat is specified.
@@ -611,15 +611,15 @@ class Statuses extends Object
 		}
 
 		// Check if place_id is specified.
-		if ($place_id)
+		if ($placeId)
 		{
-			$data['place_id'] = $place_id;
+			$data['place_id'] = $placeId;
 		}
 
 		// Check if display_coordinates is specified.
-		if (!is_null($display_coordinates))
+		if (!is_null($displayCoordinates))
 		{
-			$data['display_coordinates'] = $display_coordinates;
+			$data['display_coordinates'] = $displayCoordinates;
 		}
 
 		// Check if sensitive is specified.
@@ -636,30 +636,31 @@ class Statuses extends Object
 	 * Method to get information allowing the creation of an embedded representation of a Tweet on third party sites.
 	 * Note: either the id or url parameters must be specified in a request. It is not necessary to include both.
 	 *
-	 * @param   integer  $id           The Tweet/status ID to return embed code for.
-	 * @param   string   $url          The URL of the Tweet/status to be embedded.
-	 * @param   integer  $maxwidth     The maximum width in pixels that the embed should be rendered at. This value is constrained to be
-	 *                                 between 250 and 550 pixels.
-	 * @param   boolean  $hide_media   Specifies whether the embedded Tweet should automatically expand images which were uploaded via
-	 *                                 POST statuses/update_with_media.
-	 * @param   boolean  $hide_thread  Specifies whether the embedded Tweet should automatically show the original message in the case that
-	 *                                 the embedded Tweet is a reply.
-	 * @param   boolean  $omit_script  Specifies whether the embedded Tweet HTML should include a <script> element pointing to widgets.js.
-	 *                                 In cases where a page already includes widgets.js, setting this value to true will prevent a redundant
-	 *                                 script element from being included.
-	 * @param   string   $align        Specifies whether the embedded Tweet should be left aligned, right aligned, or centered in the page.
-	 *                                 Valid values are left, right, center, and none.
-	 * @param   string   $related      A value for the TWT related parameter, as described in Web Intents. This value will be forwarded to all
-	 *                                 Web Intents calls.
-	 * @param   string   $lang         Language code for the rendered embed. This will affect the text and localization of the rendered HTML.
+	 * @param   integer  $id          The Tweet/status ID to return embed code for.
+	 * @param   string   $url         The URL of the Tweet/status to be embedded.
+	 * @param   integer  $maxwidth    The maximum width in pixels that the embed should be rendered at. This value is constrained to be
+	 *                                between 250 and 550 pixels.
+	 * @param   boolean  $hideMedia   Specifies whether the embedded Tweet should automatically expand images which were uploaded via
+	 *                                POST statuses/update_with_media.
+	 * @param   boolean  $hideThread  Specifies whether the embedded Tweet should automatically show the original message in the case that
+	 *                                the embedded Tweet is a reply.
+	 * @param   boolean  $omitScript  Specifies whether the embedded Tweet HTML should include a <script> element pointing to widgets.js.
+	 *                                In cases where a page already includes widgets.js, setting this value to true will prevent a redundant
+	 *                                script element from being included.
+	 * @param   string   $align       Specifies whether the embedded Tweet should be left aligned, right aligned, or centered in the page.
+	 *                                Valid values are left, right, center, and none.
+	 * @param   string   $related     A value for the TWT related parameter, as described in Web Intents. This value will be forwarded to all
+	 *                                Web Intents calls.
+	 * @param   string   $lang        Language code for the rendered embed. This will affect the text and localization of the rendered HTML.
 	 *
 	 * @return  array  The decoded JSON response
 	 *
 	 * @since   1.0
 	 * @throws  \RuntimeException
 	 */
-	public function getOembed($id = null, $url = null, $maxwidth = null, $hide_media = null, $hide_thread = null, $omit_script = null,
-		$align = null, $related = null, $lang = null)
+	public function getOembed($id = null, $url = null, $maxwidth = null, $hideMedia = null, $hideThread = null, $omitScript = null,
+		$align = null, $related = null, $lang = null
+	)
 	{
 		// Check the rate limit for remaining hits.
 		$this->checkRateLimit('statuses', 'oembed');
@@ -689,21 +690,21 @@ class Statuses extends Object
 		}
 
 		// Check if hide_media is specified.
-		if (!is_null($hide_media))
+		if (!is_null($hideMedia))
 		{
-			$data['hide_media'] = $hide_media;
+			$data['hide_media'] = $hideMedia;
 		}
 
 		// Check if hide_thread is specified.
-		if (!is_null($hide_thread))
+		if (!is_null($hideThread))
 		{
-			$data['hide_thread'] = $hide_thread;
+			$data['hide_thread'] = $hideThread;
 		}
 
 		// Check if omit_script is specified.
-		if (!is_null($omit_script))
+		if (!is_null($omitScript))
 		{
-			$data['omit_script'] = $omit_script;
+			$data['omit_script'] = $omitScript;
 		}
 
 		// Check if align is specified.
