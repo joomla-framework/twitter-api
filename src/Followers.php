@@ -11,7 +11,8 @@ namespace Joomla\Twitter;
 /**
  * Twitter API Followers class for the Joomla Framework.
  *
- * @since  1.2.0
+ * @since       1.2.0
+ * @deprecated  The joomla/twitter package is deprecated
  */
 class Followers extends Object
 {

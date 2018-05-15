@@ -11,7 +11,8 @@ namespace Joomla\Twitter;
 /**
  * Twitter API Favorites class for the Joomla Framework.
  *
- * @since  1.0
+ * @since       1.0
+ * @deprecated  The joomla/twitter package is deprecated
  */
 class Favorites extends Object
 {

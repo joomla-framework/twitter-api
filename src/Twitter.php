@@ -13,7 +13,8 @@ use Joomla\Http\Http;
 /**
  * Joomla Framework class for interacting with a Twitter API instance.
  *
- * @since  1.0
+ * @since       1.0
+ * @deprecated  The joomla/twitter package is deprecated
  */
 class Twitter
 {

@@ -14,7 +14,8 @@ use Joomla\Uri\Uri;
 /**
  * Twitter API object class for the Joomla Framework.
  *
- * @since  __DEPLOY_VERSION__
+ * @since       __DEPLOY_VERSION__
+ * @deprecated  The joomla/twitter package is deprecated
  */
 abstract class AbstractTwitterObject
 {
