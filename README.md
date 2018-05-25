@@ -1,5 +1,9 @@
 ## The Twitter Package [![Build Status](https://travis-ci.org/joomla-framework/twitter-api.png?branch=master)](https://travis-ci.org/joomla-framework/twitter-api)
 
+### Deprecated
+
+The `joomla/twitter` package is deprecated with no further updates planned.
+
 ### Using the Twitter Package
 
 The Twitter package is designed to be a straightforward interface for working with Twitter. It is based on the REST API. You can find documentation on the API at [https://dev.twitter.com/docs/api](https://dev.twitter.com/docs/api).

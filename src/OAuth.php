@@ -2,7 +2,7 @@
 /**
  * Part of the Joomla Framework Twitter Package
  *
- * @copyright  Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
+ * @copyright  Copyright (C) 2005 - 2018 Open Source Matters, Inc. All rights reserved.
  * @license    GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -16,7 +16,8 @@ use Joomla\Application\AbstractWebApplication;
 /**
  * Joomla Framework class for generating Twitter API access token.
  *
- * @since  1.0
+ * @since       1.0
+ * @deprecated  The joomla/twitter package is deprecated
  */
 class OAuth extends Client
 {

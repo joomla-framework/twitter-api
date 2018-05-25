@@ -2,7 +2,7 @@
 /**
  * Part of the Joomla Twitter Facebook Package
  *
- * @copyright  Copyright (C) 2005 - 2017 Open Source Matters, Inc. All rights reserved.
+ * @copyright  Copyright (C) 2005 - 2018 Open Source Matters, Inc. All rights reserved.
  * @license    GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -14,7 +14,8 @@ use Joomla\Uri\Uri;
 /**
  * Twitter API object class for the Joomla Framework.
  *
- * @since  __DEPLOY_VERSION__
+ * @since       __DEPLOY_VERSION__
+ * @deprecated  The joomla/twitter package is deprecated
  */
 abstract class AbstractTwitterObject
 {
