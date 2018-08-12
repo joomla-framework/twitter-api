@@ -137,7 +137,7 @@ class Twitter
 	 */
 	public function __construct(OAuth $oauth = null, $options = array(), Http $client = null)
 	{
-		$this->oauth = $oauth;
+		$this->oauth   = $oauth;
 		$this->options = $options;
 		$this->client  = $client;
 

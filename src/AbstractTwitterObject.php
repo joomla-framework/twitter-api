@@ -49,8 +49,8 @@ abstract class AbstractTwitterObject
 	public function __construct(&$options, Http $client, OAuth $oauth)
 	{
 		$this->options = $options;
-		$this->client = $client;
-		$this->oauth = $oauth;
+		$this->client  = $client;
+		$this->oauth   = $oauth;
 	}
 
 	/**
@@ -121,7 +121,7 @@ abstract class AbstractTwitterObject
 		if (strpos($path, 'http://search.twitter.com/search.json') === false)
 		{
 			$apiUrl = isset($this->options['api.url']) ? $this->options['api.url'] : null;
-			$uri = new Uri($apiUrl . $path);
+			$uri    = new Uri($apiUrl . $path);
 		}
 		else
 		{
@@ -147,7 +147,7 @@ abstract class AbstractTwitterObject
 
 		if (!is_null($resource))
 		{
-			return $this->sendRequest($path, 'GET',  array('resources' => $resource));
+			return $this->sendRequest($path, 'GET', array('resources' => $resource));
 		}
 
 		return $this->sendRequest($path);

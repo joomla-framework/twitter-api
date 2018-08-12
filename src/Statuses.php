@@ -587,8 +587,8 @@ class Statuses extends Object
 
 		// Set POST data.
 		$data = array(
-			'status' => utf8_encode($status),
-			'media[]' => "@{$media}"
+			'status'  => utf8_encode($status),
+			'media[]' => "@{$media}",
 		);
 
 		$header = array('Content-Type' => 'multipart/form-data');

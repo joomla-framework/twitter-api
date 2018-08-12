@@ -62,7 +62,7 @@ class Places extends Object
 		$path = '/geo/reverse_geocode.json';
 
 		// Set the request parameters
-		$data['lat'] = $lat;
+		$data['lat']  = $lat;
 		$data['long'] = $long;
 
 		// Check if accuracy is specified
@@ -217,7 +217,7 @@ class Places extends Object
 		// Set the API path
 		$path = '/geo/similar_places.json';
 
-		$data['lat'] = $lat;
+		$data['lat']  = $lat;
 		$data['long'] = $long;
 		$data['name'] = rawurlencode($name);
 
@@ -263,10 +263,10 @@ class Places extends Object
 		// Check the rate limit for remaining hits
 		$this->checkRateLimit('geo', 'place');
 
-		$data['lat'] = $lat;
-		$data['long'] = $long;
-		$data['name'] = rawurlencode($name);
-		$data['token'] = $geoToken;
+		$data['lat']              = $lat;
+		$data['long']             = $long;
+		$data['name']             = rawurlencode($name);
+		$data['token']            = $geoToken;
 		$data['contained_within'] = $within;
 
 		// Check if attribute is specified

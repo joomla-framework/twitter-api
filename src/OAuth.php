@@ -8,10 +8,10 @@
 
 namespace Joomla\Twitter;
 
-use Joomla\OAuth1\Client;
+use Joomla\Application\AbstractWebApplication;
 use Joomla\Http\Http;
 use Joomla\Input\Input;
-use Joomla\Application\AbstractWebApplication;
+use Joomla\OAuth1\Client;
 
 /**
  * Joomla Framework class for generating Twitter API access token.
