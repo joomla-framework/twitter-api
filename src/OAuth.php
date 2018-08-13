@@ -143,6 +143,7 @@ class OAuth extends Client
 			else
 			{
 				$error = $error->errors;
+
 				throw new \DomainException($error[0]->message, $error[0]->code);
 			}
 		}
