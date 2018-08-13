@@ -49,7 +49,7 @@ class Lists extends Object
 		}
 
 		// Check if reverse is specified.
-		if (!is_null($reverse))
+		if ($reverse !== null)
 		{
 			$data['reverse'] = $reverse;
 		}
@@ -136,13 +136,13 @@ class Lists extends Object
 		}
 
 		// Check if entities is specified
-		if (!is_null($entities))
+		if ($entities !== null)
 		{
 			$data['include_entities'] = $entities;
 		}
 
 		// Check if include_rts is specified
-		if (!is_null($includeRts))
+		if ($includeRts !== null)
 		{
 			$data['include_rts'] = $includeRts;
 		}
@@ -205,19 +205,19 @@ class Lists extends Object
 		$path = '/lists/subscribers.json';
 
 		// Check if cursor is specified
-		if (!is_null($cursor))
+		if ($cursor !== null)
 		{
 			$data['cursor'] = $cursor;
 		}
 
 		// Check if entities is specified
-		if (!is_null($entities))
+		if ($entities !== null)
 		{
 			$data['include_entities'] = $entities;
 		}
 
 		// Check if skip_status is specified
-		if (!is_null($skipStatus))
+		if ($skipStatus !== null)
 		{
 			$data['skip_status'] = $skipStatus;
 		}
@@ -398,7 +398,7 @@ class Lists extends Object
 		}
 
 		// Check if cursor is specified.
-		if (!is_null($cursor))
+		if ($cursor !== null)
 		{
 			$data['cursor'] = $cursor;
 		}
@@ -531,13 +531,13 @@ class Lists extends Object
 		$path = '/lists/members/show.json';
 
 		// Check if entities is specified
-		if (!is_null($entities))
+		if ($entities !== null)
 		{
 			$data['include_entities'] = $entities;
 		}
 
 		// Check if skip_status is specified
-		if (!is_null($skipStatus))
+		if ($skipStatus !== null)
 		{
 			$data['skip_status'] = $skipStatus;
 		}
@@ -614,13 +614,13 @@ class Lists extends Object
 		$path = '/lists/subscribers/show.json';
 
 		// Check if entities is specified
-		if (!is_null($entities))
+		if ($entities !== null)
 		{
 			$data['include_entities'] = $entities;
 		}
 
 		// Check if skip_status is specified
-		if (!is_null($skipStatus))
+		if ($skipStatus !== null)
 		{
 			$data['skip_status'] = $skipStatus;
 		}
@@ -806,13 +806,13 @@ class Lists extends Object
 		$path = '/lists/members.json';
 
 		// Check if entities is specified
-		if (!is_null($entities))
+		if ($entities !== null)
 		{
 			$data['include_entities'] = $entities;
 		}
 
 		// Check if skip_status is specified
-		if (!is_null($skipStatus))
+		if ($skipStatus !== null)
 		{
 			$data['skip_status'] = $skipStatus;
 		}
@@ -913,7 +913,7 @@ class Lists extends Object
 		}
 
 		// Check if cursor is specified.
-		if (!is_null($cursor))
+		if ($cursor !== null)
 		{
 			$data['cursor'] = $cursor;
 		}
@@ -964,7 +964,7 @@ class Lists extends Object
 		}
 
 		// Check if cursor is specified.
-		if (!is_null($cursor))
+		if ($cursor !== null)
 		{
 			$data['cursor'] = $cursor;
 		}

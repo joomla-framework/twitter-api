@@ -59,13 +59,13 @@ class Directmessages extends Object
 		}
 
 		// Check if entities is specified.
-		if (!is_null($entities))
+		if ($entities !== null)
 		{
 			$data['include_entities'] = $entities;
 		}
 
 		// Check if skip_status is specified.
-		if (!is_null($skipStatus))
+		if ($skipStatus !== null)
 		{
 			$data['skip_status'] = $skipStatus;
 		}
@@ -123,7 +123,7 @@ class Directmessages extends Object
 		}
 
 		// Check if entities is specified.
-		if (!is_null($entities))
+		if ($entities !== null)
 		{
 			$data['include_entities'] = $entities;
 		}
@@ -211,7 +211,7 @@ class Directmessages extends Object
 		$data['id'] = $id;
 
 		// Check if entities is specified.
-		if (!is_null($entities))
+		if ($entities !== null)
 		{
 			$data['include_entities'] = $entities;
 		}

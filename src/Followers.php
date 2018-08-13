@@ -57,25 +57,25 @@ class Followers extends Object
 		$path = '/followers/list.json';
 
 		// Check if cursor is specified
-		if (!is_null($cursor))
+		if ($cursor !== null)
 		{
 			$data['cursor'] = $cursor;
 		}
 
 		// Check if count is specified
-		if (!is_null($count))
+		if ($count !== null)
 		{
 			$data['count'] = $count;
 		}
 
 		// Check if skip_status is specified
-		if (!is_null($skipStatus))
+		if ($skipStatus !== null)
 		{
 			$data['skip_status'] = $skipStatus;
 		}
 
 		// Check if entities is specified
-		if (!is_null($entities))
+		if ($entities !== null)
 		{
 			$data['entities'] = $entities;
 		}
@@ -123,19 +123,19 @@ class Followers extends Object
 		$path = '/followers/ids.json';
 
 		// Check if cursor is specified
-		if (!is_null($cursor))
+		if ($cursor !== null)
 		{
 			$data['cursor'] = $cursor;
 		}
 
 		// Check if string_ids is specified
-		if (!is_null($stringIds))
+		if ($stringIds !== null)
 		{
 			$data['stringify_ids'] = $stringIds;
 		}
 
 		// Check if count is specified
-		if (!is_null($count))
+		if ($count !== null)
 		{
 			$data['count'] = $count;
 		}

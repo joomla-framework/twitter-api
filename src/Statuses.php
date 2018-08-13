@@ -42,19 +42,19 @@ class Statuses extends Object
 		$data = array();
 
 		// Check if trim_user is specified
-		if (!is_null($trimUser))
+		if ($trimUser !== null)
 		{
 			$data['trim_user'] = $trimUser;
 		}
 
 		// Check if entities is specified
-		if (!is_null($entities))
+		if ($entities !== null)
 		{
 			$data['include_entities'] = $entities;
 		}
 
 		// Check if my_retweet is specified
-		if (!is_null($myRetweet))
+		if ($myRetweet !== null)
 		{
 			$data['include_my_retweet'] = $myRetweet;
 		}
@@ -115,13 +115,13 @@ class Statuses extends Object
 		$data['count'] = $count;
 
 		// Check if include_rts is specified
-		if (!is_null($includeRts))
+		if ($includeRts !== null)
 		{
 			$data['include_rts'] = $includeRts;
 		}
 
 		// Check if no_replies is specified
-		if (!is_null($noReplies))
+		if ($noReplies !== null)
 		{
 			$data['exclude_replies'] = $noReplies;
 		}
@@ -139,13 +139,13 @@ class Statuses extends Object
 		}
 
 		// Check if trim_user is specified
-		if (!is_null($trimUser))
+		if ($trimUser !== null)
 		{
 			$data['trim_user'] = $trimUser;
 		}
 
 		// Check if contributor details is specified
-		if (!is_null($contributor))
+		if ($contributor !== null)
 		{
 			$data['contributor_details'] = $contributor;
 		}
@@ -189,7 +189,7 @@ class Statuses extends Object
 		$data['count'] = $count;
 
 		// Check if no_replies is specified
-		if (!is_null($noReplies))
+		if ($noReplies !== null)
 		{
 			$data['exclude_replies'] = $noReplies;
 		}
@@ -207,19 +207,19 @@ class Statuses extends Object
 		}
 
 		// Check if trim_user is specified
-		if (!is_null($trimUser))
+		if ($trimUser !== null)
 		{
 			$data['trim_user'] = $trimUser;
 		}
 
 		// Check if contributor details is specified
-		if (!is_null($contributor))
+		if ($contributor !== null)
 		{
 			$data['contributor_details'] = $contributor;
 		}
 
 		// Check if entities is specified
-		if (!is_null($entities))
+		if ($entities !== null)
 		{
 			$data['include_entities'] = $entities;
 		}
@@ -279,13 +279,13 @@ class Statuses extends Object
 		}
 
 		// Check if display_coordinates is specified.
-		if (!is_null($displayCoordinates))
+		if ($displayCoordinates !== null)
 		{
 			$data['display_coordinates'] = $displayCoordinates;
 		}
 
 		// Check if trim_user is specified.
-		if (!is_null($trimUser))
+		if ($trimUser !== null)
 		{
 			$data['trim_user'] = $trimUser;
 		}
@@ -326,13 +326,13 @@ class Statuses extends Object
 		$data['count'] = $count;
 
 		// Check if include_rts is specified
-		if (!is_null($includeRts))
+		if ($includeRts !== null)
 		{
 			$data['include_rts'] = $includeRts;
 		}
 
 		// Check if entities is specified
-		if (!is_null($entities))
+		if ($entities !== null)
 		{
 			$data['include_entities'] = $entities;
 		}
@@ -350,13 +350,13 @@ class Statuses extends Object
 		}
 
 		// Check if trim_user is specified
-		if (!is_null($trimUser))
+		if ($trimUser !== null)
 		{
 			$data['trim_user'] = $trimUser;
 		}
 
 		// Check if contributor is specified
-		if (!is_null($contributor))
+		if ($contributor !== null)
 		{
 			$data['contributor_details'] = $contributor;
 		}
@@ -406,19 +406,19 @@ class Statuses extends Object
 		}
 
 		// Check if trim_user is specified
-		if (!is_null($trimUser))
+		if ($trimUser !== null)
 		{
 			$data['trim_user'] = $trimUser;
 		}
 
 		// Check if entities is specified
-		if (!is_null($entities))
+		if ($entities !== null)
 		{
 			$data['include_entities'] = $entities;
 		}
 
 		// Check if entities is specified
-		if (!is_null($userEntities))
+		if ($userEntities !== null)
 		{
 			$data['include_user_entities'] = $userEntities;
 		}
@@ -456,13 +456,13 @@ class Statuses extends Object
 		$data['count'] = $count;
 
 		// Check if cursor is specified
-		if (!is_null($cursor))
+		if ($cursor !== null)
 		{
 			$data['cursor'] = $cursor;
 		}
 
 		// Check if entities is specified
-		if (!is_null($stringifyIds))
+		if ($stringifyIds !== null)
 		{
 			$data['stringify_ids'] = $stringifyIds;
 		}
@@ -496,7 +496,7 @@ class Statuses extends Object
 		$data['count'] = $count;
 
 		// Check if trim_user is specified
-		if (!is_null($trimUser))
+		if ($trimUser !== null)
 		{
 			$data['trim_user'] = $trimUser;
 		}
@@ -524,7 +524,7 @@ class Statuses extends Object
 		$data = array();
 
 		// Check if trim_user is specified
-		if (!is_null($trimUser))
+		if ($trimUser !== null)
 		{
 			$data['trim_user'] = $trimUser;
 		}
@@ -552,7 +552,7 @@ class Statuses extends Object
 		$data = array();
 
 		// Check if trim_user is specified
-		if (!is_null($trimUser))
+		if ($trimUser !== null)
 		{
 			$data['trim_user'] = $trimUser;
 		}
@@ -594,7 +594,7 @@ class Statuses extends Object
 		$header = array('Content-Type' => 'multipart/form-data');
 
 		// Check if in_reply_to_status_id is specified.
-		if (!is_null($inReplyToStatusId))
+		if ($inReplyToStatusId !== null)
 		{
 			$data['in_reply_to_status_id'] = $inReplyToStatusId;
 		}
@@ -618,13 +618,13 @@ class Statuses extends Object
 		}
 
 		// Check if display_coordinates is specified.
-		if (!is_null($displayCoordinates))
+		if ($displayCoordinates !== null)
 		{
 			$data['display_coordinates'] = $displayCoordinates;
 		}
 
 		// Check if sensitive is specified.
-		if (!is_null($sensitive))
+		if ($sensitive !== null)
 		{
 			$data['possibly_sensitive'] = $sensitive;
 		}
@@ -691,19 +691,19 @@ class Statuses extends Object
 		}
 
 		// Check if hide_media is specified.
-		if (!is_null($hideMedia))
+		if ($hideMedia !== null)
 		{
 			$data['hide_media'] = $hideMedia;
 		}
 
 		// Check if hide_thread is specified.
-		if (!is_null($hideThread))
+		if ($hideThread !== null)
 		{
 			$data['hide_thread'] = $hideThread;
 		}
 
 		// Check if omit_script is specified.
-		if (!is_null($omitScript))
+		if ($omitScript !== null)
 		{
 			$data['omit_script'] = $omitScript;
 		}

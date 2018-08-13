@@ -96,7 +96,7 @@ class Mute extends Object
 	public function getMutedUserIds($cursor = null)
 	{
 		// Check if cursor is specified
-		if (!is_null($cursor))
+		if ($cursor !== null)
 		{
 			$data['cursor'] = $cursor;
 		}
@@ -123,19 +123,19 @@ class Mute extends Object
 	public function getMutedUsers($cursor = null, $entities = null, $skipStatus = null)
 	{
 		// Check if cursor is specified
-		if (!is_null($cursor))
+		if ($cursor !== null)
 		{
 			$data['cursor'] = $cursor;
 		}
 
 		// Check if entities is specified
-		if (!is_null($entities))
+		if ($entities !== null)
 		{
 			$data['include_entities'] = $entities;
 		}
 
 		// Check if skip_status is specified
-		if (!is_null($skipStatus))
+		if ($skipStatus !== null)
 		{
 			$data['skip_status'] = $skipStatus;
 		}

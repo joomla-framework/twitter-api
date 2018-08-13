@@ -32,7 +32,7 @@ class Block extends Object
 	public function getBlocking($stringifyIds = null, $cursor = null, $full = null)
 	{
 		// Check the rate limit for remaining hits
-		if (!is_null($full))
+		if ($full !== null)
 		{
 			$this->checkRateLimit('blocks', 'ids');
 		}
@@ -44,19 +44,19 @@ class Block extends Object
 		$data = array();
 
 		// Check if stringify_ids is specified
-		if (!is_null($stringifyIds))
+		if ($stringifyIds !== null)
 		{
 			$data['stringify_ids'] = $stringifyIds;
 		}
 
 		// Check if cursor is specified
-		if (!is_null($stringifyIds))
+		if ($stringifyIds !== null)
 		{
 			$data['cursor'] = $cursor;
 		}
 
 		// Set the API path
-		$path = (is_null($full)) ? '/blocks/ids.json' : '/blocks/list.json';
+		$path = ($full === null) ? '/blocks/ids.json' : '/blocks/list.json';
 
 		// Send the request.
 		return $this->sendRequest($path, 'GET', $data);
@@ -96,13 +96,13 @@ class Block extends Object
 		}
 
 		// Check if entities is specified
-		if (!is_null($entities))
+		if ($entities !== null)
 		{
 			$data['include_entities'] = $entities;
 		}
 
 		// Check if skip_statuses is specified
-		if (!is_null($skipStatus))
+		if ($skipStatus !== null)
 		{
 			$data['skip_status'] = $skipStatus;
 		}
@@ -148,13 +148,13 @@ class Block extends Object
 		}
 
 		// Check if entities is specified
-		if (!is_null($entities))
+		if ($entities !== null)
 		{
 			$data['include_entities'] = $entities;
 		}
 
 		// Check if skip_statuses is specified
-		if (!is_null($skipStatus))
+		if ($skipStatus !== null)
 		{
 			$data['skip_status'] = $skipStatus;
 		}

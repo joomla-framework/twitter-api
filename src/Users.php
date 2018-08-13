@@ -57,7 +57,7 @@ class Users extends Object
 		$path = '/users/lookup.json';
 
 		// Check if string_ids is specified
-		if (!is_null($entities))
+		if ($entities !== null)
 		{
 			$data['include_entities'] = $entities;
 		}
@@ -137,7 +137,7 @@ class Users extends Object
 		}
 
 		// Check if entities is specified.
-		if (!is_null($entities))
+		if ($entities !== null)
 		{
 			$data['include_entities'] = $entities;
 		}
@@ -184,7 +184,7 @@ class Users extends Object
 		$path = '/users/show.json';
 
 		// Check if entities is specified
-		if (!is_null($entities))
+		if ($entities !== null)
 		{
 			$data['include_entities'] = $entities;
 		}
@@ -229,13 +229,13 @@ class Users extends Object
 		$path = '/users/contributees.json';
 
 		// Check if entities is specified
-		if (!is_null($entities))
+		if ($entities !== null)
 		{
 			$data['include_entities'] = $entities;
 		}
 
 		// Check if skip_status is specified
-		if (!is_null($skipStatus))
+		if ($skipStatus !== null)
 		{
 			$data['skip_status'] = $skipStatus;
 		}
@@ -280,13 +280,13 @@ class Users extends Object
 		$path = '/users/contributors.json';
 
 		// Check if entities is specified
-		if (!is_null($entities))
+		if ($entities !== null)
 		{
 			$data['include_entities'] = $entities;
 		}
 
 		// Check if skip_status is specified
-		if (!is_null($skipStatus))
+		if ($skipStatus !== null)
 		{
 			$data['skip_status'] = $skipStatus;
 		}

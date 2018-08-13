@@ -36,11 +36,11 @@ class Media extends Object
 		$this->checkRateLimit('media', 'upload');
 
 		// Determine which type of data was passed for $media
-		if (!is_null($rawMedia))
+		if ($rawMedia !== null)
 		{
 			$data['media'] = $rawMedia;
 		}
-		elseif (!is_null($base64Media))
+		elseif ($base64Media !== null)
 		{
 			$data['media_data'] = $base64Media;
 		}
@@ -50,12 +50,12 @@ class Media extends Object
 			throw new \RuntimeException('You must specify at least one valid media type.');
 		}
 
-		if (!is_null($rawMedia) && !is_null($base64Media))
+		if ($rawMedia !== null && $base64Media !== null)
 		{
 			throw new \RuntimeException('You may only specify one type of media.');
 		}
 
-		if (!is_null($owners))
+		if ($owners !== null)
 		{
 			$data['additional_owners'] = $owners;
 		}

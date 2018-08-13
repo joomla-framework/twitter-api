@@ -65,7 +65,7 @@ class Favorites extends Object
 		}
 
 		// Check if entities is specified.
-		if (!is_null($entities))
+		if ($entities !== null)
 		{
 			$data['include_entities'] = $entities;
 		}
@@ -93,7 +93,7 @@ class Favorites extends Object
 		$data['id'] = $id;
 
 		// Check if entities is specified.
-		if (!is_null($entities))
+		if ($entities !== null)
 		{
 			$data['include_entities'] = $entities;
 		}
@@ -121,7 +121,7 @@ class Favorites extends Object
 		$data['id'] = $id;
 
 		// Check if entities is specified.
-		if (!is_null($entities))
+		if ($entities !== null)
 		{
 			$data['include_entities'] = $entities;
 		}

@@ -71,7 +71,7 @@ abstract class AbstractTwitterObject
 
 		$property = '/' . $resource;
 
-		if (!is_null($action))
+		if ($action !== null)
 		{
 			$property .= '/' . $action;
 		}
@@ -145,7 +145,7 @@ abstract class AbstractTwitterObject
 		// Build the request path.
 		$path = '/application/rate_limit_status.json';
 
-		if (!is_null($resource))
+		if ($resource !== null)
 		{
 			return $this->sendRequest($path, 'GET', array('resources' => $resource));
 		}

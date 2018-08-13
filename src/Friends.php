@@ -52,7 +52,7 @@ class Friends extends Object
 		}
 
 		// Check if cursor is specified
-		if (!is_null($cursor))
+		if ($cursor !== null)
 		{
 			$data['cursor'] = $cursor;
 		}
@@ -169,19 +169,19 @@ class Friends extends Object
 		$path = '/followers/ids.json';
 
 		// Check if cursor is specified
-		if (!is_null($cursor))
+		if ($cursor !== null)
 		{
 			$data['cursor'] = $cursor;
 		}
 
 		// Check if string_ids is specified
-		if (!is_null($stringIds))
+		if ($stringIds !== null)
 		{
 			$data['stringify_ids'] = $stringIds;
 		}
 
 		// Check if count is specified
-		if (!is_null($count))
+		if ($count !== null)
 		{
 			$data['count'] = $count;
 		}
@@ -210,13 +210,13 @@ class Friends extends Object
 		$data = array();
 
 		// Check if cursor is specified
-		if (!is_null($cursor))
+		if ($cursor !== null)
 		{
 			$data['cursor'] = $cursor;
 		}
 
 		// Check if string_ids is specified
-		if (!is_null($stringIds))
+		if ($stringIds !== null)
 		{
 			$data['stringify_ids'] = $stringIds;
 		}
@@ -248,13 +248,13 @@ class Friends extends Object
 		$data = array();
 
 		// Check if cursor is specified
-		if (!is_null($cursor))
+		if ($cursor !== null)
 		{
 			$data['cursor'] = $cursor;
 		}
 
 		// Check if string_ids is specified
-		if (!is_null($stringIds))
+		if ($stringIds !== null)
 		{
 			$data['stringify_ids'] = $stringIds;
 		}
@@ -413,13 +413,13 @@ class Friends extends Object
 		}
 
 		// Check if device is specified.
-		if (!is_null($device))
+		if ($device !== null)
 		{
 			$data['device'] = $device;
 		}
 
 		// Check if retweets is specified.
-		if (!is_null($retweets))
+		if ($retweets !== null)
 		{
 			$data['retweets'] = $retweets;
 		}
@@ -448,7 +448,7 @@ class Friends extends Object
 		$data = array();
 
 		// Check if string_ids is specified
-		if (!is_null($stringIds))
+		if ($stringIds !== null)
 		{
 			$data['stringify_ids'] = $stringIds;
 		}

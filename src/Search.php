@@ -107,7 +107,7 @@ class Search extends Object
 		}
 
 		// Check if entities is specified.
-		if (!is_null($entities))
+		if ($entities !== null)
 		{
 			$data['include_entities'] = $entities;
 		}
