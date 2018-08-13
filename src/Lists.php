@@ -38,7 +38,7 @@ class Lists extends Object
 		{
 			$data['user_id'] = $user;
 		}
-		elseif (is_string($user))
+		elseif (\is_string($user))
 		{
 			$data['screen_name'] = $user;
 		}
@@ -89,7 +89,7 @@ class Lists extends Object
 		{
 			$data['list_id'] = $list;
 		}
-		elseif (is_string($list))
+		elseif (\is_string($list))
 		{
 			$data['slug'] = $list;
 
@@ -98,7 +98,7 @@ class Lists extends Object
 			{
 				$data['owner_id'] = $owner;
 			}
-			elseif (is_string($owner))
+			elseif (\is_string($owner))
 			{
 				$data['owner_screen_name'] = $owner;
 			}
@@ -176,7 +176,7 @@ class Lists extends Object
 		{
 			$data['list_id'] = $list;
 		}
-		elseif (is_string($list))
+		elseif (\is_string($list))
 		{
 			$data['slug'] = $list;
 
@@ -185,7 +185,7 @@ class Lists extends Object
 			{
 				$data['owner_id'] = $owner;
 			}
-			elseif (is_string($owner))
+			elseif (\is_string($owner))
 			{
 				$data['owner_screen_name'] = $owner;
 			}
@@ -245,7 +245,7 @@ class Lists extends Object
 		{
 			$data['list_id'] = $list;
 		}
-		elseif (is_string($list))
+		elseif (\is_string($list))
 		{
 			$data['slug'] = $list;
 
@@ -254,7 +254,7 @@ class Lists extends Object
 			{
 				$data['owner_id'] = $owner;
 			}
-			elseif (is_string($owner))
+			elseif (\is_string($owner))
 			{
 				$data['owner_screen_name'] = $owner;
 			}
@@ -274,7 +274,7 @@ class Lists extends Object
 		{
 			$data['user_id'] = $user;
 		}
-		elseif (is_string($user))
+		elseif (\is_string($user))
 		{
 			$data['screen_name'] = $user;
 		}
@@ -311,7 +311,7 @@ class Lists extends Object
 		{
 			$data['list_id'] = $list;
 		}
-		elseif (is_string($list))
+		elseif (\is_string($list))
 		{
 			$data['slug'] = $list;
 
@@ -320,7 +320,7 @@ class Lists extends Object
 			{
 				$data['owner_id'] = $owner;
 			}
-			elseif (is_string($owner))
+			elseif (\is_string($owner))
 			{
 				$data['owner_screen_name'] = $owner;
 			}
@@ -381,7 +381,7 @@ class Lists extends Object
 		{
 			$data['user_id'] = $user;
 		}
-		elseif (is_string($user))
+		elseif (\is_string($user))
 		{
 			$data['screen_name'] = $user;
 		}
@@ -431,7 +431,7 @@ class Lists extends Object
 		{
 			$data['list_id'] = $list;
 		}
-		elseif (is_string($list))
+		elseif (\is_string($list))
 		{
 			$data['slug'] = $list;
 
@@ -440,7 +440,7 @@ class Lists extends Object
 			{
 				$data['owner_id'] = $owner;
 			}
-			elseif (is_string($owner))
+			elseif (\is_string($owner))
 			{
 				$data['owner_screen_name'] = $owner;
 			}
@@ -488,7 +488,7 @@ class Lists extends Object
 		{
 			$data['list_id'] = $list;
 		}
-		elseif (is_string($list))
+		elseif (\is_string($list))
 		{
 			$data['slug'] = $list;
 
@@ -497,7 +497,7 @@ class Lists extends Object
 			{
 				$data['owner_id'] = $owner;
 			}
-			elseif (is_string($owner))
+			elseif (\is_string($owner))
 			{
 				$data['owner_screen_name'] = $owner;
 			}
@@ -517,7 +517,7 @@ class Lists extends Object
 		{
 			$data['user_id'] = $user;
 		}
-		elseif (is_string($user))
+		elseif (\is_string($user))
 		{
 			$data['screen_name'] = $user;
 		}
@@ -571,7 +571,7 @@ class Lists extends Object
 		{
 			$data['list_id'] = $list;
 		}
-		elseif (is_string($list))
+		elseif (\is_string($list))
 		{
 			$data['slug'] = $list;
 
@@ -580,7 +580,7 @@ class Lists extends Object
 			{
 				$data['owner_id'] = $owner;
 			}
-			elseif (is_string($owner))
+			elseif (\is_string($owner))
 			{
 				$data['owner_screen_name'] = $owner;
 			}
@@ -600,7 +600,7 @@ class Lists extends Object
 		{
 			$data['user_id'] = $user;
 		}
-		elseif (is_string($user))
+		elseif (\is_string($user))
 		{
 			$data['screen_name'] = $user;
 		}
@@ -650,7 +650,7 @@ class Lists extends Object
 		{
 			$data['list_id'] = $list;
 		}
-		elseif (is_string($list))
+		elseif (\is_string($list))
 		{
 			$data['slug'] = $list;
 
@@ -659,7 +659,7 @@ class Lists extends Object
 			{
 				$data['owner_id'] = $owner;
 			}
-			elseif (is_string($owner))
+			elseif (\is_string($owner))
 			{
 				$data['owner_screen_name'] = $owner;
 			}
@@ -705,7 +705,7 @@ class Lists extends Object
 		{
 			$data['list_id'] = $list;
 		}
-		elseif (is_string($list))
+		elseif (\is_string($list))
 		{
 			$data['slug'] = $list;
 
@@ -714,7 +714,7 @@ class Lists extends Object
 			{
 				$data['owner_id'] = $owner;
 			}
-			elseif (is_string($owner))
+			elseif (\is_string($owner))
 			{
 				$data['owner_screen_name'] = $owner;
 			}
@@ -777,7 +777,7 @@ class Lists extends Object
 		{
 			$data['list_id'] = $list;
 		}
-		elseif (is_string($list))
+		elseif (\is_string($list))
 		{
 			$data['slug'] = $list;
 
@@ -786,7 +786,7 @@ class Lists extends Object
 			{
 				$data['owner_id'] = $owner;
 			}
-			elseif (is_string($owner))
+			elseif (\is_string($owner))
 			{
 				$data['owner_screen_name'] = $owner;
 			}
@@ -842,7 +842,7 @@ class Lists extends Object
 		{
 			$data['list_id'] = $list;
 		}
-		elseif (is_string($list))
+		elseif (\is_string($list))
 		{
 			$data['slug'] = $list;
 
@@ -851,7 +851,7 @@ class Lists extends Object
 			{
 				$data['owner_id'] = $owner;
 			}
-			elseif (is_string($owner))
+			elseif (\is_string($owner))
 			{
 				$data['owner_screen_name'] = $owner;
 			}
@@ -896,7 +896,7 @@ class Lists extends Object
 		{
 			$data['user_id'] = $user;
 		}
-		elseif (is_string($user))
+		elseif (\is_string($user))
 		{
 			$data['screen_name'] = $user;
 		}
@@ -947,7 +947,7 @@ class Lists extends Object
 		{
 			$data['user_id'] = $user;
 		}
-		elseif (is_string($user))
+		elseif (\is_string($user))
 		{
 			$data['screen_name'] = $user;
 		}
@@ -1001,7 +1001,7 @@ class Lists extends Object
 		{
 			$data['list_id'] = $list;
 		}
-		elseif (is_string($list))
+		elseif (\is_string($list))
 		{
 			$data['slug'] = $list;
 
@@ -1010,7 +1010,7 @@ class Lists extends Object
 			{
 				$data['owner_id'] = $owner;
 			}
-			elseif (is_string($owner))
+			elseif (\is_string($owner))
 			{
 				$data['owner_screen_name'] = $owner;
 			}
@@ -1116,7 +1116,7 @@ class Lists extends Object
 		{
 			$data['list_id'] = $list;
 		}
-		elseif (is_string($list))
+		elseif (\is_string($list))
 		{
 			$data['slug'] = $list;
 
@@ -1125,7 +1125,7 @@ class Lists extends Object
 			{
 				$data['owner_id'] = $owner;
 			}
-			elseif (is_string($owner))
+			elseif (\is_string($owner))
 			{
 				$data['owner_screen_name'] = $owner;
 			}

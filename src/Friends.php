@@ -41,7 +41,7 @@ class Friends extends Object
 		{
 			$data['user_id'] = $user;
 		}
-		elseif (is_string($user))
+		elseif (\is_string($user))
 		{
 			$data['screen_name'] = $user;
 		}
@@ -97,7 +97,7 @@ class Friends extends Object
 		{
 			$data['source_id'] = $userA;
 		}
-		elseif (is_string($userA))
+		elseif (\is_string($userA))
 		{
 			$data['source_screen_name'] = $userA;
 		}
@@ -112,7 +112,7 @@ class Friends extends Object
 		{
 			$data['target_id'] = $userB;
 		}
-		elseif (is_string($userB))
+		elseif (\is_string($userB))
 		{
 			$data['target_screen_name'] = $userB;
 		}
@@ -155,7 +155,7 @@ class Friends extends Object
 		{
 			$data['user_id'] = $user;
 		}
-		elseif (is_string($user))
+		elseif (\is_string($user))
 		{
 			$data['screen_name'] = $user;
 		}
@@ -284,7 +284,7 @@ class Friends extends Object
 		{
 			$data['user_id'] = $user;
 		}
-		elseif (is_string($user))
+		elseif (\is_string($user))
 		{
 			$data['screen_name'] = $user;
 		}
@@ -324,7 +324,7 @@ class Friends extends Object
 		{
 			$data['user_id'] = $user;
 		}
-		elseif (is_string($user))
+		elseif (\is_string($user))
 		{
 			$data['screen_name'] = $user;
 		}
@@ -402,7 +402,7 @@ class Friends extends Object
 		{
 			$data['user_id'] = $user;
 		}
-		elseif (is_string($user))
+		elseif (\is_string($user))
 		{
 			$data['screen_name'] = $user;
 		}

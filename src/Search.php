@@ -39,8 +39,8 @@ class Search extends Object
 	 *
 	 * @since   1.0
 	 */
-	public function search($query, $callback = null, $geocode = null, $lang = null, $locale = null, $resultType = null, $count = 15,
-		$until = null, $sinceId = 0, $maxId = 0, $entities = null
+	public function search($query, $callback = null, $geocode = null, $lang = null, $locale = null, $resultType = null, $count = 15, $until = null,
+		$sinceId = 0, $maxId = 0, $entities = null
 	)
 	{
 		// Check the rate limit for remaining hits

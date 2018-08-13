@@ -34,7 +34,7 @@ class Statuses extends Object
 	public function getTweetById($id, $trimUser = null, $entities = null, $myRetweet = null)
 	{
 		// Check the rate limit for remaining hits
-		$this->checkRateLimit("statuses", "show/:id");
+		$this->checkRateLimit('statuses', 'show/:id');
 
 		// Set the API base
 		$path = '/statuses/show/' . $id . '.json';
@@ -98,7 +98,7 @@ class Statuses extends Object
 		{
 			$data['user_id'] = $user;
 		}
-		elseif (is_string($user))
+		elseif (\is_string($user))
 		{
 			$data['screen_name'] = $user;
 		}

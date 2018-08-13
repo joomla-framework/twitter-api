@@ -85,7 +85,7 @@ class Block extends Object
 		{
 			$data['user_id'] = $user;
 		}
-		elseif (is_string($user))
+		elseif (\is_string($user))
 		{
 			$data['screen_name'] = $user;
 		}
@@ -137,7 +137,7 @@ class Block extends Object
 		{
 			$data['user_id'] = $user;
 		}
-		elseif (is_string($user))
+		elseif (\is_string($user))
 		{
 			$data['screen_name'] = $user;
 		}
