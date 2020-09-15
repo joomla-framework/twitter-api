@@ -1,4 +1,4 @@
-## The Twitter Package [![Build Status](https://travis-ci.org/joomla-framework/twitter-api.png?branch=master)](https://travis-ci.org/joomla-framework/twitter-api)
+## The Twitter Package [![Build Status](https://ci.joomla.org/api/badges/joomla-framework/twitter-api/status.svg)](https://ci.joomla.org/joomla-framework/twitter-api)
 
 ### Deprecated
 
