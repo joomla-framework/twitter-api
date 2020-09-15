@@ -254,35 +254,7 @@ volumes:
     path: /tmp/composer-cache
 
 ---
-kind: pipeline
-name: PHP 7.2
-
-platform:
-  os: linux
-  arch: amd64
-
-steps:
-- name: composer
-  image: joomlaprojects/docker-images:php7.2
-  commands:
-  - php -v
-  - composer update --prefer-stable
-  volumes:
-  - name: composer-cache
-    path: /tmp/composer-cache
-
-- name: PHPUnit
-  image: joomlaprojects/docker-images:php7.2
-  commands:
-  - vendor/bin/phpunit
-
-volumes:
-- name: composer-cache
-  host:
-    path: /tmp/composer-cache
-
----
 kind: signature
-hmac: bb21b4c87b490b3a651f68191a7da4cd04b1c0ef960598b60dd402991447aa9c
+hmac: e5532abd31340689ff11ca57c34e5986161998f8ef667c87a83b3e1d4c141d81
 
 ...
