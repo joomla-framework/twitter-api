@@ -47,7 +47,7 @@ local pipeline(name, phpversion, params) = {
         steps: [
             {
                 name: "composer",
-                image: "joomlaprojects/docker-images:php7.2",
+                image: "joomlaprojects/docker-images:php7.1",
                 volumes: volumes,
                 commands: [
                     "php -v",

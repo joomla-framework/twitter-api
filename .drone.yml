@@ -8,7 +8,7 @@ platform:
 
 steps:
 - name: composer
-  image: joomlaprojects/docker-images:php7.2
+  image: joomlaprojects/docker-images:php7.1
   commands:
   - php -v
   - composer update
@@ -255,6 +255,6 @@ volumes:
 
 ---
 kind: signature
-hmac: e5532abd31340689ff11ca57c34e5986161998f8ef667c87a83b3e1d4c141d81
+hmac: f3f2e290ba68a70126b3921c770b858ded4a0b85097ac0bfaa50cd5702f39137
 
 ...
