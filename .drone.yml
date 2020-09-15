@@ -8,7 +8,7 @@ platform:
 
 steps:
 - name: composer
-  image: joomlaprojects/docker-images:php7.4
+  image: joomlaprojects/docker-images:php7.2
   commands:
   - php -v
   - composer update
@@ -18,7 +18,7 @@ steps:
     path: /tmp/composer-cache
 
 - name: phpcs
-  image: joomlaprojects/docker-images:php7.4
+  image: joomlaprojects/docker-images:php7.2
   commands:
   - vendor/bin/phpcs --config-set installed_paths vendor/joomla/coding-standards
   - vendor/bin/phpcs -p --report=full --extensions=php --standard=Joomla src/
@@ -283,6 +283,6 @@ volumes:
 
 ---
 kind: signature
-hmac: 0025edce27045f6c8e0d8757a23519ae8dc2b29840b00c459a04be904865829e
+hmac: bb21b4c87b490b3a651f68191a7da4cd04b1c0ef960598b60dd402991447aa9c
 
 ...

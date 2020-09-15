@@ -47,7 +47,7 @@ local pipeline(name, phpversion, params) = {
         steps: [
             {
                 name: "composer",
-                image: "joomlaprojects/docker-images:php7.4",
+                image: "joomlaprojects/docker-images:php7.2",
                 volumes: volumes,
                 commands: [
                     "php -v",
@@ -57,7 +57,7 @@ local pipeline(name, phpversion, params) = {
             },
             {
                 name: "phpcs",
-                image: "joomlaprojects/docker-images:php7.4",
+                image: "joomlaprojects/docker-images:php7.2",
                 depends: [ "composer" ],
                 commands: [
                     "vendor/bin/phpcs --config-set installed_paths vendor/joomla/coding-standards",
